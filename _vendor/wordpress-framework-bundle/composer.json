@@ -1,0 +1,20 @@
+{
+    "name": "addictic/wordpress-framework-bundle",
+    "type": "bundle",
+    "authors": [
+        {
+            "name": "aznoqmous"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "doctrine/annotations": "^2.0",
+        "symfony/finder": "^5.4",
+        "symfony/var-dumper": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Addictic\\WordpressFrameworkBundle\\": "src/"
+        }
+    }
+}

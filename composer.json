@@ -1,0 +1,86 @@
+{
+  "name": "addictic/wordpress-framework",
+  "type": "project",
+  "license": "MIT",
+  "description": "WordPress meets Symfony",
+  "homepage": "https://addidtic.fr",
+  "authors": [
+    {
+      "name": "Paul Landreau",
+      "email": "plandreau@addictic.fr",
+      "homepage": "https://github.com/aznoqmous"
+    }
+  ],
+  "keywords": [
+    "composer", "symfony", "wordpress", "wp", "wp-config"
+  ],
+  "support": {
+    "issues": "https://github.com/roots/bedrock/issues",
+    "forum": "https://discourse.roots.io/category/bedrock"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+    },
+    {
+      "type": "path",
+      "url": "_vendor/wordpress-framework-bundle"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "composer/installers": "^2.2",
+    "vlucas/phpdotenv": "^5.5",
+    "oscarotero/env": "^2.1",
+    "roots/bedrock-autoloader": "^1.0",
+    "roots/bedrock-disallow-indexing": "^2.0",
+    "roots/wordpress": "6.6.2",
+    "roots/wp-config": "1.0.0",
+    "roots/wp-password-bcrypt": "1.1.0",
+    "wpackagist-theme/twentytwentyfour": "^1.0",
+    "addictic/wordpress-framework-bundle": "dev-main",
+    "symfony/framework-bundle": "^6.3",
+    "symfony/yaml": "^7.1",
+    "symfony/debug-bundle": "^6.4",
+    "symfony/console": "^6.4",
+    "symfony/flex": "^2.4"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7.1",
+    "roave/security-advisories": "dev-latest",
+    "symfony/web-profiler-bundle": "^6.3"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true,
+      "symfony/flex": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/wp"
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+    
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  }
+}
