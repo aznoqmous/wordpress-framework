@@ -3,7 +3,8 @@
 namespace Addictic\WordpressFrameworkBundle;
 
 use Env\Env;
-use Addictic\WordpressFrameworkBundle\Helpers\PathHelper;
+use Addictic\WordpressFrameworkBundle\Helper\PathHelper;
+use Roots\WPConfig\Config;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\AddAnnotationsCachedReaderPass;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\AddDebugLogProcessorPass;
 use Symfony\Bundle\FrameworkBundle\DependencyInjection\Compiler\AddExpressionLanguageProvidersPass;
@@ -40,6 +41,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\RemoveEmptyControllerArgume
 use Symfony\Component\HttpKernel\DependencyInjection\ResettableServicePass;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Routing\DependencyInjection\RoutingResolverPass;
+use function Env\env;
 
 class WordpressFrameworkBundle extends Bundle
 {
@@ -114,22 +116,19 @@ class WordpressFrameworkBundle extends Bundle
         if( !file_exists($this->public_dir.'/wp-config.php') )
             return;
 
-        if (!defined('WP_DEBUG_LOG'))
-            define('WP_DEBUG_LOG', realpath($this->log_dir . '/wp-errors.log'));
+        if(!defined('WP_DEBUG_LOG')) Config::define('WP_DEBUG_LOG', realpath($this->log_dir . '/wp-errors.log'));
 
-        // get WordPress path
         $wp_path = PathHelper::getWordpressRoot($this->root_dir);
 
 
-        // start loading WordPress core without theme support
         $wp_load_script = $this->root_dir.'/'.$wp_path.'wp-load.php';
-
 
         if( !file_exists($wp_load_script) )
             return;
 
         include $wp_load_script;
-
         remove_action( 'template_redirect', 'redirect_canonical' );
+
+
     }
 }
