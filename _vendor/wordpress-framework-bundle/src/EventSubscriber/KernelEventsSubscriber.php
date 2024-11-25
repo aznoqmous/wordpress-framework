@@ -2,7 +2,7 @@
 
 namespace Addictic\WordpressFrameworkBundle\EventSubscriber;
 
-use Addictic\WordpressFrameworkBundle\Helper\PathHelper;
+use Addictic\WordpressFrameworkBundle\Helpers\PathHelper;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -120,20 +120,6 @@ class KernelEventsSubscriber implements EventSubscriberInterface
      */
     public function onKernelResponse(ResponseEvent $event)
     {
-//        dump($event);
-//        die;
-//        $root_dir = $event->getKernel()->getProjectDir();
-//        ob_start();
-//        $wp_path = PathHelper::getWordpressRoot($root_dir);
-//        $wp_load_script = $root_dir.'/'.$wp_path.'wp-blog-header.php';
-//        if( !file_exists($wp_load_script) )
-//            return;
-//        include $wp_load_script;
-//        remove_action( 'template_redirect', 'redirect_canonical' );
-//        $content = ob_get_clean();
-//        dump($content);
-//        die;
-
         if (php_sapi_name() != 'cli')
             return;
 

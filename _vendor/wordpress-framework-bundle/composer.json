@@ -10,7 +10,8 @@
         "php": "^8.3",
         "doctrine/annotations": "^2.0",
         "symfony/finder": "^5.4",
-        "symfony/var-dumper": "^5.4"
+        "symfony/var-dumper": "^5.4",
+        "jjgrainger/posttypes": "^2.2"
     },
     "autoload": {
         "psr-4": {

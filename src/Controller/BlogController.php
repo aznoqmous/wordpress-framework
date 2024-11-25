@@ -12,7 +12,17 @@ class BlogController extends AbstractController
     #[Route("/")]
     public function index(): Response
     {
-        return new Response("root");
+        define( 'WP_USE_THEMES', true );
+
+        ob_start();
+        // Set up the WordPress query.
+        wp();
+
+        include ABSPATH . WPINC . '/template-loader.php';
+
+        $content = ob_get_clean();
+
+        return new Response($content);
     }
 
     #[Route("/{path}")]

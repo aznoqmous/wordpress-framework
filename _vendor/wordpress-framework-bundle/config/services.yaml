@@ -13,3 +13,5 @@ services:
       - '../src/Helper/'
       - '../src/Loader/'
       - '../src/Traits/'
+  translator:
+    class: Addictic\WordpressFrameworkBundle\Helpers\Translator

@@ -1,6 +1,6 @@
 <?php
 
-namespace Addictic\WordpressFrameworkBundle\Helper;
+namespace Addictic\WordpressFrameworkBundle\Helpers;
 
 use function Env\env;
 

@@ -1,0 +1,2 @@
+wordpress_framework:
+  resource: "@WordpressFrameworkBundle/config/routes.yaml"
