@@ -15,6 +15,7 @@ abstract class AbstractPostType
 {
     public $name = "post";
     public $icon = null;
+    public $priority = 0;
     public $taxonomies = [];
     protected BasePostType $postType;
     protected Columns $columns;

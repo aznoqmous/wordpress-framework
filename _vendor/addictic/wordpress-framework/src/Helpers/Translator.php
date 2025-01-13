@@ -18,7 +18,7 @@ class Translator
     public function __construct()
     {
         static::$instance = $this;
-        $this->translationPath = __DIR__ . "/../../{$this->translationFolder}";
+        $this->translationPath = __DIR__ . "/../../../../../{$this->translationFolder}";
         $this->translator = new BaseTranslator("fr");
         if(!is_admin()) $this->translator->setLocale(wpml_get_current_language());
         $this->load();

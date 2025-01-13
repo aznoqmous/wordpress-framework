@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+  Addictic\WordpressFramework\:
+    resource: '../src/'
+    exclude:
+      - ../src/DependencyInjection/
+      - ../src/Resources/
+  translator:
+    class: Addictic\WordpressFramework\Helpers\Translator
+  twig:
+    class: Addictic\WordpressFramework\Helpers\TwigLoader

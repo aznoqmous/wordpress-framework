@@ -4,6 +4,10 @@ namespace Addictic\WordpressFramework\Controller;
 
 abstract class AbstractController
 {
+    public $namespace;
+    public $name;
+    public $value;
+
     public function html($html){
         return "$html";
     }

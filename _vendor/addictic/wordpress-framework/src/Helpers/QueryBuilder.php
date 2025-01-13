@@ -110,7 +110,7 @@ class QueryBuilder
         if ($alias === null) {
             $this->joins[] = "{$joinType}JOIN ({$table})";
         } else {
-            $this->joins[] = "{$joinType}JOIN ({$table}) AS ${alias}";
+            $this->joins[] = "{$joinType}JOIN ({$table}) AS {$alias}";
         }
         return $this;
     }
@@ -124,7 +124,7 @@ class QueryBuilder
         if ($alias === null) {
             $this->joins[] = "{$joinType}JOIN {$table}";
         } else {
-            $this->joins[] = "{$joinType}JOIN {$table} AS ${alias}";
+            $this->joins[] = "{$joinType}JOIN {$table} AS {$alias}";
         }
         return $this;
     }

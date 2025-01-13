@@ -2,6 +2,7 @@
 
 namespace Addictic\WordpressFramework\PostTypes\Legacy;
 
+use Addictic\WordpressFramework\Annotation\PostType;
 use Addictic\WordpressFramework\PostTypes\AbstractPostType;
 
 /**

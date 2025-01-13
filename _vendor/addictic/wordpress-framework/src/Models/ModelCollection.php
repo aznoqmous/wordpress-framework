@@ -13,30 +13,29 @@ class ModelCollection implements \Iterator
         $this->items = $items;
     }
 
-    public function current()
+    public function current():mixed
     {
         return isset($this->items[$this->index]) ? $this->items[$this->index] : null;
     }
 
-    public function next()
+    public function next():void
     {
         $this->index++;
-        return $this->current();
     }
 
-    public function key()
+    public function key():mixed
     {
         return $this->index;
     }
 
-    public function valid()
+    public function valid():bool
     {
         return isset($this->items[$this->index]);
     }
 
-    public function rewind()
+    public function rewind():void
     {
-        return $this->index = 0;
+        $this->index = 0;
     }
 
     public function setItems($items)
