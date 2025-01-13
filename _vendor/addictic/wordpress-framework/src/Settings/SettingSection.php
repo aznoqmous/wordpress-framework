@@ -2,7 +2,7 @@
 
 namespace Addictic\WordpressFramework\Settings;
 
-use Addictic\WordpressFramework\Fields\Framework\Field;
+use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Helpers\Container;
 
 class SettingSection

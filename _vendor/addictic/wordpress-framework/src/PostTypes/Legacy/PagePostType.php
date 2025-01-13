@@ -2,9 +2,6 @@
 
 namespace Addictic\WordpressFramework\PostTypes\Legacy;
 
-use Addictic\WordpressFramework\Annotation\PostType;
-use Addictic\WordpressFramework\Fields\Framework\Field;
-use Addictic\WordpressFramework\Fields\Framework\TextareaField;
 use Addictic\WordpressFramework\PostTypes\AbstractPostType;
 
 /**

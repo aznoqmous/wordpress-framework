@@ -2,9 +2,7 @@
 
 namespace Addictic\WordpressFramework\Controller;
 
-use Addictic\WordpressFramework\Annotation\Route;
-use Addictic\WordpressFramework\Fields\Framework\Field;
-use Addictic\WordpressFramework\Fields\Framework\RelationField;
+use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Models\AbstractPostTypeModel;
 use Addictic\WordpressFramework\Models\AbstractTaxonomyModel;
 use Symfony\Component\HttpFoundation\Request;

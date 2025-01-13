@@ -1,10 +1,9 @@
 <?php
 
-namespace Addictic\WordpressFramework\Fields\Framework;
+namespace Addictic\WordpressFramework\Fields;
 
 use Addictic\WordpressFramework\Helpers\WpmlHelper;
 use Addictic\WordpressFramework\Models\AbstractPostTypeModel;
-use Addictic\WordpressFramework\Models\AbstractTaxonomyModel;
 
 class RelationField extends Field
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Addictic\WordpressFramework\Fields\Framework;
+namespace Addictic\WordpressFramework\Fields;
 
 class ListField extends Field
 {

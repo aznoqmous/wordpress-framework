@@ -2,9 +2,9 @@
 
 namespace Addictic\WordpressFramework\PostTypes;
 
-use Addictic\WordpressFramework\Fields\Framework\Field;
-use Addictic\WordpressFramework\Fields\Framework\MetaBox;
-use Addictic\WordpressFramework\Fields\Framework\TextareaField;
+use Addictic\WordpressFramework\Fields\Field;
+use Addictic\WordpressFramework\Fields\MetaBox;
+use Addictic\WordpressFramework\Fields\TextareaField;
 use Addictic\WordpressFramework\Helpers\Container;
 use Addictic\WordpressFramework\Helpers\RoutingHelper;
 use Addictic\WordpressFramework\Models\Legacy\BlockModel;

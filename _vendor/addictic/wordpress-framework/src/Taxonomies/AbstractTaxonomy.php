@@ -2,7 +2,7 @@
 
 namespace Addictic\WordpressFramework\Taxonomies;
 
-use Addictic\WordpressFramework\Fields\Framework\Field;
+use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Helpers\Container;
 use PostTypes\Taxonomy;
 use PostTypes\Taxonomy as BaseTaxonomy;

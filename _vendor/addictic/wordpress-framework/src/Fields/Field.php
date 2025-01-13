@@ -1,6 +1,6 @@
 <?php
 
-namespace Addictic\WordpressFramework\Fields\Framework;
+namespace Addictic\WordpressFramework\Fields;
 
 use Addictic\WordpressFramework\Annotation\PostTypeManager;
 use Addictic\WordpressFramework\Annotation\TaxonomyManager;

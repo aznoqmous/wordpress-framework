@@ -1,6 +1,6 @@
 <?php
 
-namespace Addictic\WordpressFramework\Fields\Framework;
+namespace Addictic\WordpressFramework\Fields;
 
 class FieldParentTypes {
     const POST_TYPE = "post_type";
