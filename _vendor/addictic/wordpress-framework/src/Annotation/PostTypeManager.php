@@ -2,50 +2,26 @@
 
 namespace Addictic\WordpressFramework\Annotation;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-
-class PostTypeManager
+class PostTypeManager extends AbstractManager
 {
-    protected static PostTypeManager $instance;
-    private PostTypeDiscovery $discovery;
-
-    public function __construct()
+    protected function addEntity(mixed $instance, mixed $annotation)
     {
-        $this->discovery = new PostTypeDiscovery("\\Addictic\\WordpressFramework\\PostTypes", "PostTypes", __DIR__, new AnnotationReader());
-        static::$instance = $this;
+        $instance->name = $annotation->name;
+        $instance->icon = $annotation->icon ?? $instance->icon;
+        $instance->taxonomies = $annotation->taxonomies ?? $instance->taxonomies;
+        $instance->priority = $annotation->priority ?? $instance->priority;
+        $this->entities[$instance->getName()] = (object)[
+            'class' => $instance::class,
+            'annotation' => $annotation,
+            'instance' => $instance
+        ];
     }
 
-    public function getPostTypes()
+    protected function setup()
     {
-        return $this->discovery->getPostTypes();
-    }
-
-    public function getPostType($name)
-    {
-        $entities = $this->discovery->getPostTypes();
-        if (isset($entities[$name])) {
-            return (object) $entities[$name];
+        uasort($this->entities, fn($a, $b) => $a->priority - $b->priority);
+        foreach ($this->entities as $entity) {
+            $entity->instance->register();
         }
-
-        throw new \Exception('Worker not found.');
-    }
-
-    public function create($name)
-    {
-        $entities = $this->discovery->getPostTypes();
-        if (array_key_exists($name, $entities)) {
-            $class = $entities[$name]['class'];
-            if (!class_exists($class)) {
-                throw new \Exception('Worker class does not exist.');
-            }
-            return new $class();
-        }
-
-        throw new \Exception('Worker does not exist.');
-    }
-
-    public static function getInstance():PostTypeManager
-    {
-        return static::$instance;
     }
 }

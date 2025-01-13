@@ -8,7 +8,7 @@ use Addictic\WordpressFramework\PostTypes\AbstractPostType;
 /**
  * @PostType(name="post")
  */
-class ArticlePostsType extends AbstractPostType
+class ArticlePostType extends AbstractPostType
 {
     protected function configure()
     {

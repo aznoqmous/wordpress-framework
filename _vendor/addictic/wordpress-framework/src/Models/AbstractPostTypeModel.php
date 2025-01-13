@@ -2,7 +2,7 @@
 
 namespace Addictic\WordpressFramework\Models;
 
-use Addictic\WordpressFramework\Annotation\PostTypeManager;
+use Addictic\WordpressFramework\Annotation\OldPostTypeManager;
 use Addictic\WordpressFramework\Helpers\PostPostQueryBuilder;
 use Addictic\WordpressFramework\Helpers\PostQueryBuilder;
 use Addictic\WordpressFramework\Helpers\QueryBuilder;
@@ -184,7 +184,7 @@ abstract class AbstractPostTypeModel extends AbstractModel
 
     protected function getPostType()
     {
-        return PostTypeManager::getInstance()->getPostType(static::$strName);
+        return OldPostTypeManager::getInstance()->getPostType(static::$strName);
     }
 
     public function getTerms($taxonomy)

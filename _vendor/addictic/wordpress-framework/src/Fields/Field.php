@@ -2,7 +2,7 @@
 
 namespace Addictic\WordpressFramework\Fields;
 
-use Addictic\WordpressFramework\Annotation\PostTypeManager;
+use Addictic\WordpressFramework\Annotation\OldPostTypeManager;
 use Addictic\WordpressFramework\Annotation\TaxonomyManager;
 use Addictic\WordpressFramework\Helpers\Container;
 use Addictic\WordpressFramework\Helpers\WpmlHelper;
@@ -237,7 +237,7 @@ class Field
 
         switch ($type) {
             case FieldParentTypes::POST_TYPE:
-                $field = self::getField($fieldName, PostTypeManager::getInstance()->getPostType($parent)->instance->fields);
+                $field = self::getField($fieldName, OldPostTypeManager::getInstance()->getPostType($parent)->instance->fields);
                 break;
             case FieldParentTypes::TAXONOMY:
                 $field = self::getField($fieldName, TaxonomyManager::getInstance()->getTaxonomy($parent)->instance->fields);

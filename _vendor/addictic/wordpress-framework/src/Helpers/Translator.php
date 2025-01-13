@@ -20,7 +20,7 @@ class Translator
         static::$instance = $this;
         $this->translationPath = __DIR__ . "/../../../../../{$this->translationFolder}";
         $this->translator = new BaseTranslator("fr");
-        if(!is_admin()) $this->translator->setLocale(wpml_get_current_language());
+        if(!is_admin() and function_exists("wpml_get_current_language")) $this->translator->setLocale(wpml_get_current_language());
         $this->load();
     }
 

@@ -10,3 +10,11 @@ if (is_admin()) {
 }
 
 WordpressFrameworkBundle::init();
+
+$discovery = \Addictic\WordpressFramework\Annotation\PostTypeManager::getInstance()
+    ->discover(
+        "\\App\\PostTypes",
+        __DIR__ . "/../../PostTypes",
+        \Addictic\WordpressFramework\Annotation\PostType::class
+    )
+;

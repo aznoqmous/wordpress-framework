@@ -39,7 +39,7 @@ class PostTypeDiscovery
             $class = $this->namespace . "\\" . $file->getRelativePathname();
             $class = preg_replace("/\//", "\\", $class);
             $class = str_replace(".php", "", $class);
-            $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), "Addictic\WordpressFramework\Annotation\PostType");
+            $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), PostType::class);
 
             if (!$annotation) {
                 continue;
