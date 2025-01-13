@@ -1,0 +1,21 @@
+<div class="exception">
+    <div class="error">
+        <strong>{{ exception.message }}</strong>
+    </div>
+    <div class="trace">
+        {% for trace in traces %}
+            <div class="trace">
+                <strong>{{ trace.file }}:{{ trace.line }}</strong>
+                <pre>
+                    {% for i, line in trace.code %}
+{% if index == i %}
+<strong>{{ line }}</strong>
+{% else %}
+{{ line }}
+{% endif %}
+                    {% endfor %}
+                </pre>
+            </div>
+        {% endfor %}
+    </div>
+</div>

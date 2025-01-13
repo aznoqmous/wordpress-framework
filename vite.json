@@ -1,0 +1,4 @@
+{
+  "frontend": "assets/frontend.js",
+  "backend": "assets/backend.js"
+}

@@ -1,0 +1,11 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <select name="{{ name }}" id="{{ name }}">
+        {% if includeBlankOption %}
+            <option value=""></option>
+        {% endif %}
+        {% for option in options %}
+            <option value="{{ option.value }}" {{ option.value == value ? "selected" : "" }}>{{ option.label }}</option>
+        {% endfor %}
+    </select>
+{% endblock %}

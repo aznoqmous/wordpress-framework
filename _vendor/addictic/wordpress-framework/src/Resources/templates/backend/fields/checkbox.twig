@@ -1,0 +1,6 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <div>
+        <input class="field" name="{{ name }}" id="{{ name }}" type="checkbox" value="1" {{ value ? "checked" : "" }}>
+    </div>
+{% endblock %}

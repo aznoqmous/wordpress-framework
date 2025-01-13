@@ -1,0 +1,11 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <input
+            class="field"
+            id="{{ name }}"
+            name="{{ name }}"
+            type="date"
+            value="{{ value }}"
+            {{ required ? "required" : "" }}
+    >
+{% endblock %}

@@ -1,0 +1,24 @@
+<div class="be-form-field {{ type }}-field {{ class }}" {{ attributes | join(" ") }}>
+    {% block label %}
+        <label for="{{ name }}"><strong>{{ label }}{{ required ? "*" : "" }}</strong></label>
+    {% endblock %}
+    <div class="field-wrapper">
+        {% block field %}
+            <input
+                    class="field"
+                    id="{{ name }}"
+                    name="{{ name }}"
+                    type="text"
+                    value="{{ value }}"
+                    {{ required ? "required" : "" }}
+            >
+        {% endblock %}
+    </div>
+    {% if help %}
+    {% block help %}
+        <div class="help">
+            {{ help }}
+        </div>
+    {% endblock %}
+    {% endif %}
+</div>

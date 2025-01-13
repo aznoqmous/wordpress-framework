@@ -1,0 +1,19 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <ul class="icon-list">
+        {% for icon in icons %}
+            <li class="icon{{ icon == value ? " active" : "" }}" data-icon="{{ icon }}"><figure style="--icon: var(--icon-{{ icon }})"></figure></li>
+        {% endfor %}
+    </ul>
+    <input
+            class="field"
+            id="{{ name }}"
+            name="{{ name }}"
+            type="hidden"
+            value="{{ value }}"
+            {{ required ? "required" : "" }}
+    >
+    <div>
+        <input class="button button-danger{{ value ? "" : " hidden" }}" type="button" id="{{ name }}_button" value="Retirer l'icône" />
+    </div>
+{% endblock %}

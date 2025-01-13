@@ -1,0 +1,32 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <div class="container{{ multiple ? " multiple" : "" }}{{ sortable ? " sortable" : "" }}">
+        <ul class="selected">
+            {% for item in items %}
+                <li data-id="{{ item.get('source_language_id') ?: item.id }}">{{ item.row()['_html'] ? (item.row()['_html'] | raw) : item.title }}</li>
+            {% endfor %}
+        </ul>
+        <div class="search-container">
+            <input
+                    type="text"
+                    class="field search"
+                    data-model="{{ model }}"
+                    data-exclude-id="{{ excludeId }}"
+            >
+            <input
+                    class="field hidden-field"
+                    id="{{ name }}"
+                    name="{{ name }}"
+                    type="text"
+                    value="{{ value }}"
+                    {{ required ? "required" : "" }}
+            >
+            <div class="loader"></div>
+        </div>
+        <ul class="options">
+            {% for item in options %}
+                <li data-id="{{ item.get('source_language_id') ?: item.id }}">{{ item.row()['_html'] ? (item.row()['_html'] | raw) : item.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

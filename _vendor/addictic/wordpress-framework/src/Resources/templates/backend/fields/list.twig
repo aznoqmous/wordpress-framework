@@ -1,0 +1,26 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <template>
+        <li data-index="{{ i }}">
+            <div class="fields">
+                {% for _field in template %}
+                    {{ _field.render() | raw }}
+                {% endfor %}
+            </div>
+            <span class="button list-remove">Supprimer</span>
+        </li>
+    </template>
+    <ul class="entities">
+        {% for i, entity in entities %}
+            <li data-index="{{ i }}">
+                <div class="fields">
+                    {% for _field in entity %}
+                        {{ _field.render() | raw }}
+                    {% endfor %}
+                </div>
+                <span class="button list-remove">Supprimer</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <span class="button list-add">Ajouter</span>
+{% endblock %}

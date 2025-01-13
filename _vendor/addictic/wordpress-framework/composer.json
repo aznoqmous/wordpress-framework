@@ -1,0 +1,15 @@
+{
+    "name": "addictic/wordpress-framework",
+    "autoload": {
+        "psr-4": {
+            "Addictic\\WordpressFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "email": "plandreau@addictic.fr",
+            "name": "plandreau"
+        }
+    ],
+    "require": {}
+}

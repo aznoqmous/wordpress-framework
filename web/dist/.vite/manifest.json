@@ -1,0 +1,20 @@
+{
+  "../../../assets/backend.js": {
+    "file": "assets/backend.js",
+    "name": "backend",
+    "src": "../../../assets/backend.js",
+    "isEntry": true,
+    "css": [
+      "assets/frontend-VWk4xp3e.css"
+    ]
+  },
+  "../../../assets/frontend.js": {
+    "file": "assets/frontend.js",
+    "name": "frontend",
+    "src": "../../../assets/frontend.js",
+    "isEntry": true,
+    "css": [
+      "assets/frontend-VWk4xp3e.css"
+    ]
+  }
+}

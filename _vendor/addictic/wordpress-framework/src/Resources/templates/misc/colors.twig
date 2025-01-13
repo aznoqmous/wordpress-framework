@@ -1,0 +1,10 @@
+<style>
+{% for color in colors %}
+    .has-{{ color.slug }}-color {
+        color: {{ color.color }}
+    }
+    .has-{{ color.slug }}-background-color {
+        background: {{ color.color }}
+    }
+{% endfor %}
+</style>

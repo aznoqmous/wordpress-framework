@@ -1,0 +1,5 @@
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for page in pages %}
+        <url><loc>{{ host }}{{ page.getFrontendUrl() }}</loc></url>
+    {% endfor %}
+</urlset>

@@ -1,0 +1,18 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <input name="{{ name }}" type="radio" class="hidden" value="">
+    {% for index, color in colors %}
+        <div class="color" style="--color: {{ color }}">
+            <input name="{{ name }}" id="{{ name }}_{{ index }}" type="radio" value="{{ color }}" {{ value == color ? "checked" : ""}}>
+            <label for="{{ name }}_{{ index }}">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     width="24" height="24"
+                     fill="currentColor"
+                     aria-hidden="true" focusable="false">
+                    <path d="M16.7 7.1l-6.3 8.5-3.3-2.5-.9 1.2 4.5 3.4L17.9 8z"></path>
+                </svg>
+            </label>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    {% if editor == "wp_editor" %}
+        <div class="wrapper">
+            <div class="container">
+                {{ html | raw }}
+            </div>
+        </div>
+    {% else %}
+        <textarea id="{{ name }}" name="{{ name }}" class='field'>{{ value }}</textarea>
+        <small><span class="count">{{ value | length }}</span> caractères</small>
+        <script>
+            let element = Array.from(document.getElementsByTagName("script")).at(-1).parentElement
+            let textarea = element.querySelector('textarea')
+            let count = element.querySelector('.count')
+            textarea.addEventListener('keyup', ()=> {
+                count.innerHTML = textarea.value.length
+            })
+            count.innerHTML = textarea.value.length
+        </script>
+    {% endif %}
+{% endblock %}

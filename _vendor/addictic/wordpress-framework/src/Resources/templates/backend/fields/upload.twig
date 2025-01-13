@@ -1,0 +1,15 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+<div class="preview-container">
+{% for file in files %}
+    <figure>
+        {% if file.path | isImage %}
+        <img src="{{ file.path }}" alt="{{ file.path | basename }}" alt="Upload">
+        {% endif %}
+        <span>{{ file.path | basename }}</span>
+    </figure>
+{% endfor %}
+</div>
+<input type="hidden" id="{{ name }}" name="{{ name }}" value="{{ value }}">
+<input class="button button-primary" type="button" id="{{ name }}_button" value="{{ multiple ? "Choisir des fichiers" : "Choisir un fichier" }}" />
+{% endblock %}

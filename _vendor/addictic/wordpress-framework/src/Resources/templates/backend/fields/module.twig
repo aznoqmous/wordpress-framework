@@ -1,0 +1,11 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <ul>
+        {% for i, file in files %}
+            <li>
+                <input id="{{ name }}_{{ i }}" name={{ name}} type="radio" value="{{ file.path }}" {{ value == file.path ? "checked" : "" }}>
+                <label for="{{ name }}_{{ i }}">{{ file.name }}</label>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
