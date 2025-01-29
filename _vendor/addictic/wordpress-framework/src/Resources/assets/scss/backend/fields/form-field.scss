@@ -1,0 +1,57 @@
+.be-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  width: 100%;
+
+  &.w50 {
+    width: calc(50% - 1rem);
+
+    &.clr {
+      margin-right: 50%
+    }
+  }
+
+  .field {
+    box-shadow: 0 0 0 transparent;
+    border-radius: 4px;
+    border: 1px solid var(--color-blue-200);
+    background-color: #fff;
+    color: var(--color-grey-900);
+    padding: 4px 8px;
+    line-height: 1.4;
+
+    accent-color: var(--color-blue-500);
+
+    &:not([type="checkbox"]) {
+      min-height: 30px;
+      width: 100% !important;
+    }
+
+    label {
+      color: var(--color-grey-600);
+    }
+
+    &:focus {
+      outline-color: var(--color-blue-400);
+      border-color: transparent;
+    }
+
+    &.hidden-field {
+      margin-bottom: -2em;
+      opacity: 0;
+      pointer-events: none;
+      display: block;
+      z-index: -1;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .help {
+    font-style: italic;
+    font-size: 0.7rem;
+    color: var(--color-grey);
+  }
+}
+

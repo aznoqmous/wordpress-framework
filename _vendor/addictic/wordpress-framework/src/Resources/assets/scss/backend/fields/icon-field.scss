@@ -1,0 +1,39 @@
+.be-form-field.icon-field {
+
+  .icon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin: 0;
+    margin-bottom: 0.2rem;
+    li.icon {
+      border-radius: 0.2rem;
+      background: var(--color-white);
+      color: var(--color-grey-500);
+      cursor: pointer;
+      width: 3rem;
+      aspect-ratio: 1;
+      margin: 0;
+      transition: all 0.2s ease;
+      &:hover {
+        color: var(--color-blue-800);
+      }
+      &.active{
+        background: var(--color-blue-100);
+        color: var(--color-blue-500);
+      }
+
+      figure {
+        @include center;
+        @include square(100%);
+        font-size: 2rem;
+        margin: 0;
+      }
+
+    }
+  }
+
+  > div {
+    margin-bottom: 0.5rem;
+  }
+}

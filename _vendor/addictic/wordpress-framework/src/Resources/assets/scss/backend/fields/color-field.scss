@@ -1,0 +1,50 @@
+.be-form-field.color-field {
+
+  .field-wrapper {
+    @include row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  input.hidden {
+    display: none;
+  }
+  .color {
+    position: relative;
+
+    &.light {
+      svg {
+        color: black;
+      }
+    }
+
+    input {
+      display: none;
+      &:checked {
+        & + label {
+          @include row(center, center);
+          svg {
+            display: block;
+          }
+        }
+      }
+    }
+
+    label {
+      background: var(--color);
+      display: block;
+      @include square(pxrem(28));
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px #0003;
+
+      cursor: pointer;
+      transition: all 0.1s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    svg {
+      display: none;
+      color: white;
+    }
+  }
+}

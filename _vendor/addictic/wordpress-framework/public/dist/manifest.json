@@ -1,0 +1,16 @@
+{
+  "backend.js": {
+    "file": "assets/backend.js",
+    "src": "backend.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.3542d043.js"
+    ],
+    "css": [
+      "assets/backend.a77b4594.css"
+    ]
+  },
+  "_vendor.3542d043.js": {
+    "file": "assets/vendor.3542d043.js"
+  }
+}

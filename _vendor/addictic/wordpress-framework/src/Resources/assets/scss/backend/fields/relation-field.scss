@@ -1,0 +1,102 @@
+.relation-field {
+  &.loading .container .search-container .loader {
+    opacity: 1;
+  }
+  &:not(.focused) {
+    ul.options {
+      display: none;
+    }
+  }
+
+  .container {
+    @include column;
+    gap: 0.5rem;
+
+    &.sortable ul.selected {
+      flex-direction: column;
+      li {
+        width: 100%;
+        user-select: none;
+      }
+    }
+
+    input {
+
+    }
+
+    ul {
+      margin: 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+
+      &:empty {
+        display: none;
+      }
+
+      li {
+        display: inline-block;
+        background: var(--color-blue-100);
+        padding: 0.2em 0.4em;
+        border-radius: 0.5rem;
+        margin: 0;
+        cursor: pointer;
+        @include row(space-between, center);
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: var(--color-blue-400);
+          color: var(--color-blue-50);
+        }
+      }
+      &.selected li:after {
+        content: "\f158";
+        font-family: dashicons;
+      }
+
+      &.selected {
+        position: relative;
+        li {
+          &.clone {
+            position: absolute;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+          }
+          &.dragged {
+            opacity: 0.1;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    .search-container {
+      position: relative;
+      width: 100%;
+      .loader {
+        opacity: 0;
+        position: absolute;
+        bottom: 0;
+        transform: translate(0, -50%);
+        left: 0.5em;
+        right: 1.5em;
+      }
+    }
+  }
+}
+
+
+.loader {
+  height: 4px;
+  --c:no-repeat linear-gradient(var(--color-blue-500) 0 0);
+  background: var(--c),var(--c),var(--color-blue-50);
+  background-size: 60% 100%;
+  animation: l16 3s infinite;
+  border-radius: 0.3rem;
+}
+@keyframes l16 {
+  0%   {background-position:-150% 0,-150% 0}
+  66%  {background-position: 250% 0,-150% 0}
+  100% {background-position: 250% 0, 250% 0}
+}

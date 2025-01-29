@@ -1,0 +1,40 @@
+.be-form-field.upload-field {
+  @include column;
+  gap: 0.2rem;
+
+  .preview-container {
+    @include row;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+
+    figure {
+      margin: 0;
+      @include row(center, center);
+      position: relative;
+      background: #ddd;
+      border-radius: 0.2rem;
+      width: 8rem;
+      overflow: hidden;
+      aspect-ratio: 1;
+
+      img {
+        width: 8rem;
+        height: 8rem;
+        @include imgFit(cover);
+
+        &[src=""] {
+          display: none;
+        }
+      }
+
+      span {
+        position: absolute;
+        bottom: 0;
+        font-size: 0.8rem;
+        width: 100%;
+        padding: 0.2rem;
+        background: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+}

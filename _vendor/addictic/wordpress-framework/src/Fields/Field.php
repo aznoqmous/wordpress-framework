@@ -25,7 +25,7 @@ class Field
     protected $help;
     protected $args;
 
-    protected string $strTemplate = "input";
+    protected string $strTemplate = "field";
     protected $value;
     protected TemplateWrapper $template;
 
@@ -184,6 +184,11 @@ class Field
         $this->args['attributes'][] = "$name=$value";
     }
 
+    public function arrayToAttributes(array $arr=[])
+    {
+        return implode(" ", array_map(fn($key) => "$key={$arr[$key]}", array_keys($arr)));
+    }
+
     public function setOption($key, $value)
     {
         $this->args[$key] = $value;
@@ -212,7 +217,6 @@ class Field
         } else {
             $label = $translator->trans($this->parentName . "." . $this->labelKey);
         }
-
         return $this->template->render(array_merge($this->args, [
             'name' => $this->name,
             'label' => $label,

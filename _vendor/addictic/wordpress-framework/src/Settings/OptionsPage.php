@@ -19,7 +19,7 @@ class OptionsPage
         if ($register) $this->register();
     }
 
-    public static function create($name, $register = true)
+    public static function create($name, $register = true):self
     {
         self::$instances[$name] = new static($name, $register);
         return self::$instances[$name];
@@ -56,13 +56,13 @@ class OptionsPage
         ]);
     }
 
-    public function addSection(string $sectionName)
+    public function addSection(string $sectionName):self
     {
         $this->sections[] = new SettingSection($sectionName, $this->name);
         return $this;
     }
 
-    public function addField($field)
+    public function addField($field):self
     {
         $this->sections[count($this->sections) - 1]->addField($field);
         $this->fields[$field->name] = $field;

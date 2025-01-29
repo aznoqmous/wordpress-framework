@@ -1,0 +1,17 @@
+.be-form-field.module-field {
+  ul {
+    li {
+      @include row(flex-start, center);
+      gap: 0.2rem;
+
+      input {
+        &:checked + label {
+          font-weight: 600;
+        }
+      }
+      label {
+        cursor: pointer;
+      }
+    }
+  }
+}

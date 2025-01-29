@@ -19,7 +19,7 @@ class PostTypeManager extends AbstractManager
 
     protected function setup()
     {
-        uasort($this->entities, fn($a, $b) => $a->priority - $b->priority);
+        uasort($this->entities, fn($a, $b) => $a->instance->priority - $b->instance->priority);
         foreach ($this->entities as $entity) {
             $entity->instance->register();
         }

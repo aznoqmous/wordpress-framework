@@ -4,8 +4,9 @@
             class="field"
             id="{{ name }}"
             name="{{ name }}"
+            type="{{ inputType ? inputType : "text" }}"
+
             value="{{ value }}"
             {{ required ? "required" : "" }}
-            {{ input }}
     >
 {% endblock %}

@@ -1,0 +1,16 @@
+.be-form-field.textarea-field {
+  .field-wrapper {
+    .wrapper {
+      width: 100%;
+    }
+    @include column;
+    textarea {
+      height: unset;
+      resize: none;
+      field-sizing: content;
+    }
+    small {
+      margin-left: auto;
+    }
+  }
+}

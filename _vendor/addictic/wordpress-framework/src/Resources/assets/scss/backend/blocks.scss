@@ -1,0 +1,21 @@
+.wp-block-ifc-news-latest-list {
+  a {
+    pointer-events: none;
+  }
+}
+
+.wp-block-ifc-logo-gallery {
+  max-width: 100%;
+  margin: 0;
+  border: 2px solid black;
+  border-radius: pxrem(5);
+  padding: pxrem(5);
+  .swiper-wrapper {
+    flex-wrap: wrap;
+    max-width: 100%;
+    .wp-block-image.is-selected {
+      height: unset;
+      width: unset;
+    }
+  }
+}

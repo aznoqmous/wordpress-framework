@@ -8,6 +8,7 @@ use Addictic\WordpressFramework\Annotation\PostType;
 use Addictic\WordpressFramework\Annotation\PostTypeManager;
 use Addictic\WordpressFramework\Annotation\RouteManager;
 use Addictic\WordpressFramework\Annotation\TaxonomyManager;
+use Addictic\WordpressFramework\Helpers\AssetsHelper;
 
 class WordpressFrameworkBundle
 {

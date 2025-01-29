@@ -11,6 +11,7 @@ class Route
     public $namespace = "api";
     public $name = "route";
     public $methods = "GET";
+    public $priority = 0;
 
     public function getRoute()
     {
