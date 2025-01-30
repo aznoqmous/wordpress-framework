@@ -4,8 +4,9 @@ namespace Addictic\WordpressFramework\Annotation;
 
 class PostTypeManager extends AbstractManager
 {
-    protected function addEntity(mixed $instance, mixed $annotation)
+    protected function addClass(string $className, mixed $annotation)
     {
+        $instance = new $className();
         $instance->name = $annotation->name;
         $instance->icon = $annotation->icon ?? $instance->icon;
         $instance->taxonomies = $annotation->taxonomies ?? $instance->taxonomies;
@@ -23,5 +24,9 @@ class PostTypeManager extends AbstractManager
         foreach ($this->entities as $entity) {
             $entity->instance->register();
         }
+    }
+
+    protected function addMethod(\ReflectionMethod $method, string $className, mixed $annotation)
+    {
     }
 }

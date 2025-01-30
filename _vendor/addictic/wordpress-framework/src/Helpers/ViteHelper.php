@@ -40,8 +40,7 @@ class ViteHelper
     }
 
 
-// Some dev/prod mechanism would exist in your project
-
+    // Some dev/prod mechanism would exist in your project
     private static function isDev(string $entry): bool
     {
         // This method is very useful for the local server
@@ -53,14 +52,12 @@ class ViteHelper
     }
 
 
-// Helpers to print tags
-
+    // Helpers to print tags
     private static function jsTag(string $entry): string
     {
         $url = self::isDev($entry)
             ? self::VITE_HOST . '/' . $entry
             : self::assetUrl($entry);
-
         return '<script type="module" crossorigin src="'
             . $url
             . '"></script>';
@@ -100,7 +97,8 @@ class ViteHelper
 
     private static function getManifest()
     {
-        $content = file_get_contents(__DIR__ . '/../../web/dist/.vite/manifest.json');
+        $path = AssetsHelper::toLocalPath("/dist/.vite/manifest.json");
+        $content = file_get_contents($path);
         return json_decode($content, true);
     }
 

@@ -184,7 +184,7 @@ class Field
         $this->args['attributes'][] = "$name=$value";
     }
 
-    public function arrayToAttributes(array $arr=[])
+    public function arrayToAttributes(array $arr = [])
     {
         return implode(" ", array_map(fn($key) => "$key={$arr[$key]}", array_keys($arr)));
     }
@@ -204,18 +204,27 @@ class Field
         return $this->args[$key];
     }
 
+    public function getStringName()
+    {
+        $stringName = $this->parentName . "." . $this->labelKey;
+        if(isset($this->settingSection)) {
+            $stringName = "{$this->settingSection->page}.{$stringName}";
+        }
+        return $stringName;
+    }
+
     public function render()
     {
         $translator = Container::get("translator");
-
-        $label = $translator->has($this->parentName . "." . $this->labelKey . ".label");
+        $stringName = $this->getStringName();
+        $label = $translator->has($stringName . ".label");
         $help = "";
 
         if ($label) {
-            $label = $translator->trans($this->parentName . "." . $this->labelKey . ".label");
-            $help = $translator->trans($this->parentName . "." . $this->labelKey . ".help");
+            $label = $translator->trans($stringName . ".label");
+            $help = $translator->trans($stringName . ".help");
         } else {
-            $label = $translator->trans($this->parentName . "." . $this->labelKey);
+            $label = $translator->trans($stringName);
         }
         return $this->template->render(array_merge($this->args, [
             'name' => $this->name,

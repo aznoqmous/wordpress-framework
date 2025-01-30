@@ -1,20 +1,14 @@
 {
-  "../../../assets/backend.js": {
+  "backend.js": {
     "file": "assets/backend.js",
     "name": "backend",
-    "src": "../../../assets/backend.js",
-    "isEntry": true,
-    "css": [
-      "assets/frontend-VWk4xp3e.css"
-    ]
+    "src": "backend.js",
+    "isEntry": true
   },
-  "../../../assets/frontend.js": {
+  "frontend.js": {
     "file": "assets/frontend.js",
     "name": "frontend",
-    "src": "../../../assets/frontend.js",
-    "isEntry": true,
-    "css": [
-      "assets/frontend-VWk4xp3e.css"
-    ]
+    "src": "frontend.js",
+    "isEntry": true
   }
 }

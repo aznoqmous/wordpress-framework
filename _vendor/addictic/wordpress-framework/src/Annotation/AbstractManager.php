@@ -11,13 +11,11 @@ abstract class AbstractManager
     public static mixed $annotation = PostType::class;
     public AnnotationReader $annotationReader;
     public $entities = [];
-    protected static $instance;
+    private static $instances = [];
 
     private function __construct()
     {
         $this->annotationReader = new AnnotationReader();
-        static::$instance = $this;
-
         add_action("after_setup_theme", function(){
             $this->setup();
         });
@@ -33,25 +31,47 @@ abstract class AbstractManager
             $class = $namespace . "/" . $file->getRelativePathname();
             $class = preg_replace("/\//", "\\", $class);
             $class = str_replace(".php", "", $class);
+
             $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), $annotationName);
+            if ($annotation) $this->addClass($class, $annotation);
 
-            if (!$annotation) continue;
-
-            $this->addEntity(new $class(), $annotation);
+            $this->handleMethods($class);
         }
     }
 
-    protected abstract function addEntity(mixed $instance, mixed $annotation);
+    protected function handleMethods($class){
+        $methods = (new \ReflectionClass($class))->getMethods();
+
+        foreach ($methods as $method) {
+            $annotations = $this->annotationReader->getMethodAnnotations($method);
+            if (!$annotations) continue;
+
+            foreach ($annotations as $annotation) {
+                if (!($annotation instanceof Route)) continue;
+                $this->addMethod($method, $class, $annotation);
+            }
+
+        }
+    }
+
+    protected abstract function addClass(string $className, mixed $annotation);
+    protected abstract function addMethod(\ReflectionMethod $method, string $className, mixed $annotation);
+
     protected function register(string $name, mixed $instance)
     {
         $this->entities[$name] = $instance;
     }
 
+    public function get(string $name)
+    {
+        return isset($this->entities[$name]) ? $this->entities[$name] : null;
+    }
+
     abstract protected function setup();
 
-    public static function getInstance():static
+    public static function getInstance()
     {
-        if(!static::$instance) new static();
-        return static::$instance;
+        if(!isset(static::$instances[static::class])) static::$instances[static::class] = new static();
+        return static::$instances[static::class];
     }
 }

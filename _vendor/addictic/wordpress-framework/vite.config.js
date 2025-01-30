@@ -1,15 +1,13 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import liveReload from 'vite-plugin-live-reload'
 import path from 'path'
-import * as fs from "node:fs";
 
 import config from "./vite.json"
 
 const dev = process.env.NODE_ENV === "development"
 console.log(`Running vite in ${process.env.NODE_ENV} mode`)
 
-const publicDir = fs.existsSync(__dirname + '/web') ? "web" : "public"
-const outDir =  `${__dirname}/${publicDir}/dist`
+const outDir =  `${__dirname}/public`
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,20 +19,16 @@ export default defineConfig({
 
     // config
     root: 'assets',
-    base: dev
-        ? '/'
-        : '/dist/',
-
+    base: '/',
     build: {
         outDir,
         emptyOutDir: true,
-        manifest: true,
         rollupOptions: {
             input: Object.fromEntries(Object.keys(config).map(key=> ([key, path.resolve(__dirname, config[key])]))),
             output: {
-                entryFileNames: "assets/[name].js",
-                chunkFileNames: "assets/[name].js",
-                assetFileNames: "assets/[name].[ext]",
+                entryFileNames: "[name].js",
+                chunkFileNames: "[name].js",
+                assetFileNames: "[name].[ext]",
             }
         }
     },
@@ -47,5 +41,5 @@ export default defineConfig({
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js'
         }
-    }
+    },
 })

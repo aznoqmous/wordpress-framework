@@ -12,12 +12,17 @@ use Twig\TwigFunction;
 
 class TwigLoader
 {
-    private $folder = __DIR__ . "/../Resources/templates";
+    private $folders = [];
+
     private $twig;
 
     public function __construct()
     {
-        $loader = new FilesystemLoader($this->folder);
+        $this->addFolder(AssetsHelper::sanitizePath(__DIR__ . "/../../templates"));
+        $this->addFolder(AssetsHelper::getProjectDir("/templates"));
+
+        $loader = new FilesystemLoader($this->folders);
+
         $this->twig = new Environment($loader);
 
         $this->twig->addFilter(new TwigFilter('trans', function ($string) {
@@ -36,7 +41,7 @@ class TwigLoader
             return FileHelper::isImage($string);
         }));
 
-        $this->twig->addFunction(new TwigFunction('dump', function(){
+        $this->twig->addFunction(new TwigFunction('dump', function () {
             dump(...func_get_args());
         }));
     }
@@ -58,5 +63,10 @@ class TwigLoader
         do_action("wp_before_load_template", $path);
         echo $instance->getTemplate($template)->render($arrOptions);
         do_action("wp_after_load_template", $path);
+    }
+
+    private function addFolder($path)
+    {
+        if (is_dir($path)) $this->folders[] = $path;
     }
 }

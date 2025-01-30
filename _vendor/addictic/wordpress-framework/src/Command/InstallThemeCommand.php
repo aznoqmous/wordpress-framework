@@ -8,7 +8,9 @@ class InstallThemeCommand
 {
     public static function install()
     {
-        self::symlink('src/Resources/theme', 'web/app/themes/theme');
+        self::symlink("vendor/addictic/wordpress-framework/public", "web/framework");
+
+        self::symlink("src/Resources/theme", "web/app/themes/theme");
     }
 
     public static function symlink($from, $to): bool
@@ -23,7 +25,8 @@ class InstallThemeCommand
         $to = AssetsHelper::sanitizePath($to);
         $from = AssetsHelper::sanitizePath($from);
 
-        if (!(is_file($to) or is_dir($to))) unlink($to);
+
+        if (file_exists($to) and !(is_file($to) or is_dir($to))) unlink($to);
         if (is_dir($to)) return false;
 
         echo "Creating symlink $to -> $from";

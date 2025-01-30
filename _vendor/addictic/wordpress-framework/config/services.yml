@@ -6,7 +6,6 @@ services:
     resource: '../src/'
     exclude:
       - ../src/DependencyInjection/
-      - ../src/Resources/
   translator:
     class: Addictic\WordpressFramework\Helpers\Translator
   twig:

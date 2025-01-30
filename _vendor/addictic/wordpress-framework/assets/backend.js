@@ -19,3 +19,5 @@ ColorField.bind(".color-field")
 ListField.bind(".list-field")
 
 import "./js/backend/post-type-form"
+
+console.log("Wordpress Framework")

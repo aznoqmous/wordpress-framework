@@ -18,7 +18,7 @@ class BlockController extends AbstractController
         $blockName = $request->request->get("name");
         $attributes = $request->request->get("attributes") ? json_decode(stripslashes($request->request->get("attributes")), true) : [];
 
-        $block = BlockManager::getInstance()->getBlock($blockName);
+        $block = BlockManager::getInstance()->get($blockName);
         return $block ? $block->instance->render($attributes, "") : "Block \"$blockName\" not found";
     }
 
@@ -30,7 +30,7 @@ class BlockController extends AbstractController
         $request = Request::createFromGlobals();
         $blockName = $request->get("name");
         $attributes = $request->get("attributes") ? json_decode(stripslashes($request->get("attributes")), true) : [];
-        $block = BlockManager::getInstance()->getBlock($blockName);
+        $block = BlockManager::getInstance()->get($blockName);
         return $block ? $block->instance->render($attributes, "") : "Block \"$blockName\" not found";
     }
 }

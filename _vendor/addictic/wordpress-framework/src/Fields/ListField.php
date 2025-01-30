@@ -48,9 +48,9 @@ class ListField extends Field
             $field->name = "{$this->name}[{$wildcard}][{$field->name}]";
             $field->parentType = $this->parentType;
             $field->parentName = $this->parentName;
-            $field->labelKey = "{$this->name}.{$name}";
             $field->labelKey = preg_replace("/(\d|INDEX|\[|\])/", ".", $field->labelKey);
             $field->labelKey = preg_replace("/\.+/", ".", $field->labelKey);
+            if(isset($this->settingSection)) $field->settingSection = $this->settingSection;
             if (isset($this->value[$wildcard][$name])) $field->setValue($this->value[$wildcard][$name]);
             $fields[] = $field;
         }

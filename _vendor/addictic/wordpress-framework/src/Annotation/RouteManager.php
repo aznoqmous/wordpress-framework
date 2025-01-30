@@ -2,42 +2,86 @@
 
 namespace Addictic\WordpressFramework\Annotation;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-
-class RouteManager
+class RouteManager extends AbstractManager
 {
-    private RouteDiscovery $discovery;
 
-    public function __construct()
+    protected $routes = [];
+
+    protected function addClass(string $className, mixed $annotation)
     {
-        $this->discovery = new RouteDiscovery("\\Addictic\\WordpressFramework\\Controller", "Controller", __DIR__, new AnnotationReader());
     }
 
-    public function getRoutes()
+    protected function addMethod(\ReflectionMethod $method, string $className, mixed $annotation)
     {
-        return $this->discovery->getRoutes();
-    }
+        $instance = new $className($annotation);
+        $instance->value = $annotation->value ?? $instance->value;
+        $instance->namespace = $annotation->namespace ?? $instance->namespace;
+        $instance->name = $annotation->name ?? $instance->name;
 
-    public function getRoute($name)
-    {
-        $entitiess = $this->discovery->getRoutes();
-        if (isset($entitiess[$name])) {
-            return $entitiess[$name];
+        $methods = $annotation->methods ?? "GET";
+
+        $this->routes[$instance->name] = $annotation->value;
+
+        $route = $instance->value;
+
+        preg_match_all("/\{([^\}]*?)\}/", $route, $matches);
+
+        $methodArgs = array_map(function ($param) {
+            return $param->name;
+        }, $method->getParameters());
+
+        $routeArgs = [];
+        foreach ($matches[0] as $i => $selector) {
+            $key = $matches[1][$i];
+            $route = str_replace($selector, "(?P<{$key}>\S+)", $route);
+            $routeArgs[] = $key;
         }
 
-        throw new \Exception('Worker not found.');
-    }
-
-    public function create($name) {
-        $entities = $this->discovery->getRoutes();
-        if (array_key_exists($name, $entities)) {
-            $class = $entities[$name]['class'];
-            if (!class_exists($class)) {
-                throw new \Exception('Worker class does not exist.');
-            }
-            return new $class();
+        foreach ($routeArgs as $arg) {
+            if (!in_array($arg, $methodArgs)) throw new \Exception("Definition of Route $annotation->value is missing the $arg argument inside its method definition");
+        }
+        foreach ($methodArgs as $arg) {
+            if (!in_array($arg, $routeArgs)) throw new \Exception("Definition of Route $annotation->value is missing the $arg argument inside its annotation");
         }
 
-        throw new \Exception('Worker does not exist.');
+
+        add_action("rest_api_init",
+            function () use ($instance, $method, $methods, $route, $methodArgs) {
+                register_rest_route(
+                    $instance->namespace,
+                    $route, [
+                    "methods" => $methods,
+                    "callback" => function (\WP_REST_Request $request) use ($instance, $method, $methodArgs) {
+
+                        /* Handle wpml lang is wp-json api */
+                        if (function_exists("wpml_get_default_language")) {
+                            $language = wpml_get_default_language();
+                            if (isset($_SERVER["HTTP_REFERER"])) {
+                                preg_match("/\/([a-z]{2})\//", $_SERVER["HTTP_REFERER"], $matches);
+                                if ($matches) $language = $matches[1];
+                            }
+                            do_action('wpml_switch_language', $language);
+                        }
+
+                        $params = $request->get_params();
+                        $args = [];
+                        foreach ($methodArgs as $key) {
+                            $args[$key] = $params[$key];
+                        }
+                        return $instance->{$method->name}(...array_values($args));
+                    },
+                    "permission_callback" => function () {
+                        return true;
+                    }
+                ]);
+            });
+    }
+
+    protected function setup()
+    {
+        uasort($this->entities, fn($a, $b) => $a->instance->priority - $b->instance->priority);
+        foreach ($this->entities as $entity) {
+            $entity->instance->register();
+        }
     }
 }

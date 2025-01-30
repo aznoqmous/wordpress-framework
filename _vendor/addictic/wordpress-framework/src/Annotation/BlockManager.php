@@ -2,52 +2,31 @@
 
 namespace Addictic\WordpressFramework\Annotation;
 
-use Addictic\WordpressFramework\Blocks\AbstractBlock;
-use Doctrine\Common\Annotations\AnnotationReader;
-
-class BlockManager
+class BlockManager extends AbstractManager
 {
-    protected static BlockManager $instance;
-    private BlockDiscovery $discovery;
-
-    public function __construct()
+    protected function addClass(string $className, mixed $annotation)
     {
-        $this->discovery = new BlockDiscovery("\\Addictic\\WordpressFramework\\Blocks", "Blocks", __DIR__, new AnnotationReader());
-        static::$instance = $this;
+        $instance = new $className($annotation->name, $annotation->template);
+        $this->entities[$annotation->name] = (object)[
+            'class' => $instance::class,
+            'annotation' => $annotation,
+            'instance' => $instance
+        ];
     }
 
-    public function getBlocks()
+//    protected function setup()
+//    {
+//        uasort($this->entities, fn($a, $b) => $a->instance->priority - $b->instance->priority);
+//        foreach ($this->entities as $entity) {
+//            $entity->instance->register();
+//        }
+//    }
+
+    protected function setup()
     {
-        return $this->discovery->getBlocks();
     }
 
-    public function getBlock($name)
+    protected function addMethod(\ReflectionMethod $method, string $className, mixed $annotation)
     {
-
-        $entities = $this->discovery->getBlocks();
-
-        if (isset($entities[$name])) {
-            return (object) $entities[$name];
-        }
-        throw new \Exception('Worker not found.');
-    }
-
-    public function create($name)
-    {
-        $entities = $this->discovery->getBlocks();
-        if (array_key_exists($name, $entities)) {
-            $class = $entities[$name]['class'];
-            if (!class_exists($class)) {
-                throw new \Exception('Worker class does not exist.');
-            }
-            return new $class();
-        }
-
-        throw new \Exception('Worker does not exist.');
-    }
-
-    public static function getInstance():BlockManager
-    {
-        return static::$instance;
     }
 }
