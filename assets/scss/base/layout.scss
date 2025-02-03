@@ -1,0 +1,11 @@
+body {
+  //padding-bottom: calc(var(--planet-size) + 6rem);
+  overflow-x: hidden;
+  #page #content #primary #main {
+    @include container;
+    .alignfull {
+      margin: 0 calc(var(--container-width) * 0.5 - 50vw);
+    }
+  }
+
+}

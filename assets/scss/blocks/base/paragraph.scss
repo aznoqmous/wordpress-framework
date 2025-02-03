@@ -1,0 +1,8 @@
+#main > p {
+  color: var(--color-grey);
+
+  strong {
+    font: inherit;
+    color: var(--text-color);
+  }
+}

@@ -1,0 +1,11 @@
+:root {
+  --background-color: black;
+  --text-color: white;
+  --color-white: #fff;
+  --color-grey: rgba(255, 255, 255, 0.60);
+  --color: var(--color-black);
+}
+
+.editor-styles-wrapper .wp-block-post-content{
+  font-family: "Noxa", sans-serif ;
+}

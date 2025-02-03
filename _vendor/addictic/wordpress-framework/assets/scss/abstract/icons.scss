@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/fonts/icomoon.eot?wj89vo');
+  src:  url('/fonts/icomoon.eot?wj89vo#iefix') format('embedded-opentype'),
+  url('/fonts/icomoon.ttf?wj89vo') format('truetype'),
+  url('/fonts/icomoon.woff?wj89vo') format('woff'),
+  url('/fonts/icomoon.svg?wj89vo#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --icon-mower: "\e900";
+  --icon-oil: "\e901";
+  --icon-water: "\e902";
+  --icon-elec: "\e903";
+  --icon-hydrogen: "\e904";
+  --icon-engine: "\e909";
+  --icon-caret-up: "\e90a";
+  --icon-check: "\e90b";
+  --icon-crowd: "\e90c";
+  --icon-documentation: "\e90d";
+  --icon-double-caret: "\e90e";
+  --icon-download: "\e90f";
+  --icon-location: "\e910";
+  --icon-more: "\e911";
+  --icon-phone: "\e912";
+  --icon-remote: "\e913";
+  --icon-search: "\e914";
+  --icon-share: "\e915";
+  --icon-calendar: "\e91c";
+  --icon-caret-down: "\e91d";
+  --icon-caret-left: "\e91e";
+  --icon-caret-right: "\e91f";
+}
+
+
+
+@mixin icon($icon: false, $fontSize: false){
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @if $icon {
+    --icon: #{$icon};
+  }
+  @if $fontSize {
+    font-size: $fontSize;
+  }
+
+  content: var(--icon);
+
+
+}

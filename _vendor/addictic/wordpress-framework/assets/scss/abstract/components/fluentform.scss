@@ -1,0 +1,162 @@
+@import "libs/fluentform";
+
+.fluentform {
+  width: pxrem(560);
+  max-width: 100%;
+  margin: 2rem auto;
+
+  @include mobile {
+    max-width: calc(100% - 2rem);
+  }
+
+  .ff-el-group {
+    position: relative;
+
+    a {
+      color: var(--color-orange);
+    }
+
+    .ff-el-input--label {
+      color: var(--color-blue-900);
+      font-weight: 700;
+    }
+
+    .ff-el-input--label,
+    .ff-el-form-check {
+      label {
+        cursor: pointer;
+      }
+    }
+
+    .ff-el-input--content,
+    .ff-el-form-check {
+
+      input, textarea, select {
+        font: inherit;
+        border: unset;
+        padding: pxrem(15);
+        background: var(--color-blue-50);
+        border-radius: pxrem(10);
+        color: var(--color-blue-900);
+        outline-color: var(--color-blue-700);
+        accent-color: var(--color-orange);
+
+        &::placeholder {
+          opacity: 0;
+        }
+      }
+
+      select {
+        cursor: pointer;
+      }
+
+      textarea {
+        field-sizing: content;
+        block-size: initial;
+        resize: vertical;
+      }
+
+      .iti.iti--allow-dropdown.iti--show-flags {
+        input {
+          padding-left: 4rem;
+        }
+      }
+    }
+
+
+    .ff-el-input--content {
+
+      select {
+        height: unset !important;
+      }
+
+      select[multiple] {
+        display: none;
+      }
+
+      .select-multiple {
+        @include row;
+        flex-wrap: wrap;
+        gap: pxrem(50);
+
+        .field-row {
+          @include row(flex-start, center);
+          gap: pxrem(10);
+
+          label {
+            cursor: pointer;
+          }
+        }
+      }
+
+
+      .choices {
+        &.is-open {
+          .choices__inner {
+            border-radius: pxrem(10) pxrem(10) 0 0;
+          }
+
+          .choices__list--dropdown {
+            border-radius: 0 0 pxrem(10) pxrem(10);
+          }
+        }
+
+        .choices__inner {
+          background: var(--color-blue-50);
+          border: unset;
+          border-radius: pxrem(10);
+          color: var(--color-blue-900);
+          //padding: pxrem(15);
+          .choices__list {
+            padding: pxrem(15);
+          }
+        }
+
+        .choices__list {
+          background: var(--color-blue-50);
+          border: unset;
+
+          .choices__item {
+            &.is-highlighted {
+              background: var(--color-blue-200);
+            }
+          }
+        }
+      }
+    }
+
+    .ff_file_upload_holder {
+
+    }
+
+    .ff-uploaded-list {
+      .ff-upload-preview {
+        border: 2px solid var(--color-blue-100);
+        border-radius: pxrem(20);
+
+        .ff-upload-details {
+          color: var(--color-blue-800);
+
+          .ff-upload-filename {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .ff_upload_btn.ff-btn,
+    .ff-btn {
+      @include button;
+      --button-background: var(--color-orange);
+      --button-color: var(--color-white);
+    }
+  }
+
+  button[type="submit"].ff-btn-submit,
+  button[type="submit"].ff-btn-submit:not(.ff_btn_no_style) {
+    @include button;
+    --button-background: var(--color-orange);
+    --button-color: var(--color-white);
+    margin: 0 auto;
+  }
+}

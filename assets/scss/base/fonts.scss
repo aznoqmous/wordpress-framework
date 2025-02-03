@@ -1,0 +1,29 @@
+@include font-face("Noxa", "/fonts/NexaRegular");
+@include font-face("Noxa", "/fonts/Nexa-Light", "", normal, 300);
+@include font-face("Noxa", "/fonts/Nexa-Bold", "", normal, 600);
+@include font-face("Noxa", "/fonts/NexaHeavy", "", normal, 800);
+@include font-face("Noxa", "/fonts/NexaBlack", "", normal, 900);
+@include font-face("Noxa", "/fonts/Nexa-Regular-Italic", "", italic);
+@include font-face("Noxa", "/fonts/Nexa-Light-Italic", "", italic, 300);
+@include font-face("Noxa", "/fonts/Nexa-Bold-Italic", "", italic, 600);
+@include font-face("Noxa", "/fonts/Nexa-Heavy-Italic", "", italic, 700);
+@include font-face("Noxa", "/fonts/Nexa-Black-Italic", "", italic, 800);
+
+html {
+  font-size: 16px;
+}
+
+h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: pxrem(32);
+}
+h2 {
+  font-weight: 900;
+  font-size: pxrem(26);
+  text-transform: uppercase;
+}
+h3 {
+  font-weight: 600;
+  font-size: pxrem(18);
+}

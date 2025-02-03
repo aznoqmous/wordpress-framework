@@ -1,0 +1,142 @@
+@mixin font-face($family, $src, $fileArgs: '', $style: normal, $weight: normal) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$src}.eot#{$fileArgs}'); // IE9 compatibility
+    src: url('#{$src}.eot#{$fileArgs}#iefix') format('embedded-opentype'), // IE8 and below
+    url('#{$src}.ttf#{$fileArgs}') format('truetype'), // Safari, Android, iOS
+    url('#{$src}.woff2#{$fileArgs}') format('woff2'), // new standards
+    url('#{$src}.woff#{$fileArgs}') format('woff'), // standards
+    url('#{$src}.svg#{$fileArgs}##{$family}') format('svg'); // legacy iOS
+    font-style: $style;
+    font-weight: $weight;
+  }
+}
+
+@mixin row($horizontal: flex-start, $vertical: flex-start) {
+  display: flex;
+  flex-direction: row;
+  align-items: $vertical;
+  justify-content: $horizontal;
+}
+
+@mixin inline-row($horizontal: flex-start, $vertical: flex-start) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: $vertical;
+  justify-content: $horizontal;
+}
+
+@mixin column($horizontal: flex-start, $vertical: flex-start) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $vertical;
+  align-items: $horizontal;
+}
+
+@mixin center {
+  @include row(center, center);
+}
+
+@mixin grid($columns, $spacing:0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $spacing;
+}
+
+@function pxrem($size) {
+  @return $size / 16 * 1rem;
+}
+
+@function lerp($a,$b,$t) {
+  @return calc((1 - $t) * $a + $b * $t);
+}
+
+@mixin headings {
+  h1,h2,h3,h4,h5 {
+    @content;
+  }
+}
+
+@mixin textOverflow($lines: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin circle {
+  background-image: conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 60deg, #551DC7 200deg, #6097FF 360deg);
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+}
+
+@mixin _planet {
+  --planet-opacity: 0.5;
+  position: absolute;
+  left: 50%;
+  aspect-ratio: 1;
+  width: 100%;
+  bottom: 1rem;
+  border-radius: 200vw;
+  transform: translate(-50%, 0);
+  background: linear-gradient(180deg, #BDF1FF 0%, #36A9E1 7.5%, #06345D 27.5%, #000 66%);
+}
+@mixin planet {
+  --planet-size: 80vw;
+  position: relative;
+  width: var(--planet-size);
+  aspect-ratio: 1;
+  &:after {
+    content: "";
+    @include _planet;
+    z-index: -2;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  }
+  &:before {
+    content: "";
+    @include _planet;
+    filter: blur(calc(var(--planet-size) / 5.85));
+    z-index: -1;
+  }
+}
+
+@mixin glassmorphism-border {
+  backdrop-filter: blur(pxrem(5));
+  position: relative;
+  isolation: isolate;
+
+  &:after {
+    position: absolute;
+    content:"";
+    inset: -1px;
+    background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
+    border-radius: pxrem(15);
+    z-index: -2;
+  }
+  &:before {
+    position: absolute;
+    content:"";
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: -1;
+    border-radius: pxrem(15);
+  }
+}
+
+@mixin glassmorphism {
+  backdrop-filter: blur(pxrem(30));
+  position: relative;
+  isolation: isolate;
+
+  &:after {
+    position: absolute;
+    content:"";
+    inset: 0;
+    background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
+    border-radius: pxrem(15);
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+}

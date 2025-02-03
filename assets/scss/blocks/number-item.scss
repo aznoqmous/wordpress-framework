@@ -1,0 +1,30 @@
+.wp-block-dvs-number-item {
+  border-radius: pxrem(15);
+  padding: pxrem(30);
+  margin: pxrem(20) 0;
+
+  @include glassmorphism-border;
+
+  @include column;
+  gap: pxrem(10);
+  > strong {
+    font-size: pxrem(50);
+    font-weight: 300;
+    b, strong {
+      font: inherit;
+    }
+  }
+
+  > p {
+    font-weight: 400;
+    font-size: pxrem(16);
+    margin: 0;
+    color: var(--color-white-light);
+
+    strong {
+      font: inherit;
+      color: var(--color-white);
+    }
+
+  }
+}

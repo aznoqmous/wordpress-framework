@@ -1,0 +1,123 @@
+@mixin row($horizontal: flex-start, $vertical: flex-start) {
+  display: flex;
+  flex-direction: row;
+  align-items: $vertical;
+  justify-content: $horizontal;
+}
+
+@mixin inline-row($horizontal: flex-start, $vertical: flex-start) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: $vertical;
+  justify-content: $horizontal;
+}
+
+@mixin column($horizontal: flex-start, $vertical: flex-start) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $vertical;
+  align-items: $horizontal;
+}
+
+@mixin center {
+  @include row(center, center);
+}
+
+@mixin grid($columns, $spacing:0) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $spacing;
+}
+
+@function pxrem($size) {
+  @return $size / 16 * 1rem;
+}
+
+@function lerp($a,$b,$t) {
+  @return calc((1 - $t) * $a + $b * $t);
+}
+
+@mixin textOverflow($lines: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+@mixin imgFit($objectFit: contain, $objectPosition: center) {
+  @include square(100%);
+  object-fit: $objectFit;
+  object-position: $objectPosition;
+}
+
+@mixin boxShadow {
+  box-shadow: var(--shadow);
+}
+
+@mixin card {
+  background: var(--color-white);
+  color: var(--color-black);
+  border-radius: pxrem(24);
+  @include boxShadow;
+  padding: pxrem(20);
+  position: relative;
+}
+
+@mixin button($transparent: false) {
+  border-radius: pxrem(15);
+  border: 2px solid var(--button-background, var(--background));
+  background: var(--button-background, var(--background));
+  color: var(--button-color, var(--color));
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  padding: pxrem(8) pxrem(20);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  @include row(center, center);
+  gap: 0.6em;
+  &:before {
+    font-size: 1.2em;
+    margin-left: -0.4em;
+  }
+  &:hover {
+    background: var(--button-color, var(--color)) !important;
+    color: var(--button-background, var(--background)) !important;
+  }
+
+  @if $transparent {
+    &:hover {
+      --button-color: transparent;
+    }
+  }
+}
+
+@mixin tiny-button {
+  @include button;
+  padding: pxrem(6) pxrem(12);
+}
+
+@mixin button-round {
+  @include button;
+  border-radius: pxrem(32);
+}
+
+@mixin link {
+  color: var(--color);
+  text-decoration: none;
+  font-weight: 700;
+  &:hover {
+    //text-decoration: underline;
+  }
+}

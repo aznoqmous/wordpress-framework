@@ -1,0 +1,46 @@
+import Block from "../../../../_vendor/addictic/wordpress-framework/assets/js/blocks/components/block"
+import {Heading, InnerBlocks, InputControl, RichText, TextControl, useBlockProps} from "../../../../_vendor/addictic/wordpress-framework/assets/js/backend/wp-bootstrapper";
+
+export default class NumberItem extends Block {
+    constructor(props) {
+        super(props);
+        this.title = "Chiffre clé"
+        this.icon = 'performance'
+        this.category = 'layout'
+        this.attributes = {
+            number: {
+                type: "string",
+                default: "Titre"
+            }
+        }
+    }
+
+    render(props) {
+        const {attributes, setAttributes} = props
+        const {number} = attributes
+        const blockProps = {...useBlockProps()}
+        blockProps.className = "wp-block-dvs-number-item"
+        return <div {...blockProps}>
+            <RichText
+                tagName="strong"
+                value={number}
+                placeholder="Titre"
+                onChange={(number) => setAttributes({number})}
+            />
+            <InnerBlocks allowedBlocks={["core/heading", "core/paragraph"]}/>
+        </div>
+    }
+
+    save(props) {
+        const {number} = props.attributes
+        return <div className="wp-block-dvs-number-item">
+            <RichText.Content
+                tagName="strong"
+                value={number}
+            />
+            <InnerBlocks.Content/>
+        </div>
+    }
+}
+
+NumberItem.register("dvs/number")

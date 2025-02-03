@@ -1,0 +1,16 @@
+//
+//[class^="wp-block"]:not(.wp-block-group):not(.wp-block-column) {
+//  &:not(:last-child){
+//    margin-bottom: 2rem;
+//  }
+//  &:not(:first-child){
+//    margin-top: 2rem;
+//  }
+//}
+
+.block-editor-inner-blocks {
+  display: contents;
+  .block-editor-block-list__layout {
+    display: contents;
+  }
+}

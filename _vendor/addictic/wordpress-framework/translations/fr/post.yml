@@ -1,0 +1,12 @@
+post:
+  singular: Voir l'article
+  plural: Articles
+  menu_name: Articles
+  all_items: Toutes les articles
+
+  meta_legend: SEO
+  meta_title: Méta Titre
+  meta_description: Méta Description
+
+  published_at: Publié le
+  read_more: Lire la suite

@@ -1,0 +1,136 @@
+footer {
+  position: relative;
+  //overflow: hidden;
+  @include column(center);
+
+  padding-top: pxrem(128);
+  padding-bottom: var(--footer-padding-bottom);
+
+  --footer-padding-bottom: 4rem;
+  --background-color: black;
+  --text-color: white;
+  background: var(--background-color);
+  color: var(--text-color);
+
+  @include nomobile {
+    overflow: hidden;
+    .planet-bottom {
+      display: none;
+    }
+  }
+
+  .wrapper {
+    z-index: 2;
+    @include container;
+    @include column(center);
+
+    .logos {
+      @include column(center);
+      gap: pxrem(24);
+      margin-bottom: pxrem(24);
+    }
+
+    .content {
+      padding: pxrem(20);
+      @include glassmorphism;
+      @include column();
+      gap: pxrem(40);
+
+      .information {
+        @include column;
+        gap: pxrem(10);
+        margin-left: pxrem(-5);
+
+        > * {
+          @include row(flex-start, center);
+          gap: pxrem(10);
+          font-weight: 800;
+          font-style: normal;
+
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          address {
+            font: inherit;
+          }
+        }
+      }
+    }
+
+    .navigation {
+      width: 100%;
+      @include column;
+      gap: pxrem(10);
+      h3 {
+        text-transform: uppercase;
+        color: var(--color-white-light);
+        margin: 0;
+      }
+      ul {
+        padding: 0;
+        margin: 0;
+        display: contents;
+        li {
+          list-style: none;
+          a {
+            color: inherit;
+            text-decoration: none;
+          }
+        }
+      }
+      hr {
+        width: 100%;
+        height: 2px;
+        background: var(--color-white-light);
+        border: unset;
+      }
+    }
+
+    .socials {
+      @include row(center);
+      gap: pxrem(10);
+    }
+
+    .legal-navigation {
+      a {
+        font-size: pxrem(14);
+        color: inherit;
+        text-decoration: unset;
+      }
+    }
+
+    .copyright {
+      font-size: pxrem(14);
+      color: inherit;
+      text-decoration: unset;
+    }
+  }
+
+  .planet-top {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    left: 50%;
+    top: pxrem(64);
+    z-index: 1;
+
+    figure {
+      @include planet;
+      --planet-size: 120vw;
+    }
+  }
+
+  .planet-bottom {
+    position: absolute;
+    transform: translate(-50%, 0%) rotate(180deg);
+    left: 50%;
+    bottom: calc(var(--footer-padding-bottom) + 7rem);
+    z-index: 0;
+
+    figure {
+      @include planet;
+      --planet-size: 120vw;
+    }
+  }
+}

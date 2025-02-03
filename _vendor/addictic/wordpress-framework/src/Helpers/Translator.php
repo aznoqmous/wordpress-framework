@@ -2,6 +2,7 @@
 
 namespace Addictic\WordpressFramework\Helpers;
 
+use PHPMailer\PHPMailer\Exception;
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Component\Translation\Translator as BaseTranslator;
@@ -18,22 +19,21 @@ class Translator
     public function __construct()
     {
         static::$instance = $this;
-        $this->translationPath = __DIR__ . "/../../../../../{$this->translationFolder}";
+        $projectTranslationDirectory = __DIR__ . "/../../../../../{$this->translationFolder}";
+        $bundleTranslationDirectory = __DIR__ . "/../../{$this->translationFolder}";
         $this->translator = new BaseTranslator("fr");
-        if(!is_admin() and function_exists("wpml_get_current_language")) $this->translator->setLocale(wpml_get_current_language());
-        $this->load();
+        if (!is_admin() and function_exists("wpml_get_current_language")) $this->translator->setLocale(wpml_get_current_language());
+        $this->load($projectTranslationDirectory);
+        $this->load($bundleTranslationDirectory);
     }
 
-    protected function getTranslationsFolders()
-    {
-        return array_slice(scandir($this->translationPath), 2);
-    }
-
-    protected function load()
+    public function load($folder)
     {
         $this->translator->addLoader("yaml", new YamlFileLoader());
-        foreach ($this->getTranslationsFolders() as $domain) {
-            $path = $this->translationPath . "/" . $domain;
+        if(!is_dir($folder)) return;
+
+        foreach (array_slice(scandir($folder), 2) as $domain) {
+            $path = $folder . "/" . $domain;
             if (is_dir($path)) {
                 foreach (array_slice(scandir($path), 2) as $file) {
                     if (is_file($path . "/" . $file)) {

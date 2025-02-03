@@ -1,0 +1,72 @@
+.select-component {
+  border-radius: pxrem(10);
+  font: inherit;
+  outline: unset;
+  border: unset;
+  background: var(--color-dark-blue-1);
+  color: var(--color-white);
+
+  position: relative;
+  width: 20rem;
+  max-width: 20rem;
+  cursor: pointer;
+
+  .selected-option {
+    padding: 0.5rem 0.8rem;
+    display: inline-block;
+    font-weight: 600;
+    &.empty {
+      color: var(--color-blue-200);
+      font-weight: 400;
+    }
+  }
+
+  &.active {
+    border-radius: pxrem(10) pxrem(10) 0 0;
+    ul {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+
+  > ul {
+    background: var(--color-blue-50);
+    color: var(--color-dark-blue);
+    @include boxShadow;
+    border-top: 1px solid var(--color-dark-blue);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    padding: 0 !important;
+    border-radius: 0 0 pxrem(10) pxrem(10);
+    overflow: hidden;
+    list-style: none;
+    @include column;
+    width: max-content;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    li {
+      width: 100%;
+      padding: 0.2rem 0.8rem;
+      margin: 0 !important;
+      &.selected {
+        background: var(--color-blue-300);
+        color: var(--color-white);
+      }
+      &:hover {
+        color: var(--color-white);
+        background: var(--color-blue-500);
+      }
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "settings": {
+    "layout": {
+      "contentSize": "1080px",
+      "wideSize": "100vw"
+    },
+    "color": {
+      "palette": [
+        {
+          "name": "Noir",
+          "slug": "black",
+          "color": "#000"
+        },
+        {
+          "name": "Blanc",
+          "slug": "white",
+          "color": "#FFF"
+        },
+        {
+          "name": "Bleu",
+          "slug": "blue",
+          "color": "#2C7CC0"
+        },
+        {
+          "name": "Bleu sombre",
+          "slug": "dark-blue",
+          "color": "#184A6B"
+        },
+        {
+          "name": "Orange",
+          "slug": "orange",
+          "color": "#ED6E19"
+        },
+        {
+          "name": "Gris",
+          "slug": "grey",
+          "color": "#6D6767"
+        },
+        {
+          "name": "Gris clair",
+          "slug": "light-grey",
+          "color": "#e8edf1"
+        }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "sans-serif",
+          "name": "Sans Serif",
+          "slug": "sans-serif"
+        },
+        {
+          "fontFamily": "serif",
+          "name": "Serif",
+          "slug": "serif"
+        }
+      ]
+    }
+  }
+}

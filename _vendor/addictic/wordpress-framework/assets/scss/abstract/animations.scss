@@ -1,0 +1,83 @@
+:root {
+  --appear-from-bottom-y: 5rem;
+  --appear-from-top-y: -5rem;
+  --animation-duration: 1s;
+}
+
+@keyframes appearFromTop {
+  from {
+    transform: translate(0, var(--appear-from-top-y));
+    opacity: 1;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@mixin appearFromTop {
+  animation: appearFromTop var(--animation-duration) forwards;
+}
+
+@keyframes appearFromBottom {
+  from {
+    transform: translate(0, var(--appear-from-bottom-y));
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@mixin appearFromBottom {
+  animation: appearFromBottom var(--animation-duration) forwards;
+}
+
+@mixin ghost($color:var(--color-grey-100), $stripeColor: var(--color-white), $frequency:1s, $offset:0s){
+  position: relative;
+  overflow: hidden;
+  background: $color;
+  @include tilt(0.5, 1);
+  &:before {
+    position: absolute;
+    inset: -5rem;
+    content: "";
+    background: linear-gradient(110deg, transparent 8%, $stripeColor 18%, transparent 33%);
+    animation: ghost $frequency $offset infinite linear;
+  }
+}
+@keyframes ghost {
+  0% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}
+
+@mixin tilt($from:0, $to: 1, $duration: 1s){
+  --from-tilt: #{$from};
+  --to-tilt: #{$to};
+  animation: tilt alternate infinite calc($duration / 2) ease-out;
+}
+@keyframes tilt {
+  0% {
+    opacity: var(--from-tilt, 0);
+  }
+  100% {
+    opacity: var(--to-tilt, 0);
+  }
+}
+
+@mixin appear($duration:1s){
+  animation: appear $duration forwards ease-out;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

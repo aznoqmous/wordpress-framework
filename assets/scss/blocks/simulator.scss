@@ -1,0 +1,108 @@
+.simulator {
+
+  .leaflet-container {
+    height: 600px;
+    cursor: copy;
+    .controls-container {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .area-control {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.5rem;
+        background: var(--color);
+      }
+      .add {
+        order: 1;
+        cursor: pointer;
+      }
+    }
+    .leaflet-tooltip {
+      background: transparent;
+      border: transparent;
+      color: white;
+      box-shadow: unset;
+      font-weight: bold;
+      font-size: 2rem;
+      text-shadow: 0 0 0.3rem rgba(0,0,0,1);
+      &:before {
+        content: unset;
+      }
+    }
+
+    .area-point {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: all-scroll;
+      > span {
+        transform: scale(1);
+        transition: 0.1s ease;
+      }
+      &:hover > span {
+        transform: scale(1.5);
+      }
+
+      > span {
+        display: block;
+        border-radius: 50%;
+        width: 1rem;
+        aspect-ratio: 1;
+        background: var(--color);
+        position: relative;
+        &:before {
+          position: absolute;
+          content:"";
+          border: 2px solid rgba(0,0,0,0.1);
+          inset: 0;
+          border-radius: 50%;
+        }
+      }
+
+    }
+  }
+
+  .address {
+
+    input {
+      padding: 0.2rem 0.4rem;
+      width: 100%;
+      margin: 0;
+      font: inherit;
+    }
+
+    .results {
+      border: 1px solid #eef5ff;
+      &.hidden {
+        display: none;
+      }
+      > div {
+        padding: 0.2rem 0.4rem;
+        cursor: pointer;
+        &:nth-child(2n){
+          background: var(--color-white-light);
+        }
+        &:hover {
+          background: #eef5ff;
+        }
+      }
+    }
+
+  }
+
+  > .simulator-results {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}

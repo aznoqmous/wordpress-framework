@@ -1,0 +1,13 @@
+.wp-block-column {
+  > * {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &.wp-block-dvs-number-item {
+      height: 100%;
+    }
+  }
+}

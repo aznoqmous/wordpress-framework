@@ -59,10 +59,10 @@ class TwigLoader
     public function renderTemplate($template, $arrOptions)
     {
         $instance = Container::get("twig");
-        $path = realpath($instance->folder) . "/" . $template;
-        do_action("wp_before_load_template", $path);
-        echo $instance->getTemplate($template)->render($arrOptions);
-        do_action("wp_after_load_template", $path);
+        $templateWrapper = $instance->getTemplate($template);
+        do_action("wp_before_load_template", $template);
+        echo $templateWrapper->render($arrOptions);
+        do_action("wp_after_load_template", $template);
     }
 
     private function addFolder($path)

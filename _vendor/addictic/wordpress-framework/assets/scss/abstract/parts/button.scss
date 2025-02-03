@@ -1,0 +1,21 @@
+%button {
+  border-radius: pxrem(15);
+  background: var(--background, var(--color-orange));
+  color: var(--color, var(--color-white));
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  padding: pxrem(10) pxrem(20);
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--color) !important;
+    color: var(--background) !important;
+  }
+}
+
+%button-round {
+  @extend %button;
+  border-radius: pxrem(32);
+}
