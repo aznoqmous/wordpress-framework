@@ -86,7 +86,7 @@
     "test": [
       "phpcs"
     ],
-    "install:theme": [
+    "post-install-cmd": [
       "@php -r \"require 'vendor/autoload.php'; \\Addictic\\WordpressFramework\\Command\\InstallThemeCommand::install();\""
     ]
   },
