@@ -82,6 +82,7 @@
   transform: translate(-50%, 0);
   background: linear-gradient(180deg, #BDF1FF 0%, #36A9E1 7.5%, #06345D 27.5%, #000 66%);
 }
+
 @mixin planet {
   --planet-size: 80vw;
   position: relative;

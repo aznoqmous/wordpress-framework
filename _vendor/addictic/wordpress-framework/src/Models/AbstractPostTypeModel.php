@@ -48,23 +48,61 @@ abstract class AbstractPostTypeModel extends AbstractModel
         return $prefix . "/" . static::$strName . "/" . $this->alias;
     }
 
-    /**
-     * Override to load all fields defined in post type
-     */
-//    protected static function getBaseQuery(): PostQueryBuilder
-//    {
-//        $baseQuery = parent::getBaseQuery();
-//
-//        $postType = PostTypeManager::getInstance()->getPostType(static::$strName);
-//        $selects = ["*"];
-//        foreach ($postType->instance->fields as $name => $field) {
-//            $selects[] = "wtm_$name.meta_value as $name";
-//            $baseQuery->join("wp_postmeta", "wtm_$name", "LEFT");
-//            $baseQuery->on("wtm_$name.post_id = wp_posts.ID AND wtm_$name.meta_key = '$name'");
-//        }
-//        $baseQuery->select(...$selects);
-//        return $baseQuery;
-//    }
+    protected static function getBaseQuery(): PostQueryBuilder
+    {
+        if (WpmlHelper::isTranslatedPostType(static::$strName)) {
+            return PostQueryBuilder::create()
+                ->from(
+                    self::getWpmlQuery()
+                        ->groupBy("_table.ID"),
+                    "wp_posts"
+                );
+        }
+        return PostQueryBuilder::create();
+    }
+
+    public static function getWpmlQuery()
+    {
+        $lang = wpml_get_current_language();
+        $identifier = static::getElementType();
+        $strKey = static::$strKey;
+        return WpmlHelper::isDefaultLanguage()
+            ? PostQueryBuilder::create()
+                ->select("wit.*", "_table.*", "wit.element_id as source_language_id")
+                ->from(static::$strTable, "_table")
+                ->join("wp_icl_translations", "wit")
+                ->on("wit.element_id = _table.$strKey")
+                ->where("wit.language_code = \"$lang\"", "wit.element_type =\"$identifier\"")
+            : PostQueryBuilder::create()
+                ->select("wit.*", "_table.*", "witt.element_id as source_language_id")
+                ->from(static::$strTable, "_table")
+                ->join("wp_icl_translations", "wit")
+                ->on("wit.element_id = _table.$strKey")
+                ->join("wp_icl_translations", "witt")
+                ->on("wit.trid = witt.trid and (wit.source_language_code = witt.language_code or wit.source_language_code is null)")
+                ->where("wit.language_code = \"$lang\"", "wit.element_type =\"$identifier\"");
+    }
+
+    public static function getAllLanguageBaseQuery(): PostQueryBuilder
+    {
+        $identifier = static::getElementType();
+        if (WpmlHelper::isTranslatedPostType(static::$strName)) {
+            return PostQueryBuilder::create()
+                ->from(
+                    PostQueryBuilder::create()
+                        ->select("wp.*", "wit.*", "witt.element_id as source_language_id")
+                        ->from("wp_posts", "wp")
+                        ->join("wp_icl_translations", "wit")
+                        ->on("wit.element_id = wp.ID")
+                        ->join("wp_icl_translations", "witt")
+                        ->on("wit.trid = witt.trid and (wit.source_language_code = witt.language_code or wit.source_language_code is null)")
+                        ->where("wit.element_type =\"$identifier\"")
+                        ->groupBy("wp.ID"),
+                    "wp_posts"
+                );
+        }
+        return PostQueryBuilder::create();
+    }
 
     public static function findByTaxonomies($ids = [], $opts = [])
     {

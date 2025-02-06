@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "_vendor/addictic/wordpress-framework",
-                "reference": "04cb182c7d6e68c6727cc859ed93c0a9aee331ef"
+                "reference": "646261d2fea9cee1dfa6d41b2544bebdfa108913"
             },
             "type": "library",
             "autoload": {
@@ -3563,5 +3563,5 @@
         "php": ">=8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }

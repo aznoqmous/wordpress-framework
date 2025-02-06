@@ -1,0 +1,41 @@
+.single-post {
+  .banner {
+    @include container-fluid-margin;
+    border-bottom: 1px solid var(--color-grey-light);
+
+    .metas {
+      @include row;
+      @include container;
+
+      width: 100%;
+
+      .time {
+        margin-left: pxrem(-7);
+      }
+      .time, .category {
+        padding: pxrem(7) pxrem(11);
+        border-right: 1px solid var(--color-grey-light);
+      }
+      .categories {
+        display: contents;
+      }
+    }
+  }
+  .content {
+    figure {
+      border-radius: pxrem(10);
+      overflow-y: hidden;
+      img {
+        width: 100%;
+        height: unset;
+        object-fit: cover;
+        vertical-align: middle;
+      }
+    }
+    .wp-content {
+      .wp-block-post-featured-image {
+        display: none;
+      }
+    }
+  }
+}

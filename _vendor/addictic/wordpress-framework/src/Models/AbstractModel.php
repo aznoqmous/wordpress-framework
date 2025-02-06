@@ -34,7 +34,7 @@ abstract class AbstractModel
             $key = "id";
             $this->id = $value;
         }
-
+        
         $this->arrData[$key] = $value;
     }
 
@@ -61,7 +61,6 @@ abstract class AbstractModel
         if (!$id) return null;
         return static::findOneBy(["source_language_id = $id"]);
     }
-
 
     public static function findByIds($ids = [], $opts = [])
     {
@@ -103,60 +102,8 @@ abstract class AbstractModel
         return static::$strPrefix . "_" . static::$strName;
     }
 
-
     protected static function getBaseQuery(): PostQueryBuilder
     {
-        if (WpmlHelper::isTranslatedPostType(static::$strName)) {
-            return PostQueryBuilder::create()
-                ->from(
-                    self::getWpmlQuery()
-                        ->groupBy("_table.ID"),
-                    "wp_posts"
-                );
-        }
-        return PostQueryBuilder::create();
-    }
-
-    public static function getWpmlQuery()
-    {
-        $lang = wpml_get_current_language();
-        $identifier = static::getElementType();
-        $strKey = static::$strKey;
-        return WpmlHelper::isDefaultLanguage()
-            ? PostQueryBuilder::create()
-                ->select("wit.*", "_table.*", "wit.element_id as source_language_id")
-                ->from(static::$strTable, "_table")
-                ->join("wp_icl_translations", "wit")
-                ->on("wit.element_id = _table.$strKey")
-                ->where("wit.language_code = \"$lang\"", "wit.element_type =\"$identifier\"")
-            : PostQueryBuilder::create()
-                ->select("wit.*", "_table.*", "witt.element_id as source_language_id")
-                ->from(static::$strTable, "_table")
-                ->join("wp_icl_translations", "wit")
-                ->on("wit.element_id = _table.$strKey")
-                ->join("wp_icl_translations", "witt")
-                ->on("wit.trid = witt.trid and (wit.source_language_code = witt.language_code or wit.source_language_code is null)")
-                ->where("wit.language_code = \"$lang\"", "wit.element_type =\"$identifier\"");
-    }
-
-    public static function getAllLanguageBaseQuery(): PostQueryBuilder
-    {
-        $identifier = static::getElementType();
-        if (WpmlHelper::isTranslatedPostType(static::$strName)) {
-            return PostQueryBuilder::create()
-                ->from(
-                    PostQueryBuilder::create()
-                        ->select("wp.*", "wit.*", "witt.element_id as source_language_id")
-                        ->from("wp_posts", "wp")
-                        ->join("wp_icl_translations", "wit")
-                        ->on("wit.element_id = wp.ID")
-                        ->join("wp_icl_translations", "witt")
-                        ->on("wit.trid = witt.trid and (wit.source_language_code = witt.language_code or wit.source_language_code is null)")
-                        ->where("wit.element_type =\"$identifier\"")
-                        ->groupBy("wp.ID"),
-                    "wp_posts"
-                );
-        }
         return PostQueryBuilder::create();
     }
 
@@ -167,6 +114,7 @@ abstract class AbstractModel
         if (isset($opts['order'])) $qb->orderBy($opts['order']);
         if (isset($opts['limit'])) $qb->limit($opts['limit']);
         if (isset($opts['offset'])) $qb->offset($opts['offset']);
+        $qb->from(static::$strTable);
         return $qb->query();
     }
 
@@ -219,5 +167,17 @@ abstract class AbstractModel
     public function getFrontendUrl()
     {
         return "/" . $this->url;
+    }
+
+    public function save()
+    {
+        global $wpdb;
+        $wpdb->update(
+            static::$strTable,
+            $this->arrData,
+            [
+                static::$strKey => $this->id
+            ]
+        );
     }
 }

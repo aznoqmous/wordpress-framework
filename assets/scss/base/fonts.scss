@@ -12,17 +12,29 @@
 html {
   font-size: 16px;
 }
-
+@include headings {
+  line-height: 1em;
+}
 h1 {
   font-weight: 400;
   text-transform: uppercase;
   font-size: pxrem(32);
+  margin-bottom: pxrem(32);
+  & + h2 {
+    margin-top: pxrem(-32);
+  }
 }
+
 h2 {
   font-weight: 900;
   font-size: pxrem(26);
   text-transform: uppercase;
+  margin-bottom: pxrem(26);
+  & + h3 {
+    margin-top: pxrem(-26);
+  }
 }
+
 h3 {
   font-weight: 600;
   font-size: pxrem(18);

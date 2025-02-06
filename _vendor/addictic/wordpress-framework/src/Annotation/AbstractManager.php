@@ -16,9 +16,11 @@ abstract class AbstractManager
     private function __construct()
     {
         $this->annotationReader = new AnnotationReader();
-        add_action("after_setup_theme", function(){
-            $this->setup();
-        });
+        if(function_exists("add_action")){
+            add_action("after_setup_theme", function(){
+                $this->setup();
+            });
+        }
     }
 
     public function discover($namespace, $directory, $annotationName)
@@ -34,7 +36,6 @@ abstract class AbstractManager
 
             $annotation = $this->annotationReader->getClassAnnotation(new \ReflectionClass($class), $annotationName);
             if ($annotation) $this->addClass($class, $annotation);
-
             $this->handleMethods($class);
         }
     }

@@ -1,0 +1,30 @@
+#!/usr/bin/env php
+<?php
+
+use Addictic\WordpressFramework\Helpers\AssetsHelper;
+
+$GLOBALS['_composer_bin_dir'] = __DIR__;
+$GLOBALS['_composer_autoload_path'] = __DIR__ . '/../autoload.php';
+
+require($GLOBALS['_composer_autoload_path']);
+
+require_once __DIR__ . "/../../web/wp/wp-load.php";
+
+\Addictic\WordpressFramework\WordpressFrameworkBundle::registerCommands();
+
+$arguments = $argv;
+$command = isset($argv[1]) ? $argv[1] : null;
+array_splice($arguments, 0, 2);
+if($command){
+    \Addictic\WordpressFramework\Annotation\CommandManager::getInstance()
+        ->run($command, $arguments)
+    ;
+}
+else {
+    echo "Available commands:\n";
+    $commands = \Addictic\WordpressFramework\Annotation\CommandManager::getInstance()->entities;
+    foreach($commands as $key => $command){
+        echo $key . "\t\t\t" . $command->class . "\n";
+    }
+}
+

@@ -240,9 +240,15 @@
                     <?php wp_footer(); ?>
 
                 </div>
-
-                <div class="planet-top"><figure></figure></div>
-                <div class="planet-bottom"><figure></figure></div>
+                <div class="planet-single">
+                    <figure></figure>
+                </div>
+<!--                <div class="planet-top">-->
+<!--                    <figure></figure>-->
+<!--                </div>-->
+<!--                <div class="planet-bottom">-->
+<!--                    <figure></figure>-->
+<!--                </div>-->
             </footer>
         </div>
     </body>

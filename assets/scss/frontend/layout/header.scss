@@ -1,0 +1,17 @@
+.site-header {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid var(--color-grey-light);
+  .logo, .burger {
+    padding: 1rem;
+  }
+  .logo {
+    flex-grow: 1;
+    @include row(center);
+  }
+  .burger {
+    @include center;
+    border-left: 1px solid var(--color-grey-light);
+  }
+
+}
