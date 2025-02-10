@@ -12,6 +12,7 @@
   "dependencies": {
     "@wordpress/components": "^29.2.0",
     "@wordpress/compose": "^7.16.0",
+    "@wordpress/icons": "^10.17.0",
     "leaflet": "^1.9.4",
     "mini-css-extract-plugin": "^2.9.2",
     "react": "^19.0.0",

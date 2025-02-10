@@ -20,7 +20,7 @@ class UploadField extends Field
         $this->args['files'] = $files;
 
         $this->addAttribute("data-multiple", $this->args['multiple'] ?? false);
-        $this->addAttribute("data-filetype", $this->args['fileType'] ?? null);
+        $this->addAttribute("data-filetype", $this->args['fileType'] ?? null); // eg: image/jpeg,image/png,image...
         wp_enqueue_media();
 
         return parent::render();

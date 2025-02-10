@@ -1,0 +1,51 @@
+.wp-block-dvs-slider {
+  max-width: 60rem;
+  margin: 0 auto;
+
+  .container {
+    aspect-ratio: 350/247;
+    width: 100%;
+    position: relative;
+
+    figure {
+      position: absolute;
+      inset: 0;
+      transition: 0.2s ease;
+      opacity: 0;
+
+      figcaption {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      &.active {
+        opacity: 1;
+        z-index: 1;
+        figcaption {
+          opacity: 1;
+        }
+      }
+      &.prev, &.next {
+        opacity: 1;
+        cursor: pointer;
+        filter: brightness(0.6);
+      }
+      &.prev {
+        transform: translate(-20%) scale(0.8);
+      }
+      &.next {
+        transform: translate(20%) scale(0.8);
+      }
+
+      img {
+        border-radius: pxrem(15);
+        overflow: hidden;
+        @include imgFit(cover);
+      }
+
+      figcaption {
+        position: absolute;
+      }
+    }
+  }
+}

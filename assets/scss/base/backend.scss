@@ -1,11 +1,27 @@
-:root {
-  --background-color: black;
-  --text-color: white;
-  --color-white: #fff;
-  --color-grey: rgba(255, 255, 255, 0.60);
-  --color: var(--color-black);
+.editor-styles-wrapper .wp-block-post-content {
+  font-family: "Noxa", sans-serif;
+  background: var(--background-color);
 }
 
-.editor-styles-wrapper .wp-block-post-content{
-  font-family: "Noxa", sans-serif ;
+.editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)),
+.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > :where(:not(.alignleft):not(.alignright):not(.alignfull)),
+.editor-styles-wrapper .block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull))
+{
+  max-width: 100% !important;
+}
+
+.editor-styles-wrapper .edit-post-visual-editor__post-title-wrapper > .alignfull, .editor-styles-wrapper .block-editor-block-list__layout.is-root-container > .alignfull {
+  padding: 2rem;
+}
+
+.wp-block-cover {
+  padding: 0;
+  .wp-block-cover {
+    padding: pxrem(40) pxrem(20);
+  }
+}
+
+.edit-post-visual-editor__post-title-wrapper {
+  padding: 0 2rem;
+  margin-top: 0;
 }

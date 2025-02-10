@@ -22,6 +22,7 @@ WordpressFrameworkBundle::init();
     ->discover("\\App\\Blocks", __DIR__ . "/../../Blocks", \Addictic\WordpressFramework\Annotation\Block::class);
 
 
+\App\Models\TestimonyModel::register();
 
 OptionsPage::create("simulator")
     ->addSection("cost")

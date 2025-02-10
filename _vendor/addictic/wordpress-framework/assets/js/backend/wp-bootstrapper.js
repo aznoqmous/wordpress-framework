@@ -2,7 +2,10 @@ if (!wp.blockEditor) wp.blockEditor = {
     InspectorControls: "",
     InnerBlocks: "",
     RichText: "",
-    useBlockProps: ""
+    useBlockProps: "",
+    MediaUpload: "",
+    MediaUploadCheck: "",
+    BlockControls: ""
 }
 if (!wp.compose) wp.compose = {
     createHigherOrderComponent: () => () => {
@@ -15,29 +18,41 @@ if (!wp.components) wp.components = {
     InputControl: "",
     TextareaControl: "",
     MediaUpload: "",
-    Heading: ""
+    Heading: "",
+    Popover: "",
+    ToolbarButton: ""
 }
 if (!wp.element) wp.element = {
     Fragment: "",
     cloneElement: ""
 }
+
 if(!wp.serverSizeRender) wp.serverSizeRender = ()=>{}
+
 const {
     InspectorControls,
     InnerBlocks,
     RichText,
-    useBlockProps
+    MediaUpload,
+    MediaUploadCheck,
+    useBlockProps,
+    BlockControls
 } = wp.blockEditor
+
 const {createHigherOrderComponent} = wp.compose
+
 const {
     PanelBody,
     SelectControl,
     TextControl,
     TextareaControl,
-    MediaUpload,
     Heading,
-    InputControl
+    InputControl,
+    Button,
+    Popover,
+    ToolbarButton
 } = wp.components
+
 const {
     Fragment,
     cloneElement
@@ -49,6 +64,9 @@ const Translate = (message) => wp.i18n.__(message,
     "ifc")
 
 export {
+    BlockControls,
+    Button,
+    Popover,
     InspectorControls,
     InnerBlocks,
     Heading,
@@ -60,9 +78,11 @@ export {
     TextControl,
     TextareaControl,
     MediaUpload,
+    MediaUploadCheck,
     createHigherOrderComponent,
     Fragment,
     cloneElement,
     Translate,
-    ServerSideRender
+    ServerSideRender,
+    ToolbarButton
 }

@@ -1,0 +1,18 @@
+testimony:
+  slug: temoignage
+  singular: Voir le témoignages
+  plural: Témoignages
+  menu_name: Témoignages
+  all_items: Tous les témoignages
+
+  meta_legend: SEO
+  meta_title: Méta Titre
+  meta_description: Méta Description
+
+  published_at: Publié le
+  read_more: Lire la suite
+
+  content_legend: Contenu
+  job: Rôle
+  description: Description
+  logo: Logo

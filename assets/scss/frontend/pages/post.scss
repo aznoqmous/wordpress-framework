@@ -22,16 +22,16 @@
     }
   }
   .content {
-    figure {
-      border-radius: pxrem(10);
-      overflow-y: hidden;
-      img {
-        width: 100%;
-        height: unset;
-        object-fit: cover;
-        vertical-align: middle;
-      }
-    }
+    //figure {
+    //  border-radius: pxrem(10);
+    //  overflow-y: hidden;
+    //  img {
+    //    width: 100%;
+    //    height: unset;
+    //    object-fit: cover;
+    //    vertical-align: middle;
+    //  }
+    //}
     .wp-content {
       .wp-block-post-featured-image {
         display: none;

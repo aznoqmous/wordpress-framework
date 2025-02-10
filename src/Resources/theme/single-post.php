@@ -1,5 +1,4 @@
 <?php
-
 use Addictic\WordpressFramework\Helpers\Container;
 
 $currentNews = \Addictic\WordpressFramework\Models\Legacy\PostModel::findActive();

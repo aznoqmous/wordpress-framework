@@ -17,7 +17,6 @@ class BlockController extends AbstractController
         $request = Request::createFromGlobals();
         $blockName = $request->request->get("name");
         $attributes = $request->request->get("attributes") ? json_decode(stripslashes($request->request->get("attributes")), true) : [];
-
         $block = BlockManager::getInstance()->get($blockName);
         return $block ? $block->instance->render($attributes, "") : "Block \"$blockName\" not found";
     }

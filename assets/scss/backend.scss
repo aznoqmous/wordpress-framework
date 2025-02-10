@@ -1,8 +1,41 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
 @import "abstracts/bootstrap";
+@import "blocks/blocks";
 
 @import "base/fonts";
 @import "base/backend";
 
-@import "blocks/blocks";
+body {
+  --wp--preset--gradient--dark-sky: linear-gradient(180deg, #06345D 0%, rgba(6, 52, 93, 0.00) 100%);
+}
+.wp-block-dvs-slider {
+  position: relative;
+
+  .components-button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+    background: var(--color-wp-blue);
+    color: var(--color-white);
+    transform: translate(-50%, -50%);
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    figure {
+      position: relative;
+      opacity: 1;
+      &.active {
+        width: 100%;
+      }
+      &:not(.active) {
+        width: 5rem;
+        aspect-ratio: 1;
+      }
+    }
+  }
+}

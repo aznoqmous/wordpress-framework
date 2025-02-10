@@ -1,12 +1,16 @@
 .wp-block-buttons {
-  margin: pxrem(60) 0;
+  margin: pxrem(20) 0;
+
   .wp-element-button {
     padding: pxrem(10) pxrem(20);
-    border: 1px solid var(--text-color);
+    //border: 1px solid var(--text-color);
     color: var(--text-color);
     background: transparent;
-    font-weight: 900;
-    text-transform: uppercase;
+    font-weight: 800;
     font-size: pxrem(16);
+
+    border-width: 1px !important;
+    border-style: solid;
+    border-color: inherit;
   }
 }

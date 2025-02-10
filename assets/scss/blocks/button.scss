@@ -1,0 +1,62 @@
+.wp-block-button-container {
+  @include row;
+  margin: 2rem 0;
+  color: var(--text-color);
+
+  &.alignleft {
+    justify-content: flex-start;
+  }
+
+  &.aligncenter {
+    justify-content: center;
+  }
+
+  &.alignright {
+    justify-content: flex-end;
+  }
+
+  .wp-block-button {
+    > a, > .button-placeholder {
+      display: inline-block;
+      padding: pxrem(10) pxrem(20);
+      border: 1px solid currentColor;
+      border-radius: 5rem;
+      transition: 0.2s ease;
+      cursor: pointer;
+      text-decoration: unset;
+      font-weight: 800;
+      @include row(center, center);
+      gap: pxrem(10);
+      color: inherit;
+
+      > div {
+        display: contents;
+        svg {
+          margin: pxrem(-5) 0;
+        }
+
+        &:first-child svg {
+          margin-left: pxrem(-15);
+        }
+        &:last-child svg {
+          margin-right: pxrem(-15);
+        }
+      }
+    }
+
+    > a {
+      &:hover {
+        background: var(--text-color);
+        color: var(--background-color);
+      }
+    }
+
+    > .button-placeholder {
+      a {
+        border: unset;
+        text-decoration: unset;
+        color: inherit;
+      }
+    }
+  }
+}

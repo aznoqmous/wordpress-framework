@@ -51,6 +51,21 @@
   @return calc((1 - $t) * $a + $b * $t);
 }
 
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+@mixin imgFit($objectFit: contain, $objectPosition: center) {
+  @include square(100%);
+  object-fit: $objectFit;
+  object-position: $objectPosition;
+}
+
 @mixin headings {
   h1,h2,h3,h4,h5 {
     @content;
@@ -110,9 +125,9 @@
   &:after {
     position: absolute;
     content:"";
-    inset: -1px;
+    inset: -2px;
     background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
-    border-radius: pxrem(15);
+    border-radius: var(--border-radius, pxrem(15));
     z-index: -2;
   }
   &:before {
@@ -121,7 +136,30 @@
     inset: 0;
     background: rgba(0,0,0,0.2);
     z-index: -1;
-    border-radius: pxrem(15);
+    border-radius: var(--border-radius, pxrem(15));
+  }
+}
+
+@mixin glassmorphism-border-white {
+  backdrop-filter: blur(pxrem(5));
+  position: relative;
+  isolation: isolate;
+  &:after {
+    position: absolute;
+    content:"";
+    inset: -2px;
+    background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
+    border-radius: var(--border-radius, pxrem(15));
+    z-index: -2;
+    opacity: 1;
+  }
+  &:before {
+    position: absolute;
+    content:"";
+    inset: 0;
+    background: rgba(255,255,255,0.05);
+    z-index: -1;
+    border-radius: var(--border-radius, pxrem(15));
   }
 }
 
@@ -135,7 +173,7 @@
     content:"";
     inset: 0;
     background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
-    border-radius: pxrem(15);
+    border-radius: var(--border-radius, pxrem(15));
     z-index: -1;
     opacity: 0.5;
   }

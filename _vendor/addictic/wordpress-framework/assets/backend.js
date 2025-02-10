@@ -1,7 +1,7 @@
 import "./scss/backend.scss"
 import RelationField from "./js/backend/relation-field";
-import "./js/blocks/overrides/group.jsx"
-import "./js/blocks/overrides/cover.jsx"
+// import "./js/blocks/overrides/group.jsx"
+// import "./js/blocks/overrides/cover.jsx"
 
 import "./js/blocks/dynamics/news-featured-list.jsx"
 import "./js/blocks/dynamics/news-filtered-list.jsx"

@@ -28,7 +28,6 @@ abstract class AbstractManager
         $path = $directory;
         $finder = new Finder();
         $finder->files()->in($path);
-
         foreach ($finder as $file) {
             $class = $namespace . "/" . $file->getRelativePathname();
             $class = preg_replace("/\//", "\\", $class);
@@ -42,13 +41,11 @@ abstract class AbstractManager
 
     protected function handleMethods($class){
         $methods = (new \ReflectionClass($class))->getMethods();
-
         foreach ($methods as $method) {
             $annotations = $this->annotationReader->getMethodAnnotations($method);
-            if (!$annotations) continue;
-
+            if (!$annotations || !count($annotations)) continue;
             foreach ($annotations as $annotation) {
-                if (!($annotation instanceof Route)) continue;
+                if (!($annotation instanceof static::$annotation)) continue;
                 $this->addMethod($method, $class, $annotation);
             }
 

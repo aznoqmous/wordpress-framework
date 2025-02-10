@@ -4,6 +4,7 @@ namespace Addictic\WordpressFramework\Annotation;
 
 class RouteManager extends AbstractManager
 {
+    public static mixed $annotation = Route::class;
 
     protected $routes = [];
 

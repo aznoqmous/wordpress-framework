@@ -2,16 +2,60 @@
   display: flex;
   width: 100%;
   border-bottom: 1px solid var(--color-grey-light);
+  background: var(--color-white);
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition: 0.3s ease;
+
   .logo, .burger {
     padding: 1rem;
   }
+
   .logo {
     flex-grow: 1;
     @include row(center);
+    .white {
+      display: none;
+    }
   }
+
   .burger {
     @include center;
     border-left: 1px solid var(--color-grey-light);
   }
 
+  &.top.light {
+    border-color: var(--color-white-ultralight);
+    background: transparent;
+    .logo {
+      .color {
+        display: none;
+      }
+      .white {
+        display: block;
+      }
+    }
+    .burger {
+      color: var(--color-white);
+      border-color: var(--color-white-ultralight);
+    }
+  }
+}
+
+
+:root {
+  --admin-bar-height: #{pxrem(46)};
+  --header-height: #{pxrem(72)};
+}
+body {
+  //padding-top: var(--header-height);
+  &.admin-bar {
+    //.site-header {
+    //  top: var(--admin-bar-height);
+    //}
+    //padding-top: calc(var(--header-height) + var(--admin-bar-height));
+  }
 }

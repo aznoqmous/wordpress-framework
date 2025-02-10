@@ -2,16 +2,46 @@
   //@include container;
   width: 100vw;
   max-width: 100%;
-  padding: pxrem(20);
-  padding-bottom: 40vh;
-  .wp-block-cover__inner-container {
-    padding: pxrem(35) pxrem(30);
-    border: 1px solid rgba(255,255,255,0.2);
-    @include glassmorphism;
+  padding: pxrem(40) pxrem(20);
+  align-items: start;
 
-    &, &:after, &:before {
-      border-radius: pxrem(30);
+  &.glassmorphism {
+    .wp-block-cover__inner-container {
+      @include glassmorphism;
+      padding: pxrem(35) pxrem(30);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      --border-radius: #{pxrem(30)} #{pxrem(30)} #{pxrem(54)} #{pxrem(54)};
+      border-radius: var(--border-radius);
+      &, &:after, &:before {
+        border-radius: var(--border-radius);
+      }
+      .wp-block-buttons {
+        .wp-block-button, .wp-element-button {
+          width: 100%;
+        }
+      }
     }
+  }
+
+  &.align-center {
+    align-items: center;
+
+    > .wp-block-cover {
+      align-items: center;
+    }
+  }
+
+  &.align-end {
+    align-items: flex-end;
+
+    > .wp-block-cover {
+      align-items: flex-end;
+    }
+  }
+  .wp-block-cover__background {
+    mix-blend-mode: hard-light;
+  }
+  .wp-block-cover__inner-container {
 
     > {
       @include headings {
@@ -19,15 +49,14 @@
         margin: 0;
       }
     }
+
     > hr {
       opacity: 0.1;
     }
-    > .wp-block-buttons {
+
+    .wp-block-dvs-button, .wp-block-buttons {
       width: 100%;
       margin: 0;
-      .wp-element-button {
-        width: 100%;
-      }
     }
   }
 }

@@ -1,3 +1,5 @@
 default:
   add_new: Ajouter
+  add_new_item: Nouvelle entrée
   view_item: Voir
+  not_found: Aucuns résultats

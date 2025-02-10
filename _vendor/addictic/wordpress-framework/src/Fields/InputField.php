@@ -8,7 +8,7 @@ class InputField extends Field
 
     public function render()
     {
-        $this->args['input'] = array_merge(['type' => "text"], $this->args['input']);
+        $this->args['input'] = array_merge(['type' => "text"], isset($this->args['input']) ? $this->args['input'] : []);
         $this->args['input'] = $this->arrayToAttributes($this->args['input']);
         return parent::render();
     }

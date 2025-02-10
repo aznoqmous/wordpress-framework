@@ -6,6 +6,15 @@
       "wideSize": "100vw"
     },
     "color": {
+      "customGradient": true,
+      "defaultGradients": true,
+      "gradients": [
+        {
+          "name": "Ciel",
+          "gradient": "linear-gradient(180deg, #06345D 0%, rgba(6,52,93,0.00) 100%)",
+          "slug": "dark-sky"
+        }
+      ],
       "palette": [
         {
           "name": "Noir",

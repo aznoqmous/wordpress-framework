@@ -1,0 +1,5 @@
+<div class="testimony-list">
+    {% for item in items %}
+        {{ item.renderItem() | raw }}
+    {% endfor %}
+</div>

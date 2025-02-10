@@ -22,9 +22,25 @@ if($command){
 }
 else {
     echo "Available commands:\n";
+    echo "________________________________________________________________\n\n";
     $commands = \Addictic\WordpressFramework\Annotation\CommandManager::getInstance()->entities;
+    uksort($commands, function ($a,$b){
+        return $a > $b ? 1 : -1;
+    });
+    $namespace = "";
     foreach($commands as $key => $command){
-        echo $key . "\t\t\t" . $command->class . "\n";
+        $current_namespace = explode(":", $key)[0];
+        if($namespace != $current_namespace) echo "\n";
+        echo $key . "\t\t\t" . $command->class;
+        if(property_exists($command, "method")) {
+            echo "::{$command->method->name}(";
+            echo implode(", ", array_map(function($param){
+                return "$$param->name";
+            }, $command->method->getParameters()));
+            echo ")\n";
+        }
+        $namespace = $current_namespace;
     }
+    echo "________________________________________________________________\n";
 }
 

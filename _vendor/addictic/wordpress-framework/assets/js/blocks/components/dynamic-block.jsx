@@ -16,7 +16,6 @@ export default class DynamicBlock extends Block
     }
 
     render(props) {
-        console.log(this)
         const blockProps = useBlockProps();
         const {attributes} = props
         return <div {...blockProps}>
