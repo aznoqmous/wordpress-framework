@@ -1,0 +1,30 @@
+<a href="{{ post.getFrontendUrl() }}" class="news-item">
+    <span class="head">
+        <figure>
+            {{ post.getImage() | raw }}
+        </figure>
+        <div class="categories">
+            {% for category in categories %}
+                <span class="category" data-slug="{{ category.slug }}">{{ category.name }}</span>
+            {% endfor %}
+        </div>
+    </span>
+    <div class="content">
+        <h3>{{ post.title }}</h3>
+        <div class="description">
+            {{ post.getExcerpt() | raw }}
+        </div>
+        <div class="more">
+            <strong>{{ "post.read_more" | trans }}</strong>
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="1.36279" y="1.19653" width="31" height="31" rx="15.5" stroke="black" stroke-width="2"/>
+                <path d="M12.0591 11.8932L21.666 11.8932M21.666 11.8932L21.666 21.5002M21.666 11.8932L12.0591 21.5001" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="metas">
+            <div class="time">
+                {{ "post.published_at" | trans }} <time>{{ post.getDate("d/m/Y") }}</time>
+            </div>
+        </div>
+    </div>
+</a>

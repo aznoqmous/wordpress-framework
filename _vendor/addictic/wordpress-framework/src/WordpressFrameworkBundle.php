@@ -2,6 +2,8 @@
 
 namespace Addictic\WordpressFramework;
 
+use Addictic\WordpressFramework\Annotation\Block;
+use Addictic\WordpressFramework\Annotation\BlockManager;
 use Addictic\WordpressFramework\Annotation\Command;
 use Addictic\WordpressFramework\Annotation\CommandManager;
 use Addictic\WordpressFramework\Annotation\OldBlockManager;
@@ -24,6 +26,12 @@ class WordpressFrameworkBundle
     public static function init()
     {
         $instance = new static();
+
+        BlockManager::getInstance()
+            ->discover("\\Addictic\\WordpressFramework\\Blocks",
+                __DIR__ . "/Blocks",
+                Block::class
+            );
 
         PostTypeManager::getInstance()
             ->discover(

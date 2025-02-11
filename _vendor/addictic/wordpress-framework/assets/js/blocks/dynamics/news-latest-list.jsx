@@ -20,12 +20,11 @@ export default class NewsLatestListBlock extends DynamicBlock {
     }
 
     editor(props) {
-        const __ = wp.i18n.__
         const {attributes, setAttributes} = props
         const {newsCount} = props.attributes
         return <>
             <InspectorControls>
-                <PanelBody title={__('Contenu', "ifc")} initialOpen={true}>
+                <PanelBody title={Translate('Contenu', "ifc")} initialOpen={true}>
                     <TextControl
                         value={newsCount}
                         type="number"
@@ -38,4 +37,4 @@ export default class NewsLatestListBlock extends DynamicBlock {
     }
 }
 
-NewsLatestListBlock.register("ifc/news-latest-list")
+NewsLatestListBlock.register("wordpress-framework/news-latest-list")

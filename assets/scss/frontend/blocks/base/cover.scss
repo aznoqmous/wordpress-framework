@@ -3,4 +3,5 @@
 }
 #main > .wp-block-cover:first-child {
   padding-top: 6rem;
+  margin-top: calc(-1 * var(--header-height));
 }

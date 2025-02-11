@@ -42,7 +42,7 @@
     mix-blend-mode: hard-light;
   }
   .wp-block-cover__inner-container {
-
+    @include container;
     > {
       @include headings {
         line-height: 1em;

@@ -9,7 +9,6 @@ import {
     TextControl,
     useBlockProps, PanelBody, SelectControl, InspectorControls
 } from "../../../../_vendor/addictic/wordpress-framework/assets/js/backend/wp-bootstrapper";
-import {link, linkOff} from "@wordpress/icons"
 import icons from "../../libs/icons.json"
 
 export default class Button extends Block {

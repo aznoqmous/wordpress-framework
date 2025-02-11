@@ -13,6 +13,11 @@
           "name": "Ciel",
           "gradient": "linear-gradient(180deg, #06345D 0%, rgba(6,52,93,0.00) 100%)",
           "slug": "dark-sky"
+        },
+        {
+          "name": "Noir à transparent",
+          "gradient": "linear-gradient(180deg, #000000 0%, #00000000 100%)",
+          "slug": "black-to-transparent"
         }
       ],
       "palette": [

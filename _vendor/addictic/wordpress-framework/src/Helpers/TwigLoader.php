@@ -18,8 +18,8 @@ class TwigLoader
 
     public function __construct()
     {
-        $this->addFolder(AssetsHelper::sanitizePath(__DIR__ . "/../../templates"));
         $this->addFolder(AssetsHelper::getProjectDir("/templates"));
+        $this->addFolder(AssetsHelper::sanitizePath(__DIR__ . "/../../templates"));
 
         $loader = new FilesystemLoader($this->folders);
 
