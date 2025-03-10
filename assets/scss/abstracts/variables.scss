@@ -1,15 +1,19 @@
 :root {
-  --text-color: black;
   --color-white: #fff;
   --color-white-light: rgba(255, 255, 255, 0.6);
   --color-white-ultralight: rgba(255, 255, 255, 0.2);
   --color-light-grey: #eaeaea;
   --background-color: var(--color-white);
   --color-black: #000;
-  --color-grey: rgba(0, 0, 0, 0.6);
-  --color-grey-light: rgba(0, 0, 0, 0.2);
+
+  --color-grey: rgba(6, 52, 93, 0.8);
+  --color-grey-light: rgba(6, 52, 93, 0.5);
+
   --color: var(--color-white);
   --glass-morphism: linear-gradient(108deg, rgba(255, 255, 255, 0.05) 3.46%, rgba(255, 255, 255, 0.02) 96.7%);
 
   --color-wp-blue: #007cba;
+  --color-dark-blue: #06345D;
+
+  --text-color: var(--color-dark-blue);
 }

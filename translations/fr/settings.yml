@@ -29,3 +29,14 @@ simulator:
     gasoline_to_co2: "Emission C02 pour 1 litre de diesel"
     vehicle_electric_consumption: "Consommation moyenne d'un véhicule électrique en kWh"
     earth_size: "Circonférence de la terre"
+
+settings:
+  title: Paramètres
+  informations:
+    legend: Informations
+    address: Adresse
+    phone: Numéro de téléphone
+  navigation:
+    legend: Navigations
+    newsPage: Page des actualités
+    testimonyPage: Page des témoignages

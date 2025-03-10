@@ -7,7 +7,16 @@ use Addictic\WordpressFramework\Models\Legacy\PageModel;
 
 class MenuHelper
 {
-    public static function getMenuByLocation($location): array
+    public static function registerNavMenus(array $locations = [])
+    {
+        add_action("init", function()use($locations){
+            $results = [];
+            foreach ($locations as $location) $results[$location] = Container::get("translator")->trans("menus.$location");
+            register_nav_menus($results);
+        });
+    }
+
+    public static function getMenuByLocation(string $location): array
     {
         $locations = get_nav_menu_locations();
         $menu_obj = get_term($locations[$location], 'nav_menu');
@@ -27,14 +36,4 @@ class MenuHelper
         return [];
     }
 
-    public static function getFormationsPage()
-    {
-        $formationPageId = apply_filters("wpml_object_id", get_option('formationsPage'), "page");
-        return PageModel::findById($formationPageId);
-    }
-
-    public static function isFormationPage($id)
-    {
-        return apply_filters("wpml_object_id", $id, "page", true, "fr") == get_option("formationsPage");
-    }
 }

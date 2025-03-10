@@ -34,22 +34,7 @@
         {
           "name": "Bleu sombre",
           "slug": "dark-blue",
-          "color": "#184A6B"
-        },
-        {
-          "name": "Orange",
-          "slug": "orange",
-          "color": "#ED6E19"
-        },
-        {
-          "name": "Gris",
-          "slug": "grey",
-          "color": "#6D6767"
-        },
-        {
-          "name": "Gris clair",
-          "slug": "light-grey",
-          "color": "#e8edf1"
+          "color": "#06345D"
         }
       ]
     },

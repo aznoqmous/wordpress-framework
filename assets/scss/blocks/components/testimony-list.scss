@@ -36,7 +36,7 @@
       margin-bottom: pxrem(-10);
       text-decoration: none;
       font-weight: 800;
-      color: var(--color-black);
+      color: var(--text-color);
       gap: pxrem(10);
       @include row(flex-end, center);
     }

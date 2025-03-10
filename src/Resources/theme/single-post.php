@@ -2,7 +2,7 @@
 use Addictic\WordpressFramework\Helpers\Container;
 
 $currentNews = \Addictic\WordpressFramework\Models\Legacy\PostModel::findActive();
-$newsPage = \Addictic\WordpressFramework\Models\Legacy\PageModel::findBySourceLanguageId(get_option("newsPage"));
+$newsPage = \Addictic\WordpressFramework\Models\Legacy\PageModel::findById(get_option("newsPage"));
 ?>
 <?= get_header(); ?>
 <div class="single single-post">

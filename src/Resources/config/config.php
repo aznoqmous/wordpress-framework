@@ -2,10 +2,13 @@
 
 use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Fields\InputField;
-use Addictic\WordpressFramework\Helpers\AssetsHelper;
+use Addictic\WordpressFramework\Fields\PageField;
 use Addictic\WordpressFramework\Helpers\ViteHelper;
 use Addictic\WordpressFramework\Settings\OptionsPage;
 use Addictic\WordpressFramework\WordpressFrameworkBundle;
+
+add_theme_support( 'menus');
+\Addictic\WordpressFramework\Helpers\MenuHelper::registerNavMenus(['main', 'secondary']);
 
 if (is_admin()) {
     ViteHelper::add("backend");
@@ -21,8 +24,17 @@ WordpressFrameworkBundle::init();
 \Addictic\WordpressFramework\Annotation\BlockManager::getInstance()
     ->discover("\\App\\Blocks", __DIR__ . "/../../Blocks", \Addictic\WordpressFramework\Annotation\Block::class);
 
-
+\Addictic\WordpressFramework\Models\Legacy\PageModel::register();
 \App\Models\TestimonyModel::register();
+
+OptionsPage::create("settings")
+    ->addSection("navigation")
+    ->addField(new PageField('newsPage'))
+    ->addField(new PageField('testimonyPage'))
+    ->addSection("informations")
+    ->addField(new InputField("address"))
+    ->addField(new InputField("phone"))
+;
 
 OptionsPage::create("simulator")
     ->addSection("cost")
@@ -33,7 +45,7 @@ OptionsPage::create("simulator")
         ]
     ]))
     ->addSection("area")
-    ->addField(new InputFIeld("m_squared_to_kwc", [
+    ->addField(new InputField("m_squared_to_kwc", [
         'input' => [
             'type' => "number",
             'step' => 0.01
@@ -83,7 +95,7 @@ OptionsPage::create("simulator")
     ->addField(new InputField("household_consumption", [
         'input' => ['type' => "number"]
     ]))
-    ->addField(new InputField("vehicle_gasole_consumption", [
+    ->addField(new InputField("vehicle_gasoline_consumption", [
         'input' => ['type' => "number"]
     ]))
     ->addField(new InputField("gasoline_to_co2", [

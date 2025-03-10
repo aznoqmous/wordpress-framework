@@ -22,6 +22,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php //body_class("header-white"); ?>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#content">

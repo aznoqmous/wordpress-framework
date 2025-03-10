@@ -2,5 +2,5 @@
   @include container-fluid-margin;
 }
 #main > .wp-block-cover:first-child {
-  padding-top: 6rem;
+  padding-top: calc(var(--header-height) + #{pxrem(36)});
 }

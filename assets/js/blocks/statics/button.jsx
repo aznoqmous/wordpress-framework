@@ -74,6 +74,7 @@ export default class Button extends Block {
     save(props) {
         const {content} = props.attributes
         const html = document.createRange().createContextualFragment(content).children[0]
+        console.log("button", html, content)
         return <div className="wp-block-button-container">
             <div className="wp-block-button">
                 {html && (<a href={html.href}>
@@ -81,6 +82,7 @@ export default class Button extends Block {
                     <span>{html.textContent}</span>
                     {props.attributes.blocStyle == "external" && <div dangerouslySetInnerHTML={{__html: icons.external}}></div>}
                 </a>)}
+                {!html && (content)}
             </div>
         </div>
     }

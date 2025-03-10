@@ -14,3 +14,13 @@
 @import "frontend/layout/footer";
 
 @import "frontend/pages/post";
+
+#wpadminbar {
+  display: none !important;
+}
+html {
+  margin-top: 0 !important;
+}
+body.home #page #content {
+  padding-top: 0;
+}

@@ -130,11 +130,12 @@
     border-radius: var(--border-radius, pxrem(15));
     z-index: -2;
   }
+
   &:before {
     position: absolute;
     content:"";
     inset: 0;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.05);
     z-index: -1;
     border-radius: var(--border-radius, pxrem(15));
   }
@@ -172,10 +173,23 @@
     position: absolute;
     content:"";
     inset: 0;
-    background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
+    //background: linear-gradient(108deg, rgba(255, 255, 255, 0.20) 3.46%, rgba(255, 255, 255, 0.08) 96.7%);
+    background: linear-gradient(108deg, rgba(255, 255, 255, 0.05) 3.46%, rgba(255, 255, 255, 0.02) 96.7%);
     border-radius: var(--border-radius, pxrem(15));
     z-index: -1;
     opacity: 0.5;
   }
+}
 
+@mixin button {
+  padding: pxrem(10) pxrem(20);
+  border: 2px solid currentColor;
+  border-radius: 5rem;
+  transition: 0.2s ease;
+  cursor: pointer;
+  text-decoration: unset;
+  font-weight: 800;
+  @include row(center, center);
+  gap: pxrem(10);
+  color: inherit;
 }

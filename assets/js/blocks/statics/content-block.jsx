@@ -1,14 +1,14 @@
 import Block from "../../../../_vendor/addictic/wordpress-framework/assets/js/blocks/components/block"
 import {Heading, InnerBlocks, InputControl, RichText, TextControl, useBlockProps} from "../../../../_vendor/addictic/wordpress-framework/assets/js/backend/wp-bootstrapper";
 
-export default class NumberItem extends Block {
+export default class ContentBlock extends Block {
     constructor(props) {
         super(props);
-        this.title = "Chiffre clé"
-        this.icon = 'performance'
+        this.title = "Bloc de contenu"
+        this.icon = 'text'
         this.category = 'layout'
         this.attributes = {
-            number: {
+            title: {
                 type: "string",
                 default: "Titre"
             }
@@ -22,30 +22,31 @@ export default class NumberItem extends Block {
 
     render(props) {
         const {attributes, setAttributes} = props
-        const {number} = attributes
+        const {title} = attributes
         const blockProps = {...useBlockProps()}
-        blockProps.className = "wp-block-dvs-number-item"
+        blockProps.className = "wp-block-dvs-content-block"
         return <div {...blockProps}>
             <RichText
                 tagName="strong"
-                value={number}
+                value={title}
                 placeholder="Titre"
-                onChange={(number) => setAttributes({number})}
+                onChange={(title) => setAttributes({title})}
             />
-            <InnerBlocks allowedBlocks={["core/heading", "core/paragraph"]}/>
+            <InnerBlocks allowedBlocks={["core/heading", "core/paragraph", "dvs/button"]}/>
         </div>
     }
 
     save(props) {
-        const {number} = props.attributes
-        return <div className="wp-block-dvs-number-item">
+        console.log(props)
+        const {title} = props.attributes
+        return <div className="wp-block-dvs-content-block">
             <RichText.Content
                 tagName="strong"
-                value={number}
+                value={title}
             />
             <InnerBlocks.Content/>
         </div>
     }
 }
 
-NumberItem.register("dvs/number")
+ContentBlock.register("dvs/content-block")

@@ -13,9 +13,15 @@ class TestimonyModel extends AbstractPostTypeModel
     public function renderItem()
     {
         $this->loadFields();
-        $file = AttachmentModel::findById($this->logo);
         return Container::get("twig")->render("parts/testimony-item.twig", array_merge($this->row(), [
-            'logo' => $file->guid
+            'logo' => $this->getLogoPath(),
+            'href' => $this->getFrontendUrl()
         ]));
+    }
+
+    public function getLogoPath(){
+        $this->loadFields();
+        $file = AttachmentModel::findById($this->logo);
+        return $file->guid;
     }
 }

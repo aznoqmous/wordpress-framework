@@ -7,6 +7,7 @@ import "./js/blocks/dynamics/testimony"
 import "./js/blocks/statics/number-item"
 import "./js/blocks/statics/slider"
 import "./js/blocks/statics/button"
+import "./js/blocks/statics/content-block"
 
 import "./js/blocks/overrides/cover"
 // import "./js/blocks/overrides/button"

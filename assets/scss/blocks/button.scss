@@ -14,20 +14,12 @@
   &.alignright {
     justify-content: flex-end;
   }
-
+  &:last-child {
+    margin-bottom: 0;
+  }
   .wp-block-button {
     > a, > .button-placeholder {
-      display: inline-block;
-      padding: pxrem(10) pxrem(20);
-      border: 1px solid currentColor;
-      border-radius: 5rem;
-      transition: 0.2s ease;
-      cursor: pointer;
-      text-decoration: unset;
-      font-weight: 800;
-      @include row(center, center);
-      gap: pxrem(10);
-      color: inherit;
+      @include button;
 
       > div {
         display: contents;
