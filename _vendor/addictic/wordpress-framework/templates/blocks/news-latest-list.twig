@@ -1,0 +1,6 @@
+{% extends "blocks/_block.twig" %}
+{% block content %}
+    {% for post in posts %}
+        {{ post.renderItem() | raw }}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% extends "blocks/_block.twig" %}
+{% block content %}
+    <div class="categories">
+        <span class="category active">{{ "block.news_filtered_list.title"|trans }}</span>
+        {% for category in categories %}
+            <span class="category" data-id="{{ category.term_id }}">{{ category.name }}</span>
+        {% endfor %}
+    </div>
+    <div class="posts">
+        {% for post in posts %}
+            {{ post.renderItem() | raw }}
+        {% endfor %}
+        <div class="loader">
+            <figure></figure>
+            <span class="time"></span>
+            <span class="title" style="width: {{ random(85, 100) }}%"></span>
+            <span class="title" style="width: {{ random(55, 100) }}%"></span>
+            <p class="line" style="width: {{ random(85, 100) }}%"></p>
+            <p class="line" style="width: {{ random(90, 100) }}%"></p>
+            <p class="line" style="width: {{ random(55, 80) }}%"></p>
+            <span class="more"></span>
+        </div>
+        <div class="loader">
+            <figure></figure>
+            <span class="time"></span>
+            <span class="title" style="width: {{ random(85, 100) }}%"></span>
+            <span class="title" style="width: {{ random(55, 100) }}%"></span>
+            <p class="line" style="width: {{ random(85, 100) }}%"></p>
+            <p class="line" style="width: {{ random(90, 100) }}%"></p>
+            <p class="line" style="width: {{ random(55, 80) }}%"></p>
+            <span class="more"></span>
+        </div>
+        <div class="loader">
+            <figure></figure>
+            <span class="time"></span>
+            <span class="title" style="width: {{ random(85, 100) }}%"></span>
+            <span class="title" style="width: {{ random(55, 100) }}%"></span>
+            <p class="line" style="width: {{ random(85, 100) }}%"></p>
+            <p class="line" style="width: {{ random(90, 100) }}%"></p>
+            <p class="line" style="width: {{ random(55, 80) }}%"></p>
+            <span class="more"></span>
+        </div>
+    </div>
+{% endblock %}

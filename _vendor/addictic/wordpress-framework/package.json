@@ -14,5 +14,8 @@
     "mini-css-extract-plugin": "^2.9.2",
     "sass": "^1.83.4",
     "sass-loader": "^16.0.4"
+  },
+  "devDependencies": {
+    "vite": "^6.1.0"
   }
 }

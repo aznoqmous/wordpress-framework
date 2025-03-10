@@ -1,7 +1,7 @@
 .wp-block-button-container {
   @include row;
   margin: 2rem 0;
-  color: var(--text-color);
+  color: inherit;
 
   &.alignleft {
     justify-content: flex-start;
