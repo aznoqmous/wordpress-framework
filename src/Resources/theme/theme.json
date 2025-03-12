@@ -18,6 +18,16 @@
           "name": "Noir à transparent",
           "gradient": "linear-gradient(180deg, #000000 0%, #00000000 100%)",
           "slug": "black-to-transparent"
+        },
+        {
+          "name": "Bleu transparent",
+          "gradient": "linear-gradient(108deg, rgba(6, 52, 93, 0.80) 3.46%, rgba(6, 52, 93, 0.60) 96.7%)",
+          "slug": "blue-transparent"
+        },
+        {
+          "name": "Gris transparent",
+          "gradient": "linear-gradient(108deg, rgba(255, 255, 255, 0.35) 3.46%, rgba(255, 255, 255, 0.20) 96.7%)",
+          "slug": "grey-transparent"
         }
       ],
       "palette": [
@@ -30,6 +40,11 @@
           "name": "Blanc",
           "slug": "white",
           "color": "#FFF"
+        },
+        {
+          "name": "Bleu clair",
+          "slug": "light-blue",
+          "color": "#36A9E1"
         },
         {
           "name": "Bleu",

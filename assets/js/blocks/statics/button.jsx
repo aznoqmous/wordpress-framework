@@ -73,7 +73,6 @@ export default class Button extends Block {
     save(props) {
         const {content} = props.attributes
         const html = document.createRange().createContextualFragment(content).children[0]
-        console.log("button", html, content)
         return <div className="wp-block-button-container">
             <div className="wp-block-button">
                 {html && (<a href={html.href}>

@@ -1,5 +1,7 @@
 .wp-block-dvs-content-block {
   padding: pxrem(20);
   border-radius: pxrem(30);
-  background: black;
+  //border: 2px solid var(--text-color, black);
+  //background: red;
+  @include glassmorphism-border;
 }

@@ -16,6 +16,11 @@ export default class ContentBlock extends Block {
         this.supports = {
             typography: {
                 fontSize: true
+            },
+            color: {
+                gradients: true,
+                background: true,
+                text: true
             }
         }
     }
@@ -37,7 +42,6 @@ export default class ContentBlock extends Block {
     }
 
     save(props) {
-        console.log(props)
         const {title} = props.attributes
         return <div className="wp-block-dvs-content-block">
             <RichText.Content

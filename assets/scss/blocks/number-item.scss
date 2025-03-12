@@ -16,7 +16,7 @@
   @include column;
   gap: pxrem(10);
 
-  > strong {
+  strong {
     font-size: pxrem(50);
     font-weight: 300;
     color: var(--color-white);
