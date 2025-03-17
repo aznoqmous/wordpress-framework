@@ -1,0 +1,44 @@
+.form-group {
+  position: relative;
+  font-size: pxrem(16);
+  width: 100%;
+
+  + .form-group {
+    margin-top: pxrem(20);
+  }
+
+  label {
+    position: absolute;
+    bottom: calc(100% - 0.7em);
+    left: 0.5em;
+    font-weight: 800;
+  }
+  input, select {
+    font-size: inherit;
+  }
+
+  > input, > select {
+    padding: 1em;
+    border: unset;
+    width: 100%;
+    background: var(--color-light-blue-2);
+    border-radius: pxrem(17);
+  }
+
+  .input-unit {
+    background: var(--color-light-blue-2);
+    border-radius: pxrem(17);
+    display: flex;
+
+    > input {
+      flex-grow: 1;
+    }
+
+    > input, > select {
+      border: unset;
+      background: transparent;
+      padding: 1rem;
+    }
+
+  }
+}

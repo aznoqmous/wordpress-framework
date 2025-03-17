@@ -1,5 +1,147 @@
 .simulator {
 
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    outline: 2px solid var(--color-dark-blue);
+    border: 3px solid var(--color-white);
+    border-radius: 99rem;
+    overflow: hidden;
+    padding: 0;
+
+    li {
+      position: relative;
+      border-radius: 99rem;
+      @include square(1.5rem);
+      @include row(center, center);
+      font-weight: 800;
+      &.active {
+        background: var(--color-light-blue-1);
+        &:before {
+          position: absolute;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100vw;
+          content:"";
+          background: var(--color-light-blue-1);
+          z-index: -1;
+          border-radius: 99px;
+        }
+      }
+
+    }
+  }
+
+  .steps-container {
+    padding: 0;
+    li {
+      list-style: none;
+      &:not(.active){ display: none; }
+
+      .address {
+        @include column;
+        gap: 0.5em;
+
+        .address-options-wrapper {
+          display: grid;
+          transition: all ease 0.5s;
+          grid-template-rows: 1fr;
+          &.hidden {
+            grid-template-rows: 0fr;
+          }
+          .address-options {
+            @include column;
+            gap: 0.2em;
+            font-size: 0.8em;
+            overflow: hidden;
+            @include mobile {
+              flex-direction: column-reverse;
+            }
+            > * {
+              padding: 1em;
+              border-radius: pxrem(17);
+              background: var(--color-light-blue-2);
+              margin-top: 0.2em;
+            }
+          }
+        }
+
+        @include mobile {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      }
+
+      .parking {
+
+        .separator {
+          color: var(--color-blue);
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin: 1rem;
+
+          &:before, &:after {
+            content: "";
+            height: 2px;
+            background: var(--color-light-grey);
+            flex-grow: 1;
+          }
+        }
+        .map-toggle {
+          @include column(center);
+          button {
+            border: unset;
+            background: var(--color-light-blue-2);
+            @include row(center, center);
+            border-radius: pxrem(17);
+            padding: pxrem(10) pxrem(20);
+            padding-left: pxrem(5);
+            font-weight: 800;
+            color: inherit;
+          }
+        }
+        .map-container {
+          border-radius: pxrem(17);
+          overflow: hidden;
+          isolation: isolate;
+          max-height: 50vh;
+          &:not(.active){
+            display: none;
+          }
+          &.interacted {
+            .overlay {
+              opacity: 0;
+              pointer-events: none;
+            }
+          }
+          .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10000000000;
+            @include column(center, center);
+            gap: 1rem;
+            font-size: 1.2rem;
+            opacity: 1;
+            transition: 0.5s ease;
+            &:before {
+              position: absolute;
+              content: "";
+              inset: 0;
+              background: var(--color-dark-blue);
+              opacity: 0.7;
+              z-index: -1;
+            }
+            strong {
+              color: var(--color-white);
+            }
+          }
+        }
+      }
+    }
+  }
   .leaflet-container {
     height: 600px;
     cursor: copy;
@@ -11,6 +153,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
+      display: none;
 
       .area-control {
         display: flex;
@@ -62,41 +205,13 @@
         &:before {
           position: absolute;
           content:"";
-          border: 2px solid rgba(0,0,0,0.1);
+          border: 2px solid var(--color-white);
           inset: 0;
           border-radius: 50%;
         }
       }
 
     }
-  }
-
-  .address {
-
-    input {
-      padding: 0.2rem 0.4rem;
-      width: 100%;
-      margin: 0;
-      font: inherit;
-    }
-
-    .results {
-      border: 1px solid #eef5ff;
-      &.hidden {
-        display: none;
-      }
-      > div {
-        padding: 0.2rem 0.4rem;
-        cursor: pointer;
-        &:nth-child(2n){
-          background: var(--color-white-light);
-        }
-        &:hover {
-          background: #eef5ff;
-        }
-      }
-    }
-
   }
 
   > .simulator-results {

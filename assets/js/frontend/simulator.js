@@ -1,12 +1,15 @@
 import Element from "../../../_vendor/addictic/wordpress-framework/assets/js/libs/element";
 import areas from "../../areas.json"
 import Map from "../libs/map"
+import MathUtils from "../libs/math-utils";
 
 export class Simulator extends Element {
     bind() {
         this.calculator = JSON.parse(this.container.dataset.calculator)
         this.searchTime = 500
         this.searchTimeout = null
+
+        this.currentStep = 0
 
         this.data = {
             area: 0,
@@ -16,30 +19,25 @@ export class Simulator extends Element {
             estimatedCost: 0
         }
 
+        this.bindNavigation()
+        this.bindAddressInput()
         this.bindMap()
     }
 
-    bindMap() {
-        this.mapContainer = this.select(".map-container")
-        this.container.append(this.mapContainer)
+    bindNavigation() {
+        this.steps = this.selectAll(".steps li")
+        this.contents = this.selectAll(".steps-container li")
+        this.nextButton = this.select('.next')
+        this.prevButton = this.select('.prev')
 
-        this.map = new Map(this.mapContainer, {
-            //tileLayerUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            maxZoom: 19
-        })
+        this.nextButton.addEventListener('click', () => this.next())
+        this.prevButton.addEventListener('click', () => this.prev())
+    }
 
-        this.map.addEventListener('updateArea', (e) => {
-            this.data.area = this.map.areas.reduce((a, b) => a + b.area, 0)
-            this.render()
-        })
-
-        const addressContainer = document.createElement('div')
-        addressContainer.className = "address"
-        this.searchInput = document.createElement('input')
-        this.resultsContainer = document.createElement('div')
-        this.resultsContainer.className = "results"
-        addressContainer.append(this.searchInput, this.resultsContainer)
-        this.container.prepend(addressContainer)
+    bindAddressInput() {
+        this.searchInput = this.select("input#address")
+        this.resultsContainer = this.select(".address-options")
+        this.resultsWrapper = this.select(".address-options-wrapper")
 
         this.searchInput.addEventListener('input', () => {
             if (this.searchInput.value < 8) return;
@@ -50,15 +48,41 @@ export class Simulator extends Element {
         })
 
         this.searchInput.addEventListener('focus', () => {
-            this.resultsContainer.classList.remove('hidden')
+            this.resultsWrapper.classList.remove('hidden')
         })
         this.searchInput.addEventListener('focusout', () => {
-            setTimeout(()=> this.resultsContainer.classList.add('hidden'), 100)
+            setTimeout(() => this.resultsWrapper.classList.add('hidden'), 100)
+        })
+    }
+
+    bindMap() {
+        this.mapToggle = this.select('.map-toggle')
+        this.mapToggleButton = this.select('.map-toggle button')
+        this.mapToggleButton.addEventListener('click', ()=> {
+            this.mapContainer.classList.add('active')
+            this.mapToggle.remove()
+            this.map = new Map(this.mapContainer, {
+                //tileLayerUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                maxZoom: 19
+            })
+            this.map.select(this.map.addArea("#36A9E1"))
+            this.map.leafletMap.setView([this.addressFeature.geometry.coordinates[1], this.addressFeature.geometry.coordinates[0]], 19)
+        })
+
+        this.mapContainer = this.select(".map-container")
+
+        this.mapContainer.addEventListener('mousedown', ()=>{
+            this.mapContainer.classList.add('interacted')
+        })
+
+        this.map.addEventListener('updateArea', (e) => {
+            this.data.area = this.map.areas.reduce((a, b) => a + b.area, 0)
+            this.render()
         })
     }
 
     async search(query) {
-        const results = await fetch(`https://api-adresse.data.gouv.fr/search/?type=housenumber&q=${encodeURI(query)}`).then(res => res.json())
+        const results = await fetch(`https://api-adresse.data.gouv.fr/search/?type=housenumber&q=${query.replace(/ /, "+")}`).then(res => res.json())
         if (!results.features) return null;
         this.resultsContainer.innerHTML = ""
         this.resultsContainer.classList.remove('hidden')
@@ -72,8 +96,8 @@ export class Simulator extends Element {
                 this.searchInput.value = feature.properties.label
                 const dept = parseInt(feature.properties.postcode.slice(0, 2))
                 const department = this.findDepartment(dept)
-                this.map.leafletMap.setView([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], 19)
                 this.data.sunshineFactor = department.value
+                this.addressFeature = feature
             })
         })
     }
@@ -89,12 +113,10 @@ export class Simulator extends Element {
         this.data.parkingPotentialKwc = this.data.parkingLots * this.calculator.parking_space_area * this.calculator.m_squared_to_kwc
         this.data.areaPotentialKwc = this.data.area * this.calculator.m_squared_to_kwc
 
-        console.log(this)
         this.data.estimatedCost = this.data.areaPotentialKwc * 1000
-        for (let price of this.calculator.price_ranges){
-            if(this.data.parkingPotentialKwc >= parseInt(price.kwc_min)) this.data.estimatedCost *= parseFloat(price.cost)
+        for (let price of this.calculator.price_ranges) {
+            if (this.data.parkingPotentialKwc >= parseInt(price.kwc_min)) this.data.estimatedCost *= parseFloat(price.cost)
         }
-        console.log(this.data.estimatedCost)
 
         this.data.yearlyKwh = this.data.parkingPotentialKwc * this.data.sunshineFactor
         const factor = 0.996
@@ -102,8 +124,23 @@ export class Simulator extends Element {
 
         Object.keys(this.data).map(key => {
             const element = this.select(".simulator-results ." + key)
-            if(!element) return;
+            if (!element) return;
             element.innerHTML = this.data[key].toFixed(2)
         })
+    }
+
+    next() {
+        this.currentStep = MathUtils.clamp(this.currentStep + 1, 0, this.steps.length - 1)
+        this.updateStep()
+    }
+
+    prev() {
+        this.currentStep = MathUtils.clamp(this.currentStep - 1, 0, this.steps.length - 1)
+        this.updateStep()
+    }
+
+    updateStep() {
+        this.steps.map((step, i) => step.classList.toggle('active', i <= this.currentStep))
+        this.contents.map((content, i) => content.classList.toggle('active', i === this.currentStep))
     }
 }

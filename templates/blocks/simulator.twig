@@ -1,6 +1,106 @@
 <div class="simulator" data-calculator="{{ calculator }}">
-    <div class="step">
-        <div class="map-container"></div>
+    <ul class="steps">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <div class="simulator">
+        <ul class="steps-container">
+            <li class="active">
+                <div class="address">
+                    <div class="form-group">
+                        <label for="address">Localisation</label>
+                        <input type="text" id="address" placeholder="Votre adresse" required>
+                    </div>
+                    <div class="address-options-wrapper">
+                        <div class="address-options">
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="parking">
+                    <div class="form-group">
+                        <label for="parking">Nombre de places de parking</label>
+                        <input type="number" min="1" id="parking" placeholder="Places de parking" required>
+                    </div>
+                    <div class="separator">
+                        <strong>
+                            ou
+                        </strong>
+                    </div>
+                    <div class="map-toggle">
+                        <strong>
+                            Tracer votre superficie
+                        </strong>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                                <path d="M20.0426 14.7233C21.5373 14.7233 22.749 13.5116 22.749 12.0169C22.749 10.5222 21.5373 9.31049 20.0426 9.31049C18.5479 9.31049 17.3362 10.5222 17.3362 12.0169C17.3362 13.5116 18.5479 14.7233 20.0426 14.7233Z" stroke="#06345D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.0425 4.80005C18.1284 4.80005 16.2927 5.56041 14.9393 6.91387C13.5858 8.26732 12.8254 10.103 12.8254 12.0171C12.8254 13.7239 13.1881 14.8407 14.1786 16.0766L20.0425 22.8426L25.9063 16.0766C26.8968 14.8407 27.2595 13.7239 27.2595 12.0171C27.2595 10.103 26.4991 8.26732 25.1457 6.91387C23.7922 5.56041 21.9565 4.80005 20.0425 4.80005Z" stroke="#06345D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path opacity="0.5" d="M8.84277 20.4906C8.84277 18.9183 8.84277 18.1333 9.36677 17.6746C9.55222 17.5114 9.77783 17.3807 10.0294 17.2906C10.7388 17.0389 11.6708 17.2874 13.5348 17.7845C14.9574 18.1642 15.3228 18.4202 16.0428 18.3999M8.84277 20.4906V29.1605C8.84277 30.2719 8.84277 30.8298 9.22011 31.249C9.59744 31.6682 10.2574 31.8442 11.5774 32.1962L13.1308 32.6101C14.9534 33.0965 15.8654 33.3397 16.7828 33.2405C17.6984 33.1436 18.4959 32.7183 20.0901 31.868L21.9497 30.8755C23.1922 30.2139 23.815 29.8823 24.5134 29.7493C24.7707 29.7009 25.0333 29.673 25.2974 29.6661C26.0168 29.6458 26.7269 29.8353 28.1472 30.2144L28.1508 30.2154C30.0148 30.7125 30.9468 30.961 31.6561 30.7082C31.9075 30.6187 32.1331 30.4887 32.3188 30.3263C32.8428 29.8677 32.8428 29.0815 32.8428 27.5103V18.8394C32.8428 17.7269 32.8428 17.1701 32.4654 16.7509C32.0881 16.3317 31.4281 16.1557 30.1081 15.8037L28.5548 15.3898C27.7777 15.1824 27.1661 15.0192 26.6491 14.908M8.84277 20.4906V20.4895M24.8428 17.2906V29.3333M16.8428 19.1999V33.0666" stroke="#06345D" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>
+                            Afficher la carte
+                        </span>
+                        </button>
+                    </div>
+                    <div class="map-container">
+                        <div class="overlay">
+                            <svg width="131" height="58" viewBox="0 0 131 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M46.3841 7.4906L124.562 51.7975L6.27655 47.7191L46.3841 7.4906Z" fill="#36A9E1" opacity="0.5"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M125.055 50.9275L124.069 52.6675L46.5541 8.7364L6.98473 48.4252L5.56838 47.0131L46.214 6.2448L125.055 50.9275Z" fill="white"/>
+                                <path d="M129.178 55.9385C126.74 58.3844 122.78 58.3903 120.334 55.9518C117.888 53.5133 117.882 49.5536 120.321 47.1077C122.759 44.6618 126.719 44.6558 129.165 47.0944C131.611 49.5329 131.617 53.4926 129.178 55.9385Z" fill="white"/>
+                                <path d="M51.3219 11.3952C48.8834 13.8411 44.9237 13.847 42.4778 11.4085C40.0319 8.96995 40.026 5.01032 42.4645 2.56441C44.9031 0.118508 48.8627 0.112542 51.3086 2.55109C53.7545 4.98963 53.7605 8.94926 51.3219 11.3952Z" fill="white"/>
+                                <path d="M11.2425 51.5956C8.80393 54.0415 4.8443 54.0474 2.3984 51.6089C-0.047508 49.1703 -0.0534737 45.2107 2.38507 42.7648C4.82362 40.3189 8.78325 40.3129 11.2292 42.7515C13.6751 45.19 13.681 49.1497 11.2425 51.5956Z" fill="white"/>
+                                <path d="M127.449 54.2147C125.963 55.7056 123.549 55.7093 122.058 54.2229C120.568 52.7365 120.564 50.3229 122.05 48.832C123.537 47.3412 125.95 47.3375 127.441 48.8239C128.932 50.3103 128.936 52.7239 127.449 54.2147Z" fill="#36A9E1"/>
+                                <path d="M49.5927 9.67109C48.1063 11.162 45.6927 11.1656 44.2019 9.67921C42.711 8.19282 42.7074 5.77927 44.1937 4.28839C45.6801 2.79751 48.0937 2.79388 49.5846 4.28027C51.0754 5.76666 51.0791 8.18021 49.5927 9.67109Z" fill="#36A9E1"/>
+                                <path d="M9.51324 49.8715C8.02685 51.3624 5.6133 51.366 4.12242 49.8796C2.63155 48.3932 2.62791 45.9797 4.1143 44.4888C5.60069 42.9979 8.01425 42.9943 9.50512 44.4807C10.996 45.9671 10.9996 48.3806 9.51324 49.8715Z" fill="#36A9E1"/>
+                            </svg>
+                            <strong>
+                                Tracez votre périmètre
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="consumption">
+                    <div class="form-group">
+                        <label for="consumption">Consommation électrique</label>
+                        <div class="input-unit">
+                            <input type="number" step="0.1" id="consumption" placeholder="Votre consommation" required>
+                            <select name="cost_unit">
+                                <option value="kWh">kWh</option>
+                                <option value="euro">€</option>
+                            </select>
+                            <select name="time_unit">
+                                <option value="yearly">/an</option>
+                                <option value="monthly">/mois</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="typology">Typologie</label>
+                        <select id="typology" required>
+                            <option selected>Aucune</option>
+                            <option value="GMS">Grande et Moyenne Surface</option>
+                            <option value="Collectivité">Collectivité</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="navigation">
+            <div class="prev">
+                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="Vector" d="M8.52515 14.6168L1.73205 7.82373M1.73205 7.82373L8.52521 1.03057M1.73205 7.82373L15.3182 7.82372" stroke="#06345D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="next">
+                Suivant
+            </div>
+        </div>
     </div>
     <div class="simulator-results">
         <div>

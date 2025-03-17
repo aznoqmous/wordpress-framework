@@ -103,7 +103,7 @@ class QueryBuilder
         return $this;
     }
 
-    public function joinQuery($table, ?string $alias = null, string $joinType = null): self
+    public function joinQuery($table, ?string $alias = null, ?string $joinType = null): self
     {
         if ($joinType) $joinType = "$joinType ";
 
@@ -115,7 +115,7 @@ class QueryBuilder
         return $this;
     }
 
-    public function join($table, ?string $alias = null, string $joinType = null): self
+    public function join($table, ?string $alias = null, ?string $joinType = null): self
     {
         if ($table instanceof QueryBuilder) return $this->joinQuery($table, $alias, $joinType);
 

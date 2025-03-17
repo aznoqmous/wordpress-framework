@@ -9,7 +9,6 @@ import HtmlHelper from './html-helper';
 // const tileLayerUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 export default class Map extends EventTarget {
-
     constructor(container, opts={}){
         super()
         this.container = container
@@ -58,23 +57,25 @@ export default class Map extends EventTarget {
             this.select(this.addArea())
         })
 
-        window.addEventListener('keyup', (e)=>{
-            if(e.key == "Delete" && this.currentArea) {
-                this.removeArea(this.currentArea)
-            }
-        })
+        // window.addEventListener('keyup', (e)=>{
+        //     if(e.key == "Delete" && this.currentArea) {
+        //         this.removeArea(this.currentArea)
+        //     }
+        // })
     }
 
     addPoint(position){
         if(!this.currentArea || this.currentArea.points.length >= 4) {
-            this.select(this.addArea())
+            return null
+            //this.select(this.addArea())
         }
         this.currentArea.addPoint(position)
     }
 
-    addArea(){
+    addArea(color=null){
+        if(!color) color = `hsl(${this.index*80},80%,60%)`
         const newArea = new Area(this, {
-            color: `hsl(${this.index*80},80%,60%)`
+            color
         })
         this.areas.push(newArea)
         this.areas.map((p,i)=> p.name = "Area " + i)
@@ -107,7 +108,8 @@ class Area {
 
         this.polygon = Leaflet.polygon(this.points, {
             fillColor: this.opts.color,
-            color: this.opts.color
+            fillOpacity: 0.5,
+            color: "white"
         })
         this.polygon.addTo(this.leafletMap)
         this.buildControls()
@@ -147,7 +149,7 @@ class Area {
     }
     removePoint(point){
         this.points.splice(this.points.indexOf(point), 1)
-        if(this.points.length <= 0) return this.map.removeArea(this)
+        // if(this.points.length <= 0) return this.map.removeArea(this)
         this.polygon.setLatLngs(this.points)
         this.updateMarkers()
     }
