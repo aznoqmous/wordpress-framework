@@ -4,7 +4,7 @@
         <li>2</li>
         <li>3</li>
     </ul>
-    <div class="simulator">
+    <form class="simulator-content">
         <ul class="steps-container">
             <li class="active">
                 <div class="address">
@@ -21,9 +21,10 @@
             </li>
             <li>
                 <div class="parking">
+                    <input type="number" step="0.01" name="area" required>
                     <div class="form-group">
                         <label for="parking">Nombre de places de parking</label>
-                        <input type="number" min="1" id="parking" placeholder="Places de parking" required>
+                        <input type="number" min="1" id="parking" placeholder="Places de parking">
                     </div>
                     <div class="separator">
                         <strong>
@@ -36,9 +37,9 @@
                         </strong>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
-                                <path d="M20.0426 14.7233C21.5373 14.7233 22.749 13.5116 22.749 12.0169C22.749 10.5222 21.5373 9.31049 20.0426 9.31049C18.5479 9.31049 17.3362 10.5222 17.3362 12.0169C17.3362 13.5116 18.5479 14.7233 20.0426 14.7233Z" stroke="#06345D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M20.0425 4.80005C18.1284 4.80005 16.2927 5.56041 14.9393 6.91387C13.5858 8.26732 12.8254 10.103 12.8254 12.0171C12.8254 13.7239 13.1881 14.8407 14.1786 16.0766L20.0425 22.8426L25.9063 16.0766C26.8968 14.8407 27.2595 13.7239 27.2595 12.0171C27.2595 10.103 26.4991 8.26732 25.1457 6.91387C23.7922 5.56041 21.9565 4.80005 20.0425 4.80005Z" stroke="#06345D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path opacity="0.5" d="M8.84277 20.4906C8.84277 18.9183 8.84277 18.1333 9.36677 17.6746C9.55222 17.5114 9.77783 17.3807 10.0294 17.2906C10.7388 17.0389 11.6708 17.2874 13.5348 17.7845C14.9574 18.1642 15.3228 18.4202 16.0428 18.3999M8.84277 20.4906V29.1605C8.84277 30.2719 8.84277 30.8298 9.22011 31.249C9.59744 31.6682 10.2574 31.8442 11.5774 32.1962L13.1308 32.6101C14.9534 33.0965 15.8654 33.3397 16.7828 33.2405C17.6984 33.1436 18.4959 32.7183 20.0901 31.868L21.9497 30.8755C23.1922 30.2139 23.815 29.8823 24.5134 29.7493C24.7707 29.7009 25.0333 29.673 25.2974 29.6661C26.0168 29.6458 26.7269 29.8353 28.1472 30.2144L28.1508 30.2154C30.0148 30.7125 30.9468 30.961 31.6561 30.7082C31.9075 30.6187 32.1331 30.4887 32.3188 30.3263C32.8428 29.8677 32.8428 29.0815 32.8428 27.5103V18.8394C32.8428 17.7269 32.8428 17.1701 32.4654 16.7509C32.0881 16.3317 31.4281 16.1557 30.1081 15.8037L28.5548 15.3898C27.7777 15.1824 27.1661 15.0192 26.6491 14.908M8.84277 20.4906V20.4895M24.8428 17.2906V29.3333M16.8428 19.1999V33.0666" stroke="#06345D" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M20.0426 14.7233C21.5373 14.7233 22.749 13.5116 22.749 12.0169C22.749 10.5222 21.5373 9.31049 20.0426 9.31049C18.5479 9.31049 17.3362 10.5222 17.3362 12.0169C17.3362 13.5116 18.5479 14.7233 20.0426 14.7233Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20.0425 4.80005C18.1284 4.80005 16.2927 5.56041 14.9393 6.91387C13.5858 8.26732 12.8254 10.103 12.8254 12.0171C12.8254 13.7239 13.1881 14.8407 14.1786 16.0766L20.0425 22.8426L25.9063 16.0766C26.8968 14.8407 27.2595 13.7239 27.2595 12.0171C27.2595 10.103 26.4991 8.26732 25.1457 6.91387C23.7922 5.56041 21.9565 4.80005 20.0425 4.80005Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path opacity="0.5" d="M8.84277 20.4906C8.84277 18.9183 8.84277 18.1333 9.36677 17.6746C9.55222 17.5114 9.77783 17.3807 10.0294 17.2906C10.7388 17.0389 11.6708 17.2874 13.5348 17.7845C14.9574 18.1642 15.3228 18.4202 16.0428 18.3999M8.84277 20.4906V29.1605C8.84277 30.2719 8.84277 30.8298 9.22011 31.249C9.59744 31.6682 10.2574 31.8442 11.5774 32.1962L13.1308 32.6101C14.9534 33.0965 15.8654 33.3397 16.7828 33.2405C17.6984 33.1436 18.4959 32.7183 20.0901 31.868L21.9497 30.8755C23.1922 30.2139 23.815 29.8823 24.5134 29.7493C24.7707 29.7009 25.0333 29.673 25.2974 29.6661C26.0168 29.6458 26.7269 29.8353 28.1472 30.2144L28.1508 30.2154C30.0148 30.7125 30.9468 30.961 31.6561 30.7082C31.9075 30.6187 32.1331 30.4887 32.3188 30.3263C32.8428 29.8677 32.8428 29.0815 32.8428 27.5103V18.8394C32.8428 17.7269 32.8428 17.1701 32.4654 16.7509C32.0881 16.3317 31.4281 16.1557 30.1081 15.8037L28.5548 15.3898C27.7777 15.1824 27.1661 15.0192 26.6491 14.908M8.84277 20.4906V20.4895M24.8428 17.2906V29.3333M16.8428 19.1999V33.0666" stroke="currentColor" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round"/>
                             </svg>
                             <span>
                             Afficher la carte
@@ -69,12 +70,12 @@
                     <div class="form-group">
                         <label for="consumption">Consommation électrique</label>
                         <div class="input-unit">
-                            <input type="number" step="0.1" id="consumption" placeholder="Votre consommation" required>
-                            <select name="cost_unit">
+                            <input name="consumption_value" type="number" step="0.1" id="consumption" placeholder="Votre consommation" required>
+                            <select name="consumption_cost_unit">
                                 <option value="kWh">kWh</option>
                                 <option value="euro">€</option>
                             </select>
-                            <select name="time_unit">
+                            <select name="consumption_time_unit">
                                 <option value="yearly">/an</option>
                                 <option value="monthly">/mois</option>
                             </select>
@@ -101,7 +102,7 @@
                 Suivant
             </div>
         </div>
-    </div>
+    </form>
     <div class="simulator-results">
         <div>
             <strong>Surface totale</strong>
@@ -130,6 +131,14 @@
         <div>
             <strong>Production annuelle estimée</strong>
             <div><span class="yearlyKwh">0</span>kWh</div>
+        </div>
+        <div>
+            <strong>Economie annuelle estimée</strong>
+            <div><span class="yearlyGain">0</span>€</div>
+        </div>
+        <div>
+            <strong>Retour sur investissement (en années)</strong>
+            <div><span class="returnOnInvestmentYears">0</span>ans</div>
         </div>
         <div>
             <strong>Production totale</strong>

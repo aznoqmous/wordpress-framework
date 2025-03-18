@@ -32,9 +32,27 @@
 
     }
   }
+  form.simulator-content {
+    padding: 1rem 0;
+    @include column;
+    gap: pxrem(20);
 
+    //&:not(.valid){
+    //  .navigation .next {
+    //    opacity: 0;
+    //    pointer-events: none;
+    //  }
+    //}
+    //.navigation .next {
+    //  opacity: 1;
+    //  transition: all 0.5s ease;
+    //}
+
+  }
   .steps-container {
     padding: 0;
+    margin: 0;
+    width: 100%;
     li {
       list-style: none;
       &:not(.active){ display: none; }
@@ -61,8 +79,13 @@
             > * {
               padding: 1em;
               border-radius: pxrem(17);
-              background: var(--color-light-blue-2);
+              background: var(--color-light-blue-1);
               margin-top: 0.2em;
+              cursor: pointer;
+              &:hover {
+                color: var(--color-white);
+                background: var(--color-light-blue);
+              }
             }
           }
         }
@@ -74,7 +97,11 @@
       }
 
       .parking {
-
+        input[name="area"] {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+        }
         .separator {
           color: var(--color-blue);
           text-transform: uppercase;
@@ -101,6 +128,11 @@
             padding-left: pxrem(5);
             font-weight: 800;
             color: inherit;
+            cursor: pointer;
+            &:hover {
+              color: var(--color-white);
+              background: var(--color-light-blue);
+            }
           }
         }
         .map-container {
@@ -213,7 +245,25 @@
 
     }
   }
-
+  .navigation {
+    width: 100%;
+    @include row(space-between, center);
+    gap: pxrem(20);
+    .prev {
+      @include square(3rem);
+      @include center;
+    }
+    .prev, .next {
+      border: 2px solid var(--color-dark-blue);
+      border-radius: 999rem;
+    }
+    .next {
+      padding: 1rem;
+      @include button;
+      flex-grow: 1;
+      text-transform: uppercase;
+    }
+  }
   > .simulator-results {
     display: none;
     &.active {

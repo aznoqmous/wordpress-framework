@@ -21,7 +21,8 @@ export default class Map extends EventTarget {
             startPosition: new Position(47.1,2.4),
             startZoom: 6,
             minZoom: 6,
-            maxZoom: 15
+            maxZoom: 15,
+            preventAddPoint: false
         }, opts)
 
         this.areas = []
@@ -65,6 +66,7 @@ export default class Map extends EventTarget {
     }
 
     addPoint(position){
+        if(this.opts.preventAddPoint) return null;
         if(!this.currentArea || this.currentArea.points.length >= 4) {
             return null
             //this.select(this.addArea())
@@ -181,6 +183,8 @@ class Area {
             this.updateMarkers()
             this.leafletMap.removeEventListener('mousemove', markerMove)
             this.leafletMap.removeEventListener('mouseup', removeEvent)
+            this.leafletMap.removeEventListener('touchmove', markerMove)
+            this.leafletMap.removeEventListener('touchend', removeEvent)
             setTimeout(()=> this.preventDelete = false, 100)
         }
         const markerMove = (e)=>{
@@ -195,6 +199,12 @@ class Area {
             map.isDraggingMarker = false
             this.leafletMap.addEventListener('mousemove', markerMove)
             this.leafletMap.addEventListener('mouseup', removeEvent)
+        })
+        marker.addEventListener('touchstart', (e)=>{
+            map.dragging.disable()
+            map.isDraggingMarker = false
+            this.leafletMap.addEventListener('touchmove', markerMove)
+            this.leafletMap.addEventListener('touchend', removeEvent)
         })
     }
 

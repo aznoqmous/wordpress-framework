@@ -9,12 +9,13 @@
 
   label {
     position: absolute;
-    bottom: calc(100% - 0.7em);
+    bottom: calc(100% - 0.6em);
     left: 0.5em;
     font-weight: 800;
   }
-  input, select {
+  input, select, textarea {
     font-size: inherit;
+    outline-color: var(--color-light-blue);
   }
 
   > input, > select {
@@ -37,7 +38,12 @@
     > input, > select {
       border: unset;
       background: transparent;
-      padding: 1rem;
+      padding: 1rem 0.5rem;
+      border-radius: pxrem(17);
+      &:first-child {
+        padding-left: 1rem;
+      }
+
     }
 
   }
