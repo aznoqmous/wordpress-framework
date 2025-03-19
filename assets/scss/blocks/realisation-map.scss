@@ -3,6 +3,16 @@
   .map-container {
     @include container-fluid-margin;
     min-height: 70vh;
+    background: var(--color-white);
+
+    .region {
+      fill: currentColor !important;
+      fill-opacity: 1 !important;
+      color: var(--color-dark-blue);
+      &:hover {
+        color: var(--color-dark-blue-1);
+      }
+    }
 
     .location-point {
       width: pxrem(8) !important;
@@ -10,12 +20,13 @@
       border-radius: 50%;
       background: var(--color-light-blue);
       border: 2px solid var(--color-white);
+      pointer-events: none;
     }
 
     .realisation-point span {
       display: block;
-      width: pxrem(8);
-      height: pxrem(8);
+      width: pxrem(10);
+      height: pxrem(10);
       border-radius: 50%;
       background: var(--color-light-blue);
       position: relative;
