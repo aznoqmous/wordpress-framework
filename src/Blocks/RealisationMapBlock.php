@@ -31,7 +31,8 @@ class RealisationMapBlock extends AbstractBlock
 
         $this->realisations = json_encode(RealisationModel::findAll()->map(fn($r)=> [
             'id' => $r->id,
-            'location' => $r->location,
+            'longitude' => $r->getValue("longitude"),
+            'latitude' => $r->getValue("latitude")
         ]));
     }
 }

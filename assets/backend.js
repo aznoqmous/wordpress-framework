@@ -13,3 +13,5 @@ import "./js/blocks/statics/content-block"
 import "./js/blocks/overrides/cover"
 // import "./js/blocks/overrides/button"
 
+import LocationField from "./js/location-field"
+LocationField.bind(".location-field")

@@ -1,0 +1,19 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <input
+            class="field"
+            name="{{ name }}"
+            value="{{ value }}"
+            {{ required ? "required" : "" }}
+            {{ input }}
+            type="hidden"
+    >
+    <input
+            id="{{ name }}"
+            class="field search"
+            type="text"
+            value="{{ searchLabel }}"
+            data-type="{{ locationType }}"
+    >
+    <div class="options"></div>
+{% endblock %}

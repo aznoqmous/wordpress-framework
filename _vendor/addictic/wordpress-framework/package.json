@@ -1,7 +1,7 @@
 {
   "name": "wordpress-framework",
   "version": "1.0.0",
-  "main": "webpack.config.js",
+  "main": "vite.config.js",
   "scripts": {
     "build": "vite build"
   },

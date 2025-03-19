@@ -39,3 +39,27 @@ body {
     }
   }
 }
+
+.location-field {
+  &.open {
+    .options {
+      display: flex;
+    }
+  }
+  .options {
+    display: none;
+    flex-direction: column;
+    > div {
+      padding: 0.2em 0.4em;
+      border-radius: 0.4em;
+      cursor: pointer;
+      &:nth-child(2n) {
+        background: var(--color-blue-100);
+      }
+      &:hover {
+        background: var(--color-blue-600);
+        color: var(--color-white);
+      }
+    }
+  }
+}

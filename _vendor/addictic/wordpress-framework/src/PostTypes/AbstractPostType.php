@@ -201,6 +201,7 @@ abstract class AbstractPostType
         $postType = $this->postType->name;
         add_action("save_post", function ($post_id) use ($callback, $postType, $key) {
             global $post;
+            if(!$post) $post = get_post($post_id);
             if (!$post) return;
             if ($post->post_type != $postType) return;
             if ($GLOBALS[$key]) return;

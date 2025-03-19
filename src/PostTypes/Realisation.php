@@ -5,11 +5,13 @@ namespace App\PostTypes;
 use Addictic\WordpressFramework\Annotation\PostType;
 use Addictic\WordpressFramework\Fields\DateField;
 use Addictic\WordpressFramework\Fields\InputField;
+use Addictic\WordpressFramework\Fields\LocationField;
 use Addictic\WordpressFramework\Fields\RelationField;
 use Addictic\WordpressFramework\Fields\SelectField;
 use Addictic\WordpressFramework\Fields\TextareaField;
 use Addictic\WordpressFramework\Fields\UploadField;
 use Addictic\WordpressFramework\PostTypes\AbstractPostType;
+use App\Models\RealisationModel;
 use App\Models\TestimonyModel;
 
 /**
@@ -28,7 +30,10 @@ class Realisation extends AbstractPostType
                 ->addField(new UploadField("images", ['multiple' => true]))
                 ->addField(new UploadField("videos", ['multiple' => true]))
                 ->addField(new TextareaField("description"))
-                ->addField(new TextareaField("address"))
+                ->addField(new LocationField("address", [
+                    'locationType' => "housenumber",
+                    'required' => true
+                ]))
             ->apply()
             ->addMetaBox("relation_legend")
 //                ->addField(new RelationField("product", ['multiple' => false]))
@@ -53,5 +58,15 @@ class Realisation extends AbstractPostType
 //                ->addField(new RelationField("options"))
             ->apply()
         ;
+
+        $this->addSaveCallback(function($id){
+            $realisation = RealisationModel::findById($id);
+            if(!$realisation) return;
+            if($address = $realisation->getValue("address")){
+                $address = json_decode($address);
+                update_post_meta($realisation->id, "latitude", $address->lat);
+                update_post_meta($realisation->id, "longitude", $address->lng);
+            }
+        });
     }
 }
