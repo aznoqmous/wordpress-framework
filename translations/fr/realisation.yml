@@ -1,0 +1,32 @@
+realisation:
+  back: Retour aux réalisations
+  slug: realisation
+  singular: Voir le réalisations
+  plural: Réalisations
+  menu_name: Réalisations
+  all_items: Tous les réalisations
+
+  meta_legend: SEO
+  meta_title: Méta Titre
+  meta_description: Méta Description
+
+  content_legend: Contenu
+  relation_legend: Relations
+  stats_legend: Statistiques
+
+  title: Titre
+  alias: Alias
+  images: Images
+  videos: Vidéos
+  description: Description
+  address: Adresse
+  product: Produit
+  testimonials: Témoignages
+  funding_mode: Mode de financement
+  area: Superficie
+  power: Puissance installée
+  annual_production: Production annuelle
+  coverage: Taux de couverture
+  start_date: Date de mise en service
+  parking_spaces: Nombre de places de parking
+  sector: Secteur d'activité

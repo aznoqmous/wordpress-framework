@@ -1,0 +1,6 @@
+.single-testimony {
+  .back {
+    margin-top: pxrem(20);
+    @include button;
+  }
+}

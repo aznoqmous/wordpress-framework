@@ -1,0 +1,11 @@
+<div class="swiper">
+    <h2>{{ title }}</h2>
+    <div class="items swiper-wrapper">
+        {% for item in items %}
+        <div class="swiper-slide">
+            {{ item | raw }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>

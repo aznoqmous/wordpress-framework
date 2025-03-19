@@ -3,6 +3,7 @@
 use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Fields\InputField;
 use Addictic\WordpressFramework\Fields\PageField;
+use Addictic\WordpressFramework\Fields\UploadField;
 use Addictic\WordpressFramework\Helpers\ViteHelper;
 use Addictic\WordpressFramework\Settings\OptionsPage;
 use Addictic\WordpressFramework\WordpressFrameworkBundle;
@@ -26,14 +27,18 @@ WordpressFrameworkBundle::init();
 
 \Addictic\WordpressFramework\Models\Legacy\PageModel::register();
 \App\Models\TestimonyModel::register();
+\App\Models\RealisationModel::register();
 
 OptionsPage::create("settings")
     ->addSection("navigation")
-    ->addField(new PageField('newsPage'))
-    ->addField(new PageField('testimonyPage'))
+        ->addField(new PageField('newsPage'))
+        ->addField(new PageField('testimonyPage'))
     ->addSection("informations")
-    ->addField(new InputField("address"))
-    ->addField(new InputField("phone"))
+        ->addField(new InputField("address"))
+        ->addField(new InputField("phone"))
+    ->addSection("realisations")
+        ->addField(new UploadField("realisationCsv"))
+        ->addField(new InputField("realisationMapUrl"))
 ;
 
 OptionsPage::create("simulator")

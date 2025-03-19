@@ -1,0 +1,20 @@
+.swiper {
+  .swiper-pagination-bullets {
+    width: fit-content !important;
+    padding: 0.2rem;
+    background: var(--color-light-grey);
+    border-radius: 99rem;
+    position: static;
+    margin: pxrem(10) auto;
+  }
+  .swiper-pagination-bullet {
+    transition: all 0.2s ease;
+    background: var(--color-dark-blue);
+    opacity: 1;
+    &.swiper-pagination-bullet-active {
+      background: var(--color-light-blue);
+      width: 1.5rem;
+      border-radius: 99rem;
+    }
+  }
+}

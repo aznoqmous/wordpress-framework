@@ -1,0 +1,36 @@
+.realisation-map {
+
+  .map-container {
+    @include container-fluid-margin;
+    min-height: 70vh;
+
+    .location-point {
+      width: pxrem(8) !important;
+      height: pxrem(8) !important;
+      border-radius: 50%;
+      background: var(--color-light-blue);
+      border: 2px solid var(--color-white);
+    }
+
+    .realisation-point span {
+      display: block;
+      width: pxrem(8);
+      height: pxrem(8);
+      border-radius: 50%;
+      background: var(--color-light-blue);
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content:"";
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+        width: pxrem(18);
+        aspect-ratio: 1;        border: 3px solid var(--color-white);
+        border-radius: 50%;
+      }
+    }
+
+  }
+}

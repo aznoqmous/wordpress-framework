@@ -8,10 +8,6 @@ export default class ContentBlock extends Block {
         this.icon = 'text'
         this.category = 'layout'
         this.attributes = {
-            title: {
-                type: "string",
-                default: "Titre"
-            }
         }
         this.supports = {
             typography: {
@@ -31,12 +27,6 @@ export default class ContentBlock extends Block {
         const blockProps = {...useBlockProps()}
         blockProps.className = "wp-block-dvs-content-block"
         return <div {...blockProps}>
-            <RichText
-                tagName="strong"
-                value={title}
-                placeholder="Titre"
-                onChange={(title) => setAttributes({title})}
-            />
             <InnerBlocks allowedBlocks={["core/heading", "core/paragraph", "dvs/button"]}/>
         </div>
     }
@@ -44,10 +34,6 @@ export default class ContentBlock extends Block {
     save(props) {
         const {title} = props.attributes
         return <div className="wp-block-dvs-content-block">
-            <RichText.Content
-                tagName="strong"
-                value={title}
-            />
             <InnerBlocks.Content/>
         </div>
     }

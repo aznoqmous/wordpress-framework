@@ -4,6 +4,7 @@ import "./scss/backend.scss"
 
 import "./js/blocks/dynamics/simulator"
 import "./js/blocks/dynamics/testimony"
+import "./js/blocks/dynamics/realisation-map"
 import "./js/blocks/statics/number-item"
 import "./js/blocks/statics/slider"
 import "./js/blocks/statics/button"

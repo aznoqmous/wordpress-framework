@@ -22,6 +22,7 @@ class Testimony extends AbstractPostType
 
         $this
             ->addMetabox("content_legend")
+                ->addField(new InputField("name"))
                 ->addField(new InputField("job"))
                 ->addField(new TextareaField("description", ["editor" => "wp_editor"]))
                 ->addField(new UploadField("logo", [

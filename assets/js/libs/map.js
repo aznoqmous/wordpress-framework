@@ -163,7 +163,7 @@ class Area {
     }
 
     addMarker(position){
-        const marker = Leaflet.marker(position).addTo(this.leafletMap).addTo(this.leafletMap)
+        const marker = Leaflet.marker(position).addTo(this.leafletMap)
         const icon = Leaflet.divIcon({
             className: "area-point",
             html: `<span style="--color: ${this.opts.color}"></span>`

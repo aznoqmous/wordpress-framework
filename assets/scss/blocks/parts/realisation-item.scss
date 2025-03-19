@@ -1,0 +1,31 @@
+.realisation-item {
+  border-radius: pxrem(30);
+  background: var(--color-light-blue-0);
+  border: 2px solid var(--color-light-blue-1);
+  padding: pxrem(20);
+  //@include column;
+  //gap: pxrem(20);
+
+  figure {
+    aspect-ratio: 290/160;
+    width: 100%;
+    margin: 0;
+    img {
+      @include imgFit(cover);
+      border-radius: pxrem(15);
+    }
+  }
+
+  h3 {
+    margin: pxrem(10) 0;
+  }
+
+  .more {
+    @include row(flex-end, center);
+    gap: pxrem(20);
+    margin-left: auto;
+    font-weight: 800;
+    text-decoration: unset;
+    color: var(--color-dark-blue);
+  }
+}
