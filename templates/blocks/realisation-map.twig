@@ -1,6 +1,16 @@
-<div class="realisation-map" data-locations="{{ locations }}" data-realisations="{{ realisations }}">
-    REALISATIONS
+<div class="realisation-map" data-locations="{{ locations }}" data-realisations="{{ realisationPins }}">
+
+    <div class="title">
+        <h1>Réalisations</h1>
+        <small>({{ count }})</small>
+    </div>
+
     <div class="map-container">
 
     </div>
+
+    <div class="realisations">
+        {{ realisations | raw }}
+    </div>
+
 </div>

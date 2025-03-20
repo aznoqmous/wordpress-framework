@@ -5,7 +5,7 @@ export default class Simulator extends DynamicBlock
     constructor(props) {
         super(props);
         this.title = "Simulateur"
-        this.icon = 'excerpt-view'
+        this.icon = 'dashboard'
         this.category = 'layout'
     }
 }

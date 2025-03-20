@@ -3,12 +3,12 @@ import Swiper from 'swiper/bundle'
 import 'swiper/css'
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import {Navigation, Pagination} from 'swiper/modules';
 
-export default class SingleTestimony extends Element
-{
-    bind(){
-        this.swiper = new Swiper(this.select(".swiper"), {
+export default class SwiperElement extends Element {
+
+    bind() {
+        this.swiper = new Swiper(this.container, {
             modules: [Pagination],
             pagination: {
                 el: '.swiper-pagination',
@@ -20,4 +20,5 @@ export default class SingleTestimony extends Element
             spaceBetween: 20
         })
     }
+
 }

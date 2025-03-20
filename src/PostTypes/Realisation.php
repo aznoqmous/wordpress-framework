@@ -15,7 +15,7 @@ use App\Models\RealisationModel;
 use App\Models\TestimonyModel;
 
 /**
- * @PostType(name="realisation")
+ * @PostType(name="realisation", icon="dashicons-location")
  */
 class Realisation extends AbstractPostType
 {
@@ -46,15 +46,15 @@ class Realisation extends AbstractPostType
                 ->addField(new SelectField("funding_mode", ['options' => [
                     "test_1", "test_2", "test_3"
                 ]]))
+                ->addField(new SelectField("sector", ["options" => [
+                    "test_1", "test_2", "test_3"
+                ]]))
                 ->addField(new InputField("area", ["required" => true]))
                 ->addField(new InputField("power", ["required" => true]))
                 ->addField(new InputField("annual_production", ["required" => true]))
                 ->addField(new InputField("coverage", ["required" => true]))
                 ->addField(new DateField("start_date", ["required" => true]))
                 ->addField(new InputField("parking_spaces", ["required" => true]))
-                ->addField(new SelectField("sector", ["options" => [
-                    "test_1", "test_2", "test_3"
-                ]]))
 //                ->addField(new RelationField("options"))
             ->apply()
         ;
