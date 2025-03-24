@@ -670,10 +670,6 @@
                         <li>
                             <a href="<?= parse_url($item->url)['path'] ?>">
                                 <span><?= $item->title ?></span>
-                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="1.36279" y="1.27539" width="31" height="31" rx="15.5" stroke="currentColor" stroke-width="2"></rect>
-                                    <path d="M12.0591 11.9721L21.666 11.972M21.666 11.972L21.666 21.579M21.666 11.972L12.0591 21.5789" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
                             </a>
                         </li>
                     <?php endforeach; ?>

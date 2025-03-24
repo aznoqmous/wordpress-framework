@@ -15,7 +15,7 @@ use App\Models\RealisationModel;
 use App\Models\TestimonyModel;
 
 /**
- * @PostType(name="realisation", icon="dashicons-location")
+ * @PostType(name="realisation", icon="dashicons-location", taxonomies="realisation_option")
  */
 class Realisation extends AbstractPostType
 {
@@ -49,12 +49,12 @@ class Realisation extends AbstractPostType
                 ->addField(new SelectField("sector", ["options" => [
                     "test_1", "test_2", "test_3"
                 ]]))
-                ->addField(new InputField("area", ["required" => true]))
-                ->addField(new InputField("power", ["required" => true]))
-                ->addField(new InputField("annual_production", ["required" => true]))
-                ->addField(new InputField("coverage", ["required" => true]))
+                ->addField(new InputField("area", ["required" => true, "input" => ["type" => "number"]]))
+                ->addField(new InputField("power", ["required" => true, "input" => ["type" => "number"]]))
+                ->addField(new InputField("annual_production", ["required" => true, "input" => ["type" => "number"]]))
+                ->addField(new InputField("coverage", ["required" => true, "input" => ["type" => "number"]]))
                 ->addField(new DateField("start_date", ["required" => true]))
-                ->addField(new InputField("parking_spaces", ["required" => true]))
+                ->addField(new InputField("parking_spaces", ["required" => true, "input" => ["type" => "number"]]))
 //                ->addField(new RelationField("options"))
             ->apply()
         ;

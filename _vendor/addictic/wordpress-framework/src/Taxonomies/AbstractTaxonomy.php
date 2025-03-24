@@ -4,6 +4,7 @@ namespace Addictic\WordpressFramework\Taxonomies;
 
 use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Helpers\Container;
+use PostTypes\Columns;
 use PostTypes\Taxonomy;
 use PostTypes\Taxonomy as BaseTaxonomy;
 
@@ -14,7 +15,16 @@ abstract class AbstractTaxonomy
 
     public $fields = [];
 
+    public $priority = 0;
+
     protected BaseTaxonomy $taxonomy;
+    protected Columns $columns;
+
+
+    public function getName()
+    {
+        return $this->name;
+    }
 
     public function addSubmenu($parentSlug, $position = null)
     {

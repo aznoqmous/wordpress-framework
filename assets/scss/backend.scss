@@ -63,3 +63,12 @@ body {
     }
   }
 }
+
+.swiper-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  .realisation-item {
+    min-height: 100%;
+  }
+}

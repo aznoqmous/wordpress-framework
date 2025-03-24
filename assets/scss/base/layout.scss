@@ -5,11 +5,14 @@ body {
   #page #content {
     padding-top: calc(var(--header-height) + 30px);
 
-    #primary #main {
-      @include container;
+    #primary {
+      overflow: hidden;
+      #main {
+        @include container;
 
-      .alignfull {
-        margin: 0 calc(var(--container-width) * 0.5 - 50vw);
+        .alignfull {
+          margin: 0 calc(var(--container-width) * 0.5 - 50vw);
+        }
       }
     }
   }

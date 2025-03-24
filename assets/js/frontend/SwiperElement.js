@@ -14,9 +14,9 @@ export default class SwiperElement extends Element {
                 el: '.swiper-pagination',
             },
             slidesPerView: 1,
-            autoplay: {
-                delay: 5000,
-            },
+            // autoplay: {
+            //     delay: 5000,
+            // },
             spaceBetween: 20
         })
     }

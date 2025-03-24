@@ -1,8 +1,14 @@
 .realisation-item {
   border-radius: pxrem(30);
-  background: var(--color-light-blue-0);
+  //background: var(--color-light-blue-0);
   border: 2px solid var(--color-light-blue-1);
   padding: pxrem(20);
+
+  background: linear-gradient(108deg, rgba(170, 223, 249, 0.56) 3.46%, rgba(170, 223, 249, 0.32) 96.7%);
+  backdrop-filter: blur(30px);
+  border: 2px solid rgba(170, 223, 249, 0.70);
+
+
   //@include column;
   //gap: pxrem(20);
 

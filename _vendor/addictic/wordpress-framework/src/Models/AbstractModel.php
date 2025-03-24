@@ -34,7 +34,7 @@ abstract class AbstractModel
             $key = "id";
             $this->id = $value;
         }
-        
+
         $this->arrData[$key] = $value;
     }
 
@@ -114,8 +114,17 @@ abstract class AbstractModel
         if (isset($opts['order'])) $qb->orderBy($opts['order']);
         if (isset($opts['limit'])) $qb->limit($opts['limit']);
         if (isset($opts['offset'])) $qb->offset($opts['offset']);
-        $qb->from(static::$strTable);
         return $qb->query();
+    }
+
+    public static function count($queries = [], $opts = [], $baseQuery = null)
+    {
+        $qb = $baseQuery ?? static::getBaseQuery();
+        if (count($queries)) $qb->where(...$queries);
+        if (isset($opts['order'])) $qb->orderBy($opts['order']);
+        if (isset($opts['limit'])) $qb->limit($opts['limit']);
+        if (isset($opts['offset'])) $qb->offset($opts['offset']);
+        return $qb->count();
     }
 
     public static function loadModels($datas = []): ModelCollection
@@ -133,6 +142,16 @@ abstract class AbstractModel
     public function get($key)
     {
         return isset($this->arrData[$key]) ? $this->arrData[$key] : null;
+    }
+
+    public function set($key, $value)
+    {
+        $this->arrData[$key] = $value;
+    }
+
+    public function has($key)
+    {
+        return isset($this->arrData[$key]);
     }
 
     public function setData($data)

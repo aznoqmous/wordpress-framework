@@ -22,12 +22,17 @@ WordpressFrameworkBundle::init();
 \Addictic\WordpressFramework\Annotation\PostTypeManager::getInstance()
     ->discover("\\App\\PostTypes", __DIR__ . "/../../PostTypes", \Addictic\WordpressFramework\Annotation\PostType::class);
 
+\Addictic\WordpressFramework\Annotation\TaxonomyManager::getInstance()
+
+    ->discover("\\App\\Taxonomies", __DIR__ . "/../../Taxonomies", \Addictic\WordpressFramework\Annotation\Taxonomy::class);
+
 \Addictic\WordpressFramework\Annotation\BlockManager::getInstance()
     ->discover("\\App\\Blocks", __DIR__ . "/../../Blocks", \Addictic\WordpressFramework\Annotation\Block::class);
 
 \Addictic\WordpressFramework\Models\Legacy\PageModel::register();
 \App\Models\TestimonyModel::register();
 \App\Models\RealisationModel::register();
+\App\Models\RealisationOptionTaxonomyModel::register();
 
 OptionsPage::create("settings")
     ->addSection("navigation")

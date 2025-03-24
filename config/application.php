@@ -135,3 +135,5 @@ Config::apply();
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+define('ALLOW_UNFILTERED_UPLOADS', true);

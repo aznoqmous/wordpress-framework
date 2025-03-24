@@ -13,6 +13,7 @@ use App\Models\RealisationModel;
  * @property $locations
  * @property $realisations
  * @property $realisationPins
+ * @property $count
  * @Block(name="app/realisation-map", template="blocks/realisation-map.twig")
  */
 class RealisationMapBlock extends AbstractBlock
@@ -21,17 +22,21 @@ class RealisationMapBlock extends AbstractBlock
     {
         $file = Config::get("realisationCsv");
 
-        if($file && $file = AttachmentModel::findById($file)){
+        $this->count = 0;
+
+        if ($file && $file = AttachmentModel::findById($file)) {
             $data = [];
             $handle = fopen($file->guid, "r");
             while (($row = @fgetcsv($handle)) !== FALSE) {
+                if (!floatval($row[0])) continue;
                 $data[] = $row;
+                $this->count++;
             }
             fclose($handle);
             $this->locations = json_encode($data);
         }
 
-        $this->realisationPins = json_encode(RealisationModel::findAll()->map(fn($r)=> [
+        $this->realisationPins = json_encode(RealisationModel::findAll(['limit' => 5])->map(fn($r) => [
             'id' => $r->id,
             'longitude' => $r->getValue("longitude"),
             'latitude' => $r->getValue("latitude")

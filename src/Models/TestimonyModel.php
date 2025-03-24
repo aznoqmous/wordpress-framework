@@ -31,7 +31,7 @@ class TestimonyModel extends AbstractPostTypeModel
         return $file->guid;
     }
 
-    public function getRealisations():ModelCollection
+    public function getRealisations(): ModelCollection
     {
         return RealisationModel::findBy(["testimonials LIKE '%\"$this->id\"%'"], ['metas' => ['testimonials']]);
     }

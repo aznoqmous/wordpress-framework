@@ -193,24 +193,31 @@
                             </div>
                         </div>
                         <div class="navigation">
-                            <h3>Rubriques</h3>
-                            <ul>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                            </ul>
+                            <nav class="main-navigation">
+                                <h3>Rubriques</h3>
+                                <ul>
+                                    <?php foreach(\Addictic\WordpressFramework\Helpers\MenuHelper::getMenuByLocation("main") as $item): ?>
+                                        <li>
+                                            <a href="<?= parse_url($item->url)['path'] ?>">
+                                                <span><?= $item->title ?></span>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </nav>
                             <hr>
-                            <h3>Autres rubriques</h3>
-                            <ul>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                                <li><a href="">Secteurs d'activités</a></li>
-                            </ul>
+                            <nav class="secondary-navigation">
+                                <h3>Autres rubriques</h3>
+                                <ul>
+                                    <?php foreach(\Addictic\WordpressFramework\Helpers\MenuHelper::getMenuByLocation("secondary") as $item): ?>
+                                        <li>
+                                            <a href="<?= parse_url($item->url)['path'] ?>">
+                                                <?= $item->title ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                     <div class="socials">
@@ -244,12 +251,6 @@
                 <div class="planet-single">
                     <figure></figure>
                 </div>
-<!--                <div class="planet-top">-->
-<!--                    <figure></figure>-->
-<!--                </div>-->
-<!--                <div class="planet-bottom">-->
-<!--                    <figure></figure>-->
-<!--                </div>-->
             </footer>
         </div>
     </body>

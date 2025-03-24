@@ -2,50 +2,30 @@
 
 namespace Addictic\WordpressFramework\Annotation;
 
-use Doctrine\Common\Annotations\AnnotationReader;
-
-class TaxonomyManager
+class TaxonomyManager extends AbstractManager
 {
-    protected static TaxonomyManager $instance;
-    private TaxonomyDiscovery $discovery;
 
-    public function __construct()
+    protected function addClass(string $className, mixed $annotation)
     {
-        $this->discovery = new TaxonomyDiscovery("\\Addictic\\WordpressFramework\\Taxonomies", "Taxonomies", __DIR__, new AnnotationReader());
-        static::$instance = $this;
+        $instance = new $className();
+        $instance->name = $annotation->name;
+        $instance->priority = $annotation->priority ?? $instance->priority;
+        $this->entities[$instance->getName()] = (object)[
+            'class' => $instance::class,
+            'annotation' => $annotation,
+            'instance' => $instance
+        ];
     }
 
-    public function getTaxonomies()
+    protected function setup()
     {
-        return $this->discovery->getTaxonomies();
-    }
-
-    public function getTaxonomy($name)
-    {
-        $entitiess = $this->discovery->getTaxonomies();
-        if (isset($entitiess[$name])) {
-            return $entitiess[$name]['instance'];
+        uasort($this->entities, fn($a, $b) => $a->instance->priority - $b->instance->priority);
+        foreach ($this->entities as $entity) {
+            $entity->instance->register();
         }
-
-        throw new \Exception('Worker not found.');
     }
 
-    public function create($name)
+    protected function addMethod(\ReflectionMethod $method, string $className, mixed $annotation)
     {
-        $entities = $this->discovery->getTaxonomies();
-        if (array_key_exists($name, $entities)) {
-            $class = $entities[$name]['class'];
-            if (!class_exists($class)) {
-                throw new \Exception('Worker class does not exist.');
-            }
-            return new $class();
-        }
-
-        throw new \Exception('Worker does not exist.');
-    }
-
-    public static function getInstance():TaxonomyManager
-    {
-        return static::$instance;
     }
 }

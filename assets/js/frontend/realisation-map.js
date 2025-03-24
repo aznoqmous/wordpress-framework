@@ -4,22 +4,26 @@ import "leaflet/dist/leaflet.css"
 import regions from "../regions.json"
 
 import * as turf from "@turf/turf"
+import "leaflet-active-area"
 
 export default class RealisationMap extends Element {
 
     build() {
-        console.log(turf)
-
-        this.locations = JSON.parse(this.container.dataset.locations)
+        this.locations = this.getJsonData(this.container.dataset.locations)
         this.map = Leaflet.map(this.select('.map-container'))
-
+        this.map.setView([47.1, 2.4], 6)
+        // console.log(this.map.setActiveArea)
+        this.map.setActiveArea("active-area", true, true)
         // Leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
 
-        this.map.setView([47.1, 2.4], 6)
+
+        if(!this.locations) return;
         this.markers = this.locations.map(location => {
             return this.addLocation(location)
         })
-        this.realisations = JSON.parse(this.container.dataset.realisations)
+
+        this.realisations = this.getJsonData(this.container.dataset.realisations)
+        if(!this.realisations) return;
         this.realisations.map(realisation => this.addRealisation(realisation))
 
         this.regions = []
@@ -121,6 +125,15 @@ export default class RealisationMap extends Element {
         })
     }
 
+    getJsonData(data){
+        try {
+            return JSON.parse(data)
+        }
+        catch(e) {
+            return null
+        }
+    }
+
     addLocation(position) {
         const marker = Leaflet.marker(position).addTo(this.map)
         marker.point = [position[1], position[0]]
@@ -175,4 +188,8 @@ export default class RealisationMap extends Element {
     //     var polygon = turf.polygon(geojsonFeature.geometry.coordinates);
     //     return turf.booleanPointInPolygon(point, polygon);
     // }
+
+    refresh(){
+        this.map.setActiveArea("active-area", true, true)
+    }
 }

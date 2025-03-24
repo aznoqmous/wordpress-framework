@@ -40,3 +40,7 @@ settings:
     legend: Navigations
     newsPage: Page des actualités
     testimonyPage: Page des témoignages
+  realisations:
+    legend: Réalisations
+    realisationCsv: Fichier pins réalisations
+    realisationMapUrl: URL de la map (utilisé par Leaflet)

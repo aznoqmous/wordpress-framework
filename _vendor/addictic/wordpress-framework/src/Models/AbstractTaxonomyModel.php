@@ -44,9 +44,10 @@ abstract class AbstractTaxonomyModel extends AbstractModel
                 ->where("wtt.taxonomy = \"$type\"");
         }
 
-        $tax = TaxonomyManager::getInstance()->getTaxonomy(static::$strName);
+        $tax = TaxonomyManager::getInstance()->get(static::$strName);
         $selects = ["*"];
-        foreach ($tax->fields as $name => $field) {
+        $fields = property_exists($tax, "fields") ?: [];
+        foreach ($fields as $name => $field) {
             $selects[] = "wtm_$name.meta_value as $name";
             $builder->join("wp_termmeta", "wtm_$name", "LEFT");
             $builder->on("wtm_$name.term_id = wtt.term_id AND wtm_$name.meta_key = '$name'");
@@ -98,5 +99,10 @@ abstract class AbstractTaxonomyModel extends AbstractModel
     public function getFrontendUrl()
     {
         return "";
+    }
+
+    public function getParent(): ?self
+    {
+        return self::findById($this->parent);
     }
 }

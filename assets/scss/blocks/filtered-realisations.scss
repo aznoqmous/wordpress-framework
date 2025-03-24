@@ -1,0 +1,6 @@
+.filtered-realisations {
+  .filters {
+    @include column;
+    gap: pxrem(15);
+  }
+}

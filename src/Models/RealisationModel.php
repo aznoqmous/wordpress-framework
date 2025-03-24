@@ -5,6 +5,7 @@ namespace App\Models;
 use Addictic\WordpressFramework\Helpers\Container;
 use Addictic\WordpressFramework\Models\AbstractPostTypeModel;
 use Addictic\WordpressFramework\Models\Legacy\AttachmentModel;
+use App\Taxonomies\RealisationOptionTaxonomy;
 
 class RealisationModel extends AbstractPostTypeModel
 {
@@ -22,7 +23,14 @@ class RealisationModel extends AbstractPostTypeModel
 
     public function getImages()
     {
-        $ids = array_filter(explode(",", $this->getValue("images") ?: ""), fn($value)=> $value);
+        $ids = array_filter(explode(",", $this->getValue("images") ?: ""), fn($value) => $value);
         return count($ids) ? AttachmentModel::findByIds($ids) : null;
+    }
+
+    public function getOptions()
+    {
+        $jobs = get_the_terms(intval($this->id), "job");
+        $ids = array_map(fn($el) => $el->term_id, is_array($jobs) ? $jobs : []);
+        return count($ids) ? RealisationOptionTaxonomyModel::findByIds($ids) : null;
     }
 }

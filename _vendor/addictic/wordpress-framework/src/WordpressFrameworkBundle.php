@@ -13,7 +13,7 @@ use Addictic\WordpressFramework\Annotation\PostTypeManager;
 use Addictic\WordpressFramework\Annotation\OldRouteManager;
 use Addictic\WordpressFramework\Annotation\Route;
 use Addictic\WordpressFramework\Annotation\RouteManager;
-use Addictic\WordpressFramework\Annotation\TaxonomyManager;
+use Addictic\WordpressFramework\Annotation\OldTaxonomyManager;
 use Addictic\WordpressFramework\Helpers\AssetsHelper;
 
 class WordpressFrameworkBundle

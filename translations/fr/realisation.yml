@@ -23,10 +23,10 @@ realisation:
   product: Produit
   testimonials: Témoignages
   funding_mode: Mode de financement
-  area: Superficie
-  power: Puissance installée
-  annual_production: Production annuelle
-  coverage: Taux de couverture
+  area: Superficie (en m²)
+  power: Puissance installée (en MWh)
+  annual_production: Production annuelle (en MW)
+  coverage: Taux de couverture (en %)
   start_date: Date de mise en service
   parking_spaces: Nombre de places de parking
   sector: Secteur d'activité

@@ -51,6 +51,19 @@ class QueryBuilder
             . ($this->offset || $this->limit > 0 ? " LIMIT {$this->offset} , {$this->limit}" : "");
     }
 
+    public function getCountQuery()
+    {
+        return
+            'SELECT count(*) as count'
+            . ' FROM ' . (count($this->from) ? implode(', ', $this->from) : "wp_posts")
+            . (count($this->joins) ? " " . implode(' ', $this->joins) : "")
+            . (count($this->conditions) ? ' WHERE ' . implode(' AND ', $this->conditions) : " WHERE 1")
+            . (count($this->groupBy) ? " GROUP BY " . implode(", ", $this->groupBy) : "")
+            . (count($this->orders) ? " ORDER BY " . implode(", ", $this->orders) : "")
+            . ($this->offset || $this->limit > 0 ? " LIMIT {$this->offset} , {$this->limit}" : "");
+
+    }
+
     public function select(string ...$select): self
     {
         $this->fields = $select;
@@ -173,5 +186,20 @@ class QueryBuilder
             );
         }
         return $result;
+    }
+
+    public function count(){
+        global $wpdb;
+        $wpdb->suppress_errors();
+        $result = $wpdb->get_results($this->getCountQuery());
+        if ($wpdb->last_error) {
+            echo $this->__toString();
+            throw new \Exception(
+                implode("<br>", [
+                    $wpdb->last_error
+                ])
+            );
+        }
+        return $result[0]->count;
     }
 }
