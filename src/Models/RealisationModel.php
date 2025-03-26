@@ -30,7 +30,7 @@ class RealisationModel extends AbstractPostTypeModel
 
     public function getOptions()
     {
-        $jobs = get_the_terms(intval($this->id), "job");
+        $jobs = get_the_terms(intval($this->id), "realisation_option");
         $ids = array_map(fn($el) => $el->term_id, is_array($jobs) ? $jobs : []);
         return count($ids) ? RealisationOptionTaxonomyModel::findByIds($ids) : null;
     }

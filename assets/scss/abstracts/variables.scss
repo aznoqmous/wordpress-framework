@@ -14,14 +14,32 @@
   --glass-morphism: linear-gradient(108deg, rgba(255, 255, 255, 0.05) 3.46%, rgba(255, 255, 255, 0.02) 96.7%);
 
   --color-wp-blue: #007cba;
-  --color-light-blue: #36A9E1;
-  --color-light-blue-0:#d2eefc;
-  --color-light-blue-1: #c9e1ef;
   --color-light-blue-2: #e6ebef;
-  --color-dark-blue: #06345D;
+  --color-light-blue-1: #c9e1ef;
+  --color-light-blue-0:#d2eefc;
+  --color-light-blue: #36A9E1;
   --color-dark-blue-1: #206e9e;
   --color-dark-blue-2: #165fa9;
+  --color-dark-blue: #06345D;
+
+  --color-midnight-blue-50: #eff8ff;
+  --color-midnight-blue-100: #dff0ff;
+  --color-midnight-blue-200: #b7e2ff;
+  --color-midnight-blue-300: #77cbff;
+  --color-midnight-blue-400: #2fb2ff;
+  --color-midnight-blue-500: #0498f3;
+  --color-midnight-blue-600: #0078d0;
+  --color-midnight-blue-700: #005fa9;
+  --color-midnight-blue-800: #01518b;
+  --color-midnight-blue-900: #074373;
+  --color-midnight-blue-950: #06345d;
+
   //--color-light-blue-0: #c4e9fb;
 
   --text-color: var(--color-dark-blue);
+
+  --wp--preset--font-size--small: 1.3rem;
+  --wp--preset--font-size--medium: 2rem;
+  --wp--preset--font-size--large: 3.5rem;
+  --wp--preset--font-size--x-large: 5rem;
 }

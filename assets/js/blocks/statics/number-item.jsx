@@ -32,7 +32,6 @@ export default class NumberItem extends Block {
                 placeholder="Titre"
                 onChange={(number) => setAttributes({number})}
             />
-            <InnerBlocks allowedBlocks={["core/heading", "core/paragraph"]}/>
         </div>
     }
 
@@ -43,7 +42,6 @@ export default class NumberItem extends Block {
                 tagName="strong"
                 value={number}
             />
-            <InnerBlocks.Content/>
         </div>
     }
 }

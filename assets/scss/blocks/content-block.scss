@@ -3,5 +3,8 @@
   border-radius: pxrem(30);
   //border: 2px solid var(--text-color, black);
   //background: red;
-  @include glassmorphism-border;
+  //@include glassmorphism-border;
+  & + .wp-block-dvs-content-block {
+    margin-top: pxrem(20);
+  }
 }

@@ -27,7 +27,12 @@ export default class ContentBlock extends Block {
         const blockProps = {...useBlockProps()}
         blockProps.className = "wp-block-dvs-content-block"
         return <div {...blockProps}>
-            <InnerBlocks allowedBlocks={["core/heading", "core/paragraph", "dvs/button"]}/>
+            <InnerBlocks allowedBlocks={[
+                "core/heading",
+                "core/paragraph",
+                "dvs/button",
+                "dvs/number"
+            ]}/>
         </div>
     }
 

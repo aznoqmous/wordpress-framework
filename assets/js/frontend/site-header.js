@@ -7,7 +7,7 @@ export default class SiteHeader extends Element {
         })
         this.container.classList.toggle("light", !!document.querySelector("#main > .wp-block-cover:first-child"))
 
-        this.select('.burger').addEventListener('touchstart', (e)=>{
+        this.select('.burger').addEventListener('click', (e)=>{
             e.preventDefault()
             document.body.classList.toggle('menu-open')
         })

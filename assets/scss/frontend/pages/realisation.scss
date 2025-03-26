@@ -1,0 +1,74 @@
+.single-realisation {
+  .content {
+
+    .images .swiper {
+      position: relative;
+
+      .swiper-wrapper {
+        .swiper-slide {
+          figure {
+            aspect-ratio: 37/30;
+            border-radius: pxrem(15);
+            overflow: hidden;
+
+            img {
+              @include imgFit(cover);
+            }
+          }
+        }
+      }
+
+      .swiper-pagination {
+        position: absolute;
+        bottom: pxrem(15);
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(0.5rem);
+
+        .swiper-pagination-bullet {
+          background: var(--color-white);
+          opacity: 0.5;
+
+          &.swiper-pagination-bullet-active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .informations {
+      background: var(--color-light-blue-2);
+      position: relative;
+      @include column;
+      gap: 0.5rem;
+      padding: pxrem(20);
+      border-radius: pxrem(17);
+
+      h2 {
+        font-size: pxrem(18);
+        text-transform: none;
+        font-weight: 600;
+        position: absolute;
+        margin: 0;
+        left: 0.5rem;
+        top: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    .options .swiper {
+      width: 50%;
+      overflow: visible;
+      .swiper-wrapper {
+        .swiper-slide {
+          .realisation-option-item {
+            aspect-ratio: 1;
+            background: var(--color-light-blue-0);
+            padding: pxrem(15);
+            border-radius: pxrem(15);
+          }
+        }
+      }
+    }
+  }
+}

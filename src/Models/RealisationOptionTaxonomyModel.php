@@ -11,4 +11,9 @@ use App\Taxonomies\RealisationOptionTaxonomy;
 class RealisationOptionTaxonomyModel extends AbstractTaxonomyModel
 {
     public static $strName = "realisation_option";
+
+    public function renderListItem()
+    {
+        return Container::get("twig")->render("parts/realisation-option-item.twig", $this->row());
+    }
 }

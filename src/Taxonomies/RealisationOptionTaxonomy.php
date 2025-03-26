@@ -4,6 +4,7 @@ namespace App\Taxonomies;
 
 use Addictic\WordpressFramework\Annotation\Taxonomy;
 use Addictic\WordpressFramework\Blocks\AbstractBlock;
+use Addictic\WordpressFramework\Fields\IconField;
 use Addictic\WordpressFramework\Taxonomies\AbstractTaxonomy;
 
 /**
