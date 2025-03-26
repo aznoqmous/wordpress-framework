@@ -43,12 +43,6 @@ class Realisation extends AbstractPostType
                 ]))
             ->apply()
             ->addMetaBox("stats_legend")
-                ->addField(new SelectField("funding_mode", ['options' => [
-                    "test_1", "test_2", "test_3"
-                ]]))
-                ->addField(new SelectField("sector", ["options" => [
-                    "test_1", "test_2", "test_3"
-                ]]))
                 ->addField(new InputField("area", ["required" => true, "input" => ["type" => "number"]]))
                 ->addField(new InputField("power", ["required" => true, "input" => ["type" => "number"]]))
                 ->addField(new InputField("annual_production", ["required" => true, "input" => ["type" => "number"]]))

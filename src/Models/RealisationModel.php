@@ -17,7 +17,8 @@ class RealisationModel extends AbstractPostTypeModel
         $images = $this->getImages();
         return Container::get("twig")->render("parts/realisation-item.twig", array_merge([
             "main_image" => $images ? $images->current()->guid : null,
-            "href" => $this->getFrontendUrl()
+            "href" => $this->getFrontendUrl(),
+            "badges" => get_the_terms($this->id, "realisation_option")
         ], $this->row()));
     }
 

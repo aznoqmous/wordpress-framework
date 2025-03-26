@@ -10,6 +10,7 @@ use App\Models\RealisationModel;
 use App\Models\RealisationOptionTaxonomyModel;
 
 /**
+ * @property $options
  * @property $filters
  * @property $realisations
  * @property $count
@@ -23,8 +24,9 @@ class FilteredRealisationsBlock extends AbstractBlock
 
         $taxonomyModels = RealisationOptionTaxonomyModel::findBy(["count != 0"]);
 
-        foreach ($taxonomyModels as $taxonomy) {
+        $options = [];
 
+        foreach ($taxonomyModels as $taxonomy) {
             if ($taxonomy->parent) {
                 $taxonomies[$taxonomy->parent] = isset($taxonomies[$taxonomy->parent])
                     ? $taxonomies[$taxonomy->parent]
@@ -35,12 +37,11 @@ class FilteredRealisationsBlock extends AbstractBlock
             }
             else {
                 if(!isset($taxonomies[$taxonomy->term_id]))
-                    $taxonomies[$taxonomy->term_id] = $taxonomy->row();
+                    $options[$taxonomy->term_id] = $taxonomy->row();
             }
-
-
         }
 
+        $this->options = $options;
         $this->filters = $taxonomies;
 
         $this->count = QueryBuilder::create()

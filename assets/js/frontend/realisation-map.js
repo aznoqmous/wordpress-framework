@@ -10,7 +10,11 @@ export default class RealisationMap extends Element {
 
     build() {
         this.locations = this.getJsonData(this.container.dataset.locations)
-        this.map = Leaflet.map(this.select('.map-container'))
+        this.map = Leaflet.map(this.select('.map-container'), {
+            maxZoom: 6,
+            minZoom: 6,
+            startZoom: 6
+        })
         this.map.setView([47.1, 2.4], 6)
         // console.log(this.map.setActiveArea)
         this.map.setActiveArea("active-area", true, true)
@@ -34,7 +38,7 @@ export default class RealisationMap extends Element {
                     opacity: 1,
                     fillOpacity: 0,
                     strokeOpacity: 1,
-                    color: "var(--color-dark-blue-2)",
+                    color: "var(--color-dark-blue-2)"
                 },
                 className: "region"
             }).addTo(this.map)

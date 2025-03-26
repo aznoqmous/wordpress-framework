@@ -1,6 +1,128 @@
 .filtered-realisations {
+  @include container-fluid-margin;
+
+  .title {
+    @include row(flex-start, flex-end);
+    gap: 0.2em;
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+  .container {
+    padding: 2rem 0;
+    @include container;
+    @include column;
+    gap: 1rem;
+  }
   .filters {
     @include column;
     gap: pxrem(15);
+    width: 100%;
+
+    .filter {
+      @include column;
+      width: 100%;
+
+      label {
+        font-weight: 800;
+        margin-bottom: -0.5em;
+        margin-left: 1.2em;
+      }
+
+      select {
+        display: none;
+      }
+
+      .select {
+        width: 100%;
+        padding: pxrem(15) pxrem(20);
+        border-radius: pxrem(15);
+        border: unset;
+        box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+        accent-color: var(--color-light-blue-2);
+        cursor: pointer;
+        span {
+          color: var(--color-light-blue);
+          pointer-events: none;
+        }
+        hr {
+          border: unset;
+          border-bottom: 1px solid var(--color-light-grey);
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.2em;
+
+          li {
+            list-style: none;
+            background: var(--color-light-blue);
+            color: var(--color-white);
+            padding: 0.3em 0.4em;
+            border-radius: pxrem(10);
+            @include row;
+            gap: 0.2rem;
+            &:after {
+              content:"";
+              display: block;
+              width: 23px;
+              height: 22px;
+              background-image: url("data:image/svg+xml,%3Csvg width='23' height='22' viewBox='0 0 23 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M18.1975 4.63555C14.6828 1.12083 8.98435 1.12083 5.46963 4.63555C1.95491 8.15027 1.95491 13.8488 5.46963 17.3635C8.98435 20.8782 14.6828 20.8782 18.1975 17.3635C21.7123 13.8488 21.7123 8.15027 18.1975 4.63555ZM4.05541 3.22134C8.35118 -1.07443 15.316 -1.07443 19.6118 3.22134C23.9075 7.5171 23.9075 14.4819 19.6118 18.7777C15.316 23.0735 8.35118 23.0735 4.05541 18.7777C-0.240354 14.4819 -0.240355 7.5171 4.05541 3.22134ZM8.09504 7.26096C8.48556 6.87044 9.11873 6.87044 9.50925 7.26096L11.8336 9.5853L14.1568 7.26211C14.5473 6.87159 15.1805 6.87159 15.571 7.26211C15.9615 7.65264 15.9615 8.2858 15.571 8.67632L13.2478 10.9995L15.5702 13.3219C15.9607 13.7124 15.9607 14.3456 15.5702 14.7361C15.1796 15.1266 14.5465 15.1266 14.156 14.7361L11.8336 12.4137L9.51007 14.7372C9.11954 15.1278 8.48638 15.1278 8.09585 14.7372C7.70533 14.3467 7.70533 13.7136 8.09585 13.323L10.4194 10.9995L8.09504 8.67517C7.70451 8.28465 7.70451 7.65148 8.09504 7.26096Z' fill='white'/%3E%3C/svg%3E%0A");
+            }
+            &:before {
+              content:"";
+              display: block;
+              width: 23px;
+              height: 22px;
+              background-image: url("data:image/svg+xml,%0A%3Csvg width='23' height='22' viewBox='0 0 23 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20.8335 11C20.8335 6.02945 16.8041 2.00001 11.8335 2.00001C6.86293 2.00001 2.8335 6.02945 2.8335 11C2.8335 15.9706 6.86293 20 11.8335 20C16.8041 20 20.8335 15.9706 20.8335 11ZM11.8335 1.35943e-05C17.9086 1.35943e-05 22.8335 4.92488 22.8335 11C22.8335 17.0751 17.9086 22 11.8335 22C5.75836 22 0.833497 17.0751 0.833496 11C0.833497 4.92488 5.75836 1.35943e-05 11.8335 1.35943e-05ZM11.8335 5.7129C12.3858 5.7129 12.8335 6.16062 12.8335 6.7129L12.8335 10H16.119C16.6713 10 17.119 10.4477 17.119 11C17.119 11.5523 16.6713 12 16.119 12H12.8335V15.2843C12.8335 15.8366 12.3858 16.2843 11.8335 16.2843C11.2812 16.2843 10.8335 15.8366 10.8335 15.2843V12H7.54754C6.99526 12 6.54754 11.5523 6.54754 11C6.54754 10.4477 6.99526 10 7.54754 10L10.8335 10L10.8335 6.7129C10.8335 6.16062 11.2812 5.7129 11.8335 5.7129Z' fill='white'/%3E%3C/svg%3E%0A");
+            }
+          }
+        }
+        .selected-container {
+          li {
+            &:before {
+              content: unset;
+            }
+          }
+        }
+        .options {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: all 0.1s ease;
+          .options-container {
+            overflow: hidden;
+            li {
+              &:after {
+                content: unset;
+              }
+            }
+          }
+        }
+
+        &.opened {
+          .options {
+            grid-template-rows: 1fr;
+          }
+        }
+        &:not(.opened){
+          hr {
+            display: none;
+          }
+        }
+        &.has-value {
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .realisations {
+    @include container-fluid-margin;
+    .swiper {
+      padding: 0 2rem;
+    }
   }
 }

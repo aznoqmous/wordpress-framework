@@ -4,8 +4,9 @@
     </figure>
     <h3>{{ title }}</h3>
     <div class="badges">
-        <span class="badge">{{ funding_mode }}</span>
-        <span class="badge">{{ sector }}</span>
+    {% for badge in badges %}
+        <span class="badge">{{ badge.name }}</span>
+    {% endfor %}
     </div>
     <a href="{{ href }}" class="more">
         <span>Voir la réalisation</span>

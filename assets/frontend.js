@@ -5,6 +5,7 @@ import SiteHeader from "./js/frontend/site-header";
 import Slider from "./js/frontend/slider";
 import RealisationMap from "./js/frontend/realisation-map";
 import SwiperElement from "./js/frontend/SwiperElement";
+import FilteredRealisations from "./js/frontend/filtered-realisations";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     Simulator.bind(".simulator")
@@ -13,4 +14,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
     SiteHeader.bind(".site-header")
     RealisationMap.bind(".realisation-map")
     SwiperElement.bind(".swiper")
+    FilteredRealisations.bind(".filtered-realisations")
 })

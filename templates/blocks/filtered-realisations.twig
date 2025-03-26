@@ -1,33 +1,43 @@
 <div class="filtered-realisations" data-locations="{{ locations }}" data-realisations="{{ realisationPins }}">
 
-    <div class="title">
-        <h1>Filtrer les réalisations</h1>
-        <small>({{ count }})</small>
-    </div>
+    <div class="container">
+        <div class="title">
+            <h2>Filtrer les réalisations</h2>
+            <small>({{ count }})</small>
+        </div>
 
-    <span>Filtrer :</span>
+        <span>Filtrer :</span>
 
-    <div class="filters">
-        {% for filter in filters %}
+        <form class="filters">
             <div class="filter">
-                <label for="{{ filter.slug }}">
-                    {{ filter.name }}
-                </label>
-                {% if filter.children | length %}
-                    <select name="{{ filter.slug }}" id="{{ filter.slug }}">
-                        {% for child in filter.children %}
-                            <option value="{{ child.name }}">{{ child.name }}</option>
-                        {% endfor %}
-                    </select>
-                {% else %}
-                    <input type="checkbox" id="{{ filter.slug }}">
-                {% endif %}
+                <label for="">Options</label>
+                <select name="options" id="">
+                    {% for option in options %}
+                        <option value="{{ option.slug }}">
+                            {{ option.name }}
+                        </option>
+                    {% endfor %}
+                </select>
             </div>
-        {% endfor %}
-    </div>
+            {% for filter in filters %}
+                <div class="filter">
+                    <label for="{{ filter.slug }}">
+                        {{ filter.name }}
+                    </label>
+                    {% if filter.children | length %}
+                        <select name="{{ filter.slug }}" id="{{ filter.slug }}">
+                            {% for child in filter.children %}
+                                <option value="{{ child.slug }}">{{ child.name }}</option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </form>
 
-    <div class="realisations">
-        {{ realisations | raw }}
+        <div class="realisations">
+            {{ realisations | raw }}
+        </div>
     </div>
 
 </div>
