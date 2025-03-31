@@ -1,0 +1,51 @@
+.single-resource {
+
+  .breadcrumb {
+    @include row;
+    gap: 0.5rem;
+    padding: 0;
+    li {
+      list-style: none;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        &:after {
+          margin-left: 0.5em;
+          content:">";
+          transform: scale(1.5);
+          display: inline-block;
+          color: var(--color-light-blue);
+        }
+      }
+      span {
+        color: var(--color-light-blue);
+      }
+    }
+  }
+  .filters {
+    position: relative;
+    ul {
+      overflow-x: scroll;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      li {
+        text-transform: uppercase;
+        display: inline-block;
+        white-space: nowrap;
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: pxrem(80);
+      background: linear-gradient(to right, transparent, var(--color-dark-blue));
+    }
+  }
+}

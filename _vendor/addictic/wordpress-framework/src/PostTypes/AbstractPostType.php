@@ -37,6 +37,11 @@ abstract class AbstractPostType
         $this->registerDefaultPatterns();
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function getValue($key)
     {
         return get_post_meta($this->ID, $key);
@@ -71,11 +76,6 @@ abstract class AbstractPostType
             'not_found_in_trash' => $translator->trans('default.not_found_in_trash'),
             'parent_item_colon' => $translator->trans($this->name . '.parent_item_colon'),
         ];
-    }
-
-    public function getName()
-    {
-        return $this->name;
     }
 
     public function addColumn($name, $opts = [])
@@ -201,7 +201,7 @@ abstract class AbstractPostType
         $postType = $this->postType->name;
         add_action("save_post", function ($post_id) use ($callback, $postType, $key) {
             global $post;
-            if(!$post) $post = get_post($post_id);
+            if (!$post) $post = get_post($post_id);
             if (!$post) return;
             if ($post->post_type != $postType) return;
             if ($GLOBALS[$key]) return;
@@ -212,7 +212,7 @@ abstract class AbstractPostType
 
     public function addRowAction($callback)
     {
-        if(!isset($_GET['post_type'])) return;
+        if (!isset($_GET['post_type'])) return;
 
         $postType = $this->postType->name;
         add_filter("post_row_actions", function ($actions, $post) use ($postType, $callback
@@ -258,7 +258,12 @@ abstract class AbstractPostType
         return $this;
     }
 
-    public function clone($post)
+    /**
+     * Fully clone a post with its meta
+     * @param $post
+     * @return void
+     */
+    public function clone($post, $cloneMetas = true)
     {
         $newPost = [
             'post_author' => $post->post_author,
@@ -279,9 +284,11 @@ abstract class AbstractPostType
         $new_post_id = wp_insert_post(wp_slash($newPost), true);
 
         // clone metas
-        $metas = get_post_meta($post->ID);
-        foreach ($metas as $key => $value) {
-            update_post_meta($new_post_id, $key, $value[0]);
+        if ($cloneMetas) {
+            $metas = get_post_meta($post->ID);
+            foreach ($metas as $key => $value) {
+                update_post_meta($new_post_id, $key, $value[0]);
+            }
         }
 
         // clone taxonomies / paste from duplicate-post plugin, post-duplicator.php:220
@@ -303,5 +310,47 @@ abstract class AbstractPostType
             'action' => "edit"
         ]);
         RoutingHelper::redirect(RoutingHelper::getAdminBase() . "/post.php?$query");
+    }
+
+    public function setHierarchical($state = true)
+    {
+        add_action("admin_menu", function () {
+            add_submenu_page(
+                "edit.php?post_type={$this->name}",
+                Container::get("translator")->trans("default.hierarchical.menu_title"),
+                Container::get("translator")->trans("default.hierarchical.menu_title"),
+                'manage_options',
+                "$this->name.treeview",
+                [$this, 'renderTreeView']
+            );
+        });
+    }
+
+    public function renderTreeView()
+    {
+        ob_start();
+        settings_fields($this->name);
+        do_settings_sections($this->name);
+        $content = ob_get_clean();
+
+        return Container::get("twig")->renderTemplate("backend/tree_view.twig", [
+            'post_type' => $this->postType->name,
+            'content' => $content,
+            'title' => Container::get("translator")->trans("{$this->postType->name}.plural"),
+            'items' => $this->getTree()
+        ]);
+    }
+
+    private function getTree($parent=0){
+        $items = get_children([
+            'post_type' => $this->postType->name,
+            'post_parent' => $parent,
+            'orderby' => "menu_order",
+            'order' => "ASC"
+        ]);
+        foreach($items as $item){
+            $item->children = $this->getTree($item->ID);
+        }
+        return $items;
     }
 }

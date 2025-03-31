@@ -1,0 +1,17 @@
+<div class="wrap">
+    <h1 class="wp-heading-inline">{{ title }}</h1>
+    <a class="page-title-action" href="post-new.php?post_type={{ post_type }}">
+        {{ "default.add_new_item" | trans }}
+    </a>
+    <hr class="wp-header-end">
+    <div class="tree-view">
+        <ul>
+            {% for item in items %}
+                {% include "backend/tree_view_item.twig" with {'item': item } %}
+            {% endfor %}
+        </ul>
+        <span class="button cancel">
+        {{ "default.cancel" | trans }}
+        </span>
+    </div>
+</div>

@@ -73,7 +73,7 @@ export default class ContentBlock extends Block {
 
     save(props) {
         const blockProps = useBlockProps.save()
-        if (props.attributes.layout.justifyContent)
+        if (props?.attributes?.layout?.justifyContent)
             blockProps.className += " is-layout-flex is-content-justification-" + props.attributes.layout.justifyContent
         if(props.attributes.hasBorder) blockProps.className += " has-border"
         return <div {...blockProps}>

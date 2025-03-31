@@ -1,0 +1,15 @@
+.wp-block-details {
+
+  summary {
+    font-size: pxrem(20);
+  }
+
+}
+
+body.single-resource {
+  .wp-block-details {
+    summary {
+      color: var(--color-light-blue);
+    }
+  }
+}

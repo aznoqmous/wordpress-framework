@@ -15,4 +15,6 @@ import "./js/blocks/overrides/cover"
 // import "./js/blocks/overrides/button"
 
 import LocationField from "./js/location-field"
+import TreeView from "./tree-view";
 LocationField.bind(".location-field")
+TreeView.bind(".tree-view")

@@ -44,6 +44,10 @@ class TwigLoader
         $this->twig->addFunction(new TwigFunction('dump', function () {
             dump(...func_get_args());
         }));
+
+        $this->twig->addFilter(new TwigFilter('delete_post_link', function ($post) {
+            return get_delete_post_link($post);
+        }));
     }
 
     public function getTemplate($templateName): TemplateWrapper

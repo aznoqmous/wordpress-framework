@@ -1,0 +1,11 @@
+resource:
+  back: Retour aux ressources
+  slug: ressources
+  singular: Voir la ressource
+  plural: Ressources
+  menu_name: Ressources
+  all_items: Tous les ressources
+
+  meta_legend: SEO
+  meta_title: Méta Titre
+  meta_description: Méta Description

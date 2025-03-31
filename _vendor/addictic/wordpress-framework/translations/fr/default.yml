@@ -4,3 +4,6 @@ default:
   view_item: Voir
   not_found: Aucuns résultats
   search_items: Rechercher
+  cancel: Annuler
+  hierarchical:
+    menu_title: Structure

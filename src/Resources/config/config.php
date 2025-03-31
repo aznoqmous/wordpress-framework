@@ -37,6 +37,7 @@ WordpressFrameworkBundle::init();
 \App\Models\TestimonyModel::register();
 \App\Models\RealisationModel::register();
 \App\Models\RealisationOptionTaxonomyModel::register();
+\App\Models\ResourceModel::register();
 
 OptionsPage::create("settings")
     ->addSection("navigation")

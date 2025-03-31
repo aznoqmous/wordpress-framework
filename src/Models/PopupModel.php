@@ -21,6 +21,7 @@ class PopupModel extends AbstractPostTypeModel
         if (!$popups) return null;
 
         $page = PageModel::findActive();
+        if(!$page) return null;
 
         $popups = $popups->filter(fn($popup) => (
             (!$popup->start_date || DateHelper::fromFormat("Y-m-d", $popup->start_date) < time())

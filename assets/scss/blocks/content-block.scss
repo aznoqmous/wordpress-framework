@@ -3,6 +3,7 @@
   border-radius: pxrem(30);
   backdrop-filter: blur(1rem);
   @include column;
+  gap: pxrem(20);
 
   &.has-border {
     border: 2px solid currentcolor;
@@ -10,5 +11,12 @@
 
   & + .wp-block-dvs-content-block {
     margin-top: pxrem(20);
+  }
+
+  > * {
+    margin: 0;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }

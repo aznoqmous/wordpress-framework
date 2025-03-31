@@ -2,6 +2,11 @@ body {
   //padding-bottom: calc(var(--planet-size) + 6rem);
   overflow-x: hidden;
 
+  &.single-resource {
+    background: var(--color-dark-blue);
+    color: var(--color-white);
+  }
+
   #page #content {
     padding-top: calc(var(--header-height) + 30px);
 

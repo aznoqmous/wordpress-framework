@@ -1,0 +1,22 @@
+<li class="tree-view-item" data-id="{{ item.ID }}">
+    <div class="infos">
+        <span>{{ item.post_title }}</span>
+        <div class="links">
+            <a href="post.php?post={{ item.ID }}&action=edit">Edit</a>
+            <a href="edit.php?post_type=testimony&duplicate={{ item.ID }}">Duplicate</a>
+            <a href="{{ item | delete_post_link | raw }}" class="submitdelete">Trash</a>
+        </div>
+        <div class="actions">
+            <span class="inside">🡆</span>
+            <span class="after">🡇</span>
+            <span class="move">🡅</span>
+        </div>
+    </div>
+    <ul>
+    {% if item.children %}
+        {% for child in item.children %}
+        {% include "backend/tree_view_item.twig" with {'item': child } %}
+        {% endfor %}
+    {% endif %}
+    </ul>
+</li>

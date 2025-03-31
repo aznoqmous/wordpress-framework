@@ -1,13 +1,13 @@
-@include font-face("Noxa", "/fonts/NexaRegular");
-@include font-face("Noxa", "/fonts/Nexa-Light", "", normal, 300);
-@include font-face("Noxa", "/fonts/Nexa-Bold", "", normal, 600);
-@include font-face("Noxa", "/fonts/NexaHeavy", "", normal, 800);
-@include font-face("Noxa", "/fonts/NexaBlack", "", normal, 900);
-@include font-face("Noxa", "/fonts/Nexa-Regular-Italic", "", italic);
-@include font-face("Noxa", "/fonts/Nexa-Light-Italic", "", italic, 300);
-@include font-face("Noxa", "/fonts/Nexa-Bold-Italic", "", italic, 600);
-@include font-face("Noxa", "/fonts/Nexa-Heavy-Italic", "", italic, 700);
-@include font-face("Noxa", "/fonts/Nexa-Black-Italic", "", italic, 800);
+@include font-face("Nexa", "/fonts/NexaRegular");
+@include font-face("Nexa", "/fonts/Nexa-Light", "", normal, 300);
+@include font-face("Nexa", "/fonts/Nexa-Bold", "", normal, 600);
+@include font-face("Nexa", "/fonts/NexaHeavy", "", normal, 800);
+@include font-face("Nexa", "/fonts/NexaBlack", "", normal, 900);
+@include font-face("Nexa", "/fonts/Nexa-Regular-Italic", "", italic);
+@include font-face("Nexa", "/fonts/Nexa-Light-Italic", "", italic, 300);
+@include font-face("Nexa", "/fonts/Nexa-Bold-Italic", "", italic, 600);
+@include font-face("Nexa", "/fonts/Nexa-Heavy-Italic", "", italic, 700);
+@include font-face("Nexa", "/fonts/Nexa-Black-Italic", "", italic, 800);
 
 html {
   font-size: 16px;

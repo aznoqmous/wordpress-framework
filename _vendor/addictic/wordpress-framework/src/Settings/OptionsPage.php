@@ -51,7 +51,6 @@ class OptionsPage
         submit_button();
         $content = ob_get_clean();
         return Container::get("twig")->renderTemplate("backend/options_page.twig", [
-            'url' => "yo",
             'content' => $content
         ]);
     }
