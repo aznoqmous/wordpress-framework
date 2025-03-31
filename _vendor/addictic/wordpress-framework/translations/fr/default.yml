@@ -3,3 +3,4 @@ default:
   add_new_item: Nouvelle entrée
   view_item: Voir
   not_found: Aucuns résultats
+  search_items: Rechercher

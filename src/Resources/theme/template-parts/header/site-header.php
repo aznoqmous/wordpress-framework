@@ -689,3 +689,10 @@
         </div>
     </div>
 </div>
+<?php if($popups = \App\Models\PopupModel::findActives()): ?>
+    <div class="popups">
+    <?php foreach($popups as $popup): ?>
+        <?=  $popup->render(); ?>
+    <?php endforeach; ?>
+    </div>
+<?php endif; ?>

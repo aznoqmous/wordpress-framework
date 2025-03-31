@@ -1,7 +1,7 @@
 realisation:
   back: Retour aux réalisations
   slug: realisation
-  singular: Voir le réalisations
+  singular: Voir la réalisation
   plural: Réalisations
   menu_name: Réalisations
   all_items: Tous les réalisations

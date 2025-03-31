@@ -17,6 +17,10 @@ if (is_admin()) {
     ViteHelper::add("frontend");
 }
 
+add_action("admin_menu", function () {
+    remove_menu_page("edit-comments.php");
+});
+
 WordpressFrameworkBundle::init();
 
 \Addictic\WordpressFramework\Annotation\PostTypeManager::getInstance()

@@ -55,4 +55,4 @@ $realisation->loadFields();
         </div>
     </div>
 </div>
-
+<?= get_footer(); ?>

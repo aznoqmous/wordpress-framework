@@ -1,9 +1,13 @@
 .wp-block-dvs-content-block {
   padding: pxrem(20);
   border-radius: pxrem(30);
-  //border: 2px solid var(--text-color, black);
-  //background: red;
-  //@include glassmorphism-border;
+  backdrop-filter: blur(1rem);
+  @include column;
+
+  &.has-border {
+    border: 2px solid currentcolor;
+  }
+
   & + .wp-block-dvs-content-block {
     margin-top: pxrem(20);
   }

@@ -1,16 +1,11 @@
-.has-dark-blue-background-color .wp-block-dvs-number-item {
-  background: unset;
-  &:after {
-    background: linear-gradient(108deg, rgba(255, 255, 255, 0.10) 3.46%, rgba(255, 255, 255, 0.04) 96.7%);
-  }
-}
-
-.wp-block-dvs-number-item {
-
+.wp-block-dvs-number {
   font-weight: 300;
+
   strong, b {
     font: inherit;
-    //font-size: pxrem(50);
+    font-weight: 400;
+    white-space: nowrap;
+
   }
 
 }

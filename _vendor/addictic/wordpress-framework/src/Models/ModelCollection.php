@@ -13,27 +13,31 @@ class ModelCollection implements \Iterator
         $this->items = $items;
     }
 
-    public function current():mixed
+    public function count(){
+        return count($this->items);
+    }
+
+    public function current(): mixed
     {
         return isset($this->items[$this->index]) ? $this->items[$this->index] : null;
     }
 
-    public function next():void
+    public function next(): void
     {
         $this->index++;
     }
 
-    public function key():mixed
+    public function key(): mixed
     {
         return $this->index;
     }
 
-    public function valid():bool
+    public function valid(): bool
     {
         return isset($this->items[$this->index]);
     }
 
-    public function rewind():void
+    public function rewind(): void
     {
         $this->index = 0;
     }
@@ -80,9 +84,15 @@ class ModelCollection implements \Iterator
         return $results;
     }
 
-    public function find($callback){
+    public function filter($callback)
+    {
+        return new ModelCollection(array_filter($this->items, fn($item) => $callback($item)));
+    }
+
+    public function find($callback)
+    {
         foreach ($this->items as $key => $item) {
-            if($callback($item, $key)) return $item;
+            if ($callback($item, $key)) return $item;
         }
     }
 }

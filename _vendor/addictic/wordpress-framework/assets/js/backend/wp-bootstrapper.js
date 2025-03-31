@@ -17,6 +17,7 @@ if (!wp.components) wp.components = {
     TextControl: "",
     InputControl: "",
     TextareaControl: "",
+    CheckboxControl: "",
     MediaUpload: "",
     Heading: "",
     Popover: "",
@@ -50,7 +51,8 @@ const {
     InputControl,
     Button,
     Popover,
-    ToolbarButton
+    ToolbarButton,
+    CheckboxControl
 } = wp.components
 
 const {
@@ -77,6 +79,7 @@ export {
     PanelBody,
     TextControl,
     TextareaControl,
+    CheckboxControl,
     MediaUpload,
     MediaUploadCheck,
     createHigherOrderComponent,

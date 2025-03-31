@@ -28,6 +28,11 @@
           "name": "Gris transparent",
           "gradient": "linear-gradient(108deg, rgba(255, 255, 255, 0.35) 3.46%, rgba(255, 255, 255, 0.20) 96.7%)",
           "slug": "grey-transparent"
+        },
+        {
+          "name": "Glassmorphisme",
+          "gradient": "linear-gradient(108deg, rgba(255, 255, 255, 0.10) 3.46%, rgba(255, 255, 255, 0.04) 96.7%);",
+          "slug": "glassmorphism"
         }
       ],
       "palette": [

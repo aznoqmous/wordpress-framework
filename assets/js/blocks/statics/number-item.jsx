@@ -24,7 +24,7 @@ export default class NumberItem extends Block {
         const {attributes, setAttributes} = props
         const {number} = attributes
         const blockProps = {...useBlockProps()}
-        blockProps.className = "wp-block-dvs-number-item"
+        blockProps.className = "wp-block-dvs-number"
         return <div {...blockProps}>
             <RichText
                 tagName="strong"
@@ -37,7 +37,8 @@ export default class NumberItem extends Block {
 
     save(props) {
         const {number} = props.attributes
-        return <div className="wp-block-dvs-number-item">
+        const blockProps = useBlockProps.save()
+        return <div {...blockProps}>
             <RichText.Content
                 tagName="strong"
                 value={number}

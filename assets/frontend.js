@@ -6,6 +6,7 @@ import Slider from "./js/frontend/slider";
 import RealisationMap from "./js/frontend/realisation-map";
 import SwiperElement from "./js/frontend/SwiperElement";
 import FilteredRealisations from "./js/frontend/filtered-realisations";
+import Popups from "./js/frontend/popups";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     Simulator.bind(".simulator")
@@ -15,4 +16,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
     RealisationMap.bind(".realisation-map")
     SwiperElement.bind(".swiper")
     FilteredRealisations.bind(".filtered-realisations")
+    Popups.bind(".popups")
 })

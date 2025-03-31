@@ -1,21 +1,33 @@
 .wp-block-button-container {
-  @include row;
+  //@include row;
   margin: 2rem 0;
   color: inherit;
 
+
+  &:not(.alignleft):not(.aligncenter):not(.alignright) {
+    width: 100%;
+  }
+
   &.alignleft {
+    display: flex;
     justify-content: flex-start;
   }
 
   &.aligncenter {
+    display: flex;
     justify-content: center;
   }
 
   &.alignright {
+    display: flex;
     justify-content: flex-end;
   }
+
   &:last-child {
     margin-bottom: 0;
+  }
+  &:first-child {
+    margin-top: 0;
   }
   .wp-block-button {
     > a, > .button-placeholder {

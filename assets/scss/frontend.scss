@@ -1,6 +1,7 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
 @import "abstracts/bootstrap";
+@import "abstracts/wordpress-blocks";
 
 @import "base/reset";
 @import "base/fonts";
@@ -16,6 +17,7 @@
 @import "frontend/pages/post";
 @import "frontend/pages/testimony";
 @import "frontend/pages/realisation";
+@import "frontend/pages/popup";
 
 #wpadminbar {
   display: none !important;
@@ -23,6 +25,8 @@
 html {
   margin-top: 0 !important;
 }
-body.home #page #content {
-  padding-top: 0;
+body{
+  &.home #page #content {
+    padding-top: 0;
+  }
 }

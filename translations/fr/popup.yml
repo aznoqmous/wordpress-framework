@@ -1,0 +1,27 @@
+popup:
+  back: Retour aux popups
+  slug: popup
+  singular: Voir la popup
+  plural: Popups
+  menu_name: Popups
+  all_items: Tous les popups
+
+  title: Titre
+  image: Image
+  content_legend: Contenu
+  start_date:
+    label: Afficher à partir du
+    help: Par défaut, ne pas limiter à une date de début
+  end_date:
+    label: Afficher à jusqu'au
+    help: Par défaut, ne pas limiter à une date de fin
+  included_pages:
+    label: Afficher seulement sur ces pages
+    help: Si défini, affichera la popup uniquement sur ces pages
+  excluded_pages:
+    label: Ne pas afficher sur ces pages
+    help: ""
+  display_once:
+    label: Ne pas réafficher la popup
+    help: Par défaut, la popup sera affichée à chaque chargement de page
+  color: Couleur de la popup

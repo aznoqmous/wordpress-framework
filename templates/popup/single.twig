@@ -1,0 +1,20 @@
+<div class="single-popup{% if image %} has-figure{% endif %}{% if color %} has-color{% endif %}"
+     data-id="{{ id }}"
+     style="--background-color: {{ color }}"
+>
+    <div class="popup">
+        {% if image %}
+            <figure>
+                <img src="{{ image }}" alt="{{ title }}">
+            </figure>
+        {% endif %}
+        <svg class="close-button" xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 23 23" fill="none">
+            <rect x="3.34644" y="0.210815" width="27.4736" height="3.85621" rx="1.9281" transform="rotate(45 3.34644 0.210815)" fill="#06345D"/>
+            <rect x="0.619629" y="19.6376" width="27.4736" height="3.85621" rx="1.9281" transform="rotate(-45 0.619629 19.6376)" fill="#06345D"/>
+        </svg>
+        <h2>{{ title }}</h2>
+        <div class="content">
+            {{ content | raw }}
+        </div>
+    </div>
+</div>
