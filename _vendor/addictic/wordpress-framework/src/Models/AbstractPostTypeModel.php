@@ -128,8 +128,7 @@ abstract class AbstractPostTypeModel extends AbstractModel
             ->where("post_type = \"" . static::$strName . "\"")
             ->where("post_status != \"auto-draft\"")
             ->where("post_status != \"draft\"")
-            ->where("post_status != \"trash\"")
-        ;
+            ->where("post_status != \"trash\"");
 
         /* Bind arbitrary defined meta value for searching / ordering purpose */
         if (isset($opts['metas'])) {
@@ -199,28 +198,7 @@ abstract class AbstractPostTypeModel extends AbstractModel
         $ids = array_map(fn($result) => $result->id, $results);
         return static::findByIds($ids, $opts);
     }
-
-    public static function searchPost($query)
-    {
-        return self::findBy(
-            ["weight > 0"],
-            ['order' => "weight DESC"],
-            self::getBaseQuery()
-            ->select("*")
-            ->addTaxonomy("job", "jobs", "name")
-            ->addMeta("reference")
-            ->addMeta("meta_title")
-            ->addMeta("meta_description")
-            ->weightedSearch([
-                "post_title" => 1000,
-                "meta_title" => 1000,
-                "meta_description" => 100,
-                "jobs" => 10,
-                "post_content" => 1,
-            ], "LIKE \"%$query%\"")
-        );
-    }
-
+    
     protected function getPostType()
     {
         $post = PostTypeManager::getInstance();
@@ -255,5 +233,15 @@ abstract class AbstractPostTypeModel extends AbstractModel
     public function getPost()
     {
         return get_post($this->id);
+    }
+
+    public function getExcerpt()
+    {
+        return get_the_excerpt($this->id);
+    }
+
+    public function getFeaturedImage()
+    {
+        return get_the_post_thumbnail($this->id);
     }
 }

@@ -9,3 +9,11 @@ resource:
   meta_legend: SEO
   meta_title: Méta Titre
   meta_description: Méta Description
+
+resource_category:
+  singular: Catégorie de ressource
+  plural: Catégories de ressource
+
+resource_tag:
+  singular: Tag de ressource
+  plural: Tags de ressource

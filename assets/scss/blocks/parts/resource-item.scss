@@ -1,0 +1,72 @@
+.resource-item {
+  border-radius: pxrem(30);
+  --background-color: var(--color-light-blue);
+  background: var(--background-color);
+  padding: pxrem(20);
+  color: var(--color-white);
+
+  .tags-container {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 2rem;
+      background: linear-gradient(to left, var(--background-color), transparent);
+    }
+
+    .tags {
+      text-transform: uppercase;
+      font-weight: 300;
+      @include row;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      padding-right: 2rem;
+      margin: 0;
+      margin-bottom: pxrem(6);
+
+      overflow-x: auto;
+
+      li {
+        white-space: nowrap;
+        margin-left: 0;
+
+        &:not(:last-child) {
+          &:after {
+            margin-left: 0.4rem;
+            content: "•";
+          }
+        }
+      }
+    }
+  }
+
+  figure {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: pxrem(15);
+    overflow: hidden;
+
+    img {
+      @include imgFit(cover);
+    }
+  }
+
+  > h3 {
+    font-size: pxrem(24);
+    text-transform: uppercase;
+    font-weight: 900;
+    padding-bottom: pxrem(10);
+    margin: pxrem(10) 0;
+    @include underline;
+  }
+
+  > a.button {
+    @include button;
+    margin-top: 1rem;
+  }
+}

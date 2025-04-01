@@ -12,6 +12,7 @@ abstract class AbstractTaxonomy
 {
     public $name = "category";
     public $posttypes = [];
+    public $hierarchical = false;
 
     public $fields = [];
 
@@ -32,8 +33,8 @@ abstract class AbstractTaxonomy
         add_action("admin_menu", function () use ($taxonomy, $parentSlug, $position) {
             add_submenu_page(
                 $parentSlug,
-                $taxonomy->slug,
-                $taxonomy->singular,
+                Container::get("translator")->trans("{$this->name}.page_title"),
+                Container::get("translator")->trans("{$this->name}.menu_title"),
                 "manage_options",
                 "edit-tags.php?taxonomy=" . $this->name,
                 null,
@@ -51,8 +52,15 @@ abstract class AbstractTaxonomy
 
     public function register()
     {
-        $this->taxonomy = new Taxonomy($this->name);
+        $trans = Container::get("translator");
+        $this->taxonomy = new Taxonomy([
+            'name' => $this->name,
+            'singular' => $trans->trans("{$this->name}.singular"),
+            'plural' => $trans->trans("{$this->name}.plural"),
+            'slug' => $this->name,
+        ]);
         $this->columns = $this->taxonomy->columns();
+
         if ($this->posttypes) $this->taxonomy->posttype(explode(",", $this->posttypes));
         $this->configure();
         $this->taxonomy->register();

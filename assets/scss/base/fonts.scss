@@ -14,10 +14,13 @@ html {
   margin-top: var(--header-height) !important;
 }
 
+
+
 @include headings {
   line-height: 1em;
 }
-h1 {
+
+h1:not(.editor-post-title):not([data-wp-component]) {
   font-weight: 400;
   text-transform: uppercase;
   font-size: pxrem(32);

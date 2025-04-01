@@ -139,6 +139,11 @@ abstract class AbstractModel
         return $this->arrData;
     }
 
+    public function obj()
+    {
+        return (object) $this->arrData;
+    }
+
     public function get($key)
     {
         return isset($this->arrData[$key]) ? $this->arrData[$key] : null;

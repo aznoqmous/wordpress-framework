@@ -10,7 +10,7 @@ use Addictic\WordpressFramework\Helpers\Container;
 use Addictic\WordpressFramework\PostTypes\AbstractPostType;
 
 /**
- * @PostType(name="resource", icon="dashicons-media-archive")
+ * @PostType(name="resource", icon="dashicons-media-archive", taxonomies="resource_category,resource_tag")
  */
 class Resource extends AbstractPostType
 {

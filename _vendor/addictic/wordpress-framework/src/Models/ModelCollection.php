@@ -13,7 +13,8 @@ class ModelCollection implements \Iterator
         $this->items = $items;
     }
 
-    public function count(){
+    public function count()
+    {
         return count($this->items);
     }
 
@@ -75,6 +76,11 @@ class ModelCollection implements \Iterator
     public function getModels()
     {
         return $this->items;
+    }
+
+    public function getRows()
+    {
+        return $this->map(fn($item)=> $item->row());
     }
 
     public function map($callback)

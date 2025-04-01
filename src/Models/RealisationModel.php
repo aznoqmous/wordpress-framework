@@ -5,7 +5,7 @@ namespace App\Models;
 use Addictic\WordpressFramework\Helpers\Container;
 use Addictic\WordpressFramework\Models\AbstractPostTypeModel;
 use Addictic\WordpressFramework\Models\Legacy\AttachmentModel;
-use App\Taxonomies\RealisationOptionTaxonomy;
+use App\Taxonomies\RealisationOption;
 
 class RealisationModel extends AbstractPostTypeModel
 {

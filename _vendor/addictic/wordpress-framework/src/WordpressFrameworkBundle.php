@@ -25,7 +25,8 @@ class WordpressFrameworkBundle
 
     public static function init()
     {
-        $instance = new static();
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'menus' );
 
         BlockManager::getInstance()
             ->discover("\\Addictic\\WordpressFramework\\Blocks",

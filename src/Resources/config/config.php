@@ -8,7 +8,6 @@ use Addictic\WordpressFramework\Helpers\ViteHelper;
 use Addictic\WordpressFramework\Settings\OptionsPage;
 use Addictic\WordpressFramework\WordpressFrameworkBundle;
 
-add_theme_support( 'menus');
 \Addictic\WordpressFramework\Helpers\MenuHelper::registerNavMenus(['main', 'secondary']);
 
 if (is_admin()) {

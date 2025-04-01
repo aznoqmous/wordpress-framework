@@ -1,0 +1,27 @@
+.resource-list-filtered {
+  margin-bottom: pxrem(20);
+
+  .categories {
+    .items {
+      @include column;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 1rem;
+        border: 2px solid var(--color-dark-blue);
+        width: 100%;
+        border-radius: 99rem;
+        @include row(center, center);
+        gap: pxrem(20);
+        text-transform: uppercase;
+        font-weight: 800;
+      }
+    }
+  }
+
+  .tags {
+
+  }
+}

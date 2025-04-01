@@ -8,9 +8,9 @@ use Addictic\WordpressFramework\Fields\IconField;
 use Addictic\WordpressFramework\Taxonomies\AbstractTaxonomy;
 
 /**
- * @Taxonomy(name="realisation_option")
+ * @Taxonomy(name="resource_category")
  */
-class RealisationOptionTaxonomy extends AbstractTaxonomy
+class ResourceCategory extends AbstractTaxonomy
 {
     protected function configure()
     {

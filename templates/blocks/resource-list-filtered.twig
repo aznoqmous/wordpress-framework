@@ -1,0 +1,25 @@
+<div class="resource-list-filtered">
+    <div class="categories">
+        <h2>Thèmes :</h2>
+        <ul class="items">
+            {% for category in categories %}
+                <li data-id="{{ category.id }}">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tags">
+        <h2>Tags :</h2>
+        <div class="container-tags">
+            <ul class="items">
+                {% for tag in tags %}
+                    <li data-id="{{ tag.id }}">{{ tag.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="resources">
+        {% for resource in resources %}
+            {{ resource.renderItem() | raw }}
+        {% endfor %}
+    </div>
+</div>

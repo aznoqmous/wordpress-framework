@@ -1,6 +1,6 @@
 import DynamicBlock from "../../../../_vendor/addictic/wordpress-framework/assets/js/blocks/components/dynamic-block";
 
-export default class FilteredRealisations extends DynamicBlock
+export default class RealisationsFiltered extends DynamicBlock
 {
     constructor(props) {
         super(props);
@@ -10,4 +10,4 @@ export default class FilteredRealisations extends DynamicBlock
     }
 }
 
-FilteredRealisations.register("app/filtered-realisations")
+RealisationsFiltered.register("app/realisations-filtered")

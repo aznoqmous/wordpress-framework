@@ -8,6 +8,7 @@ use Addictic\WordpressFramework\Helpers\Config;
 
 /**
  * @Block(name="app/simulator", template="blocks/simulator.twig")
+ * @property $calculator
  */
 class SimulatorBlock extends AbstractBlock
 {
