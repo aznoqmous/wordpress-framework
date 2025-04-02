@@ -211,3 +211,29 @@
     opacity: 0.1;
   }
 }
+
+@mixin horizontal-list {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2rem;
+    background: linear-gradient(to left, var(--background-color), transparent);
+  }
+
+  > ul {
+    @include row;
+    gap: 0.4rem;
+    overflow-x: auto;
+    padding-left: 0;
+    padding-right: 2rem;
+    > li {
+      white-space: nowrap;
+      list-style: none;
+    }
+  }
+}

@@ -20,8 +20,16 @@
     <?= \Addictic\WordpressFramework\Helpers\Metas::render() ?>
     <?php wp_head(); ?>
 </head>
-
-<body <?php body_class(); ?>>
+<?php
+$page = \Addictic\WordpressFramework\Models\Legacy\PageModel::findActive();
+?>
+<body
+    <?php body_class(); ?>
+    style="
+    <?= $page ? "--background-color: {$page->getValue("background_color")};" : "" ?>
+    <?= $page ? "--text-color: {$page->getValue("text_color")};" : "" ?>
+    "
+>
 <?php //body_class("header-white"); ?>
 <?php wp_body_open(); ?>
 <div id="page" class="site">

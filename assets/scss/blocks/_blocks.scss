@@ -7,16 +7,18 @@
 @import "base/headings";
 @import "base/image";
 @import "base/paragraph";
+
 @import "components/testimony-list";
+@import "components/simulator";
+@import "components/number-item";
+@import "components/slider";
+@import "components/button";
+@import "components/content-block";
+@import "components/realisation-map";
+@import "components/filtered-realisations";
+@import "components/resource-list-filtered";
+
 @import "parts/news-item";
 @import "parts/realisation-item";
 @import "parts/resource-item";
 @import "parts/swiper";
-@import "simulator";
-@import "number-item";
-@import "slider";
-@import "button";
-@import "content-block";
-@import "realisation-map";
-@import "filtered-realisations";
-@import "resource-list-filtered";

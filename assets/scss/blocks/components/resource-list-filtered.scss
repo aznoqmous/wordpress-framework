@@ -10,7 +10,7 @@
 
       li {
         padding: 1rem;
-        border: 2px solid var(--color-dark-blue);
+        border: 2px solid currentColor;
         width: 100%;
         border-radius: 99rem;
         @include row(center, center);
@@ -22,6 +22,22 @@
   }
 
   .tags {
+    font-size: pxrem(20);
+    .container-tags {
+      @include horizontal-list;
+      text-transform: uppercase;
+      > ul {
+        gap: pxrem(20);
+      }
+    }
+  }
 
+  .resources {
+    @include column;
+    width: 100%;
+    gap: pxrem(20);
+    .resource-item {
+      width: 100%;
+    }
   }
 }
