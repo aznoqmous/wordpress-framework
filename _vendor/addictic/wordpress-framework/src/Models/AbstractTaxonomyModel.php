@@ -44,9 +44,9 @@ abstract class AbstractTaxonomyModel extends AbstractModel
                 ->where("wtt.taxonomy = \"$type\"");
         }
 
-        $tax = TaxonomyManager::getInstance()->get(static::$strName);
+        $tax = TaxonomyManager::getInstance()->get(static::$strName)->instance;
         $selects = ["*"];
-        $fields = property_exists($tax, "fields") ?: [];
+        $fields = property_exists($tax, "fields") ? $tax->fields : [];
         foreach ($fields as $name => $field) {
             $selects[] = "wtm_$name.meta_value as $name";
             $builder->join("wp_termmeta", "wtm_$name", "LEFT");

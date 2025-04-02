@@ -16,7 +16,6 @@ use App\Models\ResourceTagModel;
  */
 class ResourceListFilteredBlock extends AbstractBlock
 {
-
     public function compile($block_attributes, $content)
     {
         $this->categories = ResourceCategoryModel::findAll()->map(fn($el) => $el->row());

@@ -3,7 +3,10 @@
         <h2>Thèmes :</h2>
         <ul class="items">
             {% for category in categories %}
-                <li data-id="{{ category.id }}">{{ category.name }}</li>
+                <li data-id="{{ category.id }}">
+                    {{ sprite_icon(category.icon) }}
+                    <span>{{ category.name }}</span>
+                </li>
             {% endfor %}
         </ul>
     </div>

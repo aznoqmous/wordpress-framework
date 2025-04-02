@@ -1,4 +1,5 @@
 page:
   layout_legend: Présentation
+  white_header: En-tête transparente
   background_color: Couleur d'arrière-plan
   text_color: Couleur du texte

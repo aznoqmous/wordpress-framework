@@ -6,6 +6,7 @@
       "wideSize": "100vw"
     },
     "color": {
+      "defaultPalette": false,
       "customGradient": true,
       "defaultGradients": true,
       "gradients": [
@@ -40,6 +41,11 @@
           "name": "Noir",
           "slug": "black",
           "color": "#000"
+        },
+        {
+          "name": "Gris",
+          "slug": "grey",
+          "color": "#D2DFE6"
         },
         {
           "name": "Blanc",

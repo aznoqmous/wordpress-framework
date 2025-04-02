@@ -15,5 +15,8 @@ class ResourceCategory extends AbstractTaxonomy
     protected function configure()
     {
         $this->taxonomy->options(["show_in_rest" => true]);
+        $this
+            ->addField(new IconField("icon"))
+        ;
     }
 }

@@ -44,3 +44,6 @@ settings:
     legend: Réalisations
     realisationCsv: Fichier pins réalisations
     realisationMapUrl: URL de la map (utilisé par Leaflet)
+  icons:
+    legend: Icônes
+    icons: Icônes

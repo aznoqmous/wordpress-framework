@@ -3,6 +3,7 @@
 namespace App\PostTypes;
 
 use Addictic\WordpressFramework\Annotation\PostType;
+use Addictic\WordpressFramework\Fields\CheckboxField;
 use Addictic\WordpressFramework\Fields\ColorField;
 use Addictic\WordpressFramework\PostTypes\Legacy\PagePostType;
 
@@ -16,6 +17,7 @@ class Page extends PagePostType
         parent::configure();
 
         $this->addMetabox("layout_legend")
+            ->addField(new CheckboxField("white_header"))
             ->addField(new ColorField("background_color", [
                 'colors' => [
                     "white",

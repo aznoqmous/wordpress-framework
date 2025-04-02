@@ -1,0 +1,19 @@
+{% extends "backend/fields/_field.twig" %}
+{% block field %}
+    <div class="icons">
+        {% for icon in icons %}
+            <li>
+                <figure>
+                    {{ sprite_icon(icon, name) }}
+                </figure>
+                <legend>
+                    {{ icon }}
+                </legend>
+            </li>
+        {% endfor %}
+    </div>
+    <div class="buttons">
+        <input class="button" type="file" multiple data-name="{{ name }}">
+        <button class="button delete">Supprimer</button>
+    </div>
+{% endblock %}

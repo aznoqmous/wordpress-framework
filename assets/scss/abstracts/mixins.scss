@@ -192,6 +192,10 @@
   @include row(center, center);
   gap: pxrem(10);
   color: inherit;
+
+  > svg {
+    margin-left: auto;
+  }
 }
 
 @mixin content {

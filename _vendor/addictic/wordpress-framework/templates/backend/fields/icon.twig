@@ -1,8 +1,10 @@
 {% extends "backend/fields/_field.twig" %}
 {% block field %}
-    <ul class="icon-list">
+    <ul class="icons">
         {% for icon in icons %}
-            <li class="icon{{ icon == value ? " active" : "" }}" data-icon="{{ icon }}"><figure style="--icon: var(--icon-{{ icon }})"></figure></li>
+            <li class="icon{{ icon == value ? " active" : "" }}" data-icon="{{ icon }}">
+                {{ sprite_icon(icon, path) }}
+            </li>
         {% endfor %}
     </ul>
     <input

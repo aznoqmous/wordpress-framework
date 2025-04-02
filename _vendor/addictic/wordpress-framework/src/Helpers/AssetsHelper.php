@@ -52,8 +52,23 @@ class AssetsHelper
         return $absPath;
     }
 
-    public static function getProjectDir($appendPath="")
+    public static function getProjectDir($appendPath = "")
     {
-        return self::sanitizePath(ABSPATH. "/../../$appendPath");
+        return self::sanitizePath(ABSPATH . "/../../$appendPath");
+    }
+
+    public static function getPublicDir($appendPath = "")
+    {
+        return self::getProjectDir("/web/$appendPath");
+    }
+
+    public static function getFrameworkDir($appendPath = "")
+    {
+        return self::getPublicDir("/framework/$appendPath");
+    }
+
+    public static function path(...$args)
+    {
+        return self::sanitizePath(implode(DIRECTORY_SEPARATOR, $args));
     }
 }

@@ -1,39 +1,71 @@
+.be-form-field.svg_sprite_field-field,
 .be-form-field.icon-field {
-
-  .icon-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-    margin: 0;
-    margin-bottom: 0.2rem;
-    li.icon {
-      border-radius: 0.2rem;
-      background: var(--color-white);
-      color: var(--color-grey-500);
-      cursor: pointer;
-      width: 3rem;
-      aspect-ratio: 1;
-      margin: 0;
-      transition: all 0.2s ease;
+  &.delete-mode {
+    .icons li {
       &:hover {
-        color: var(--color-blue-800);
+        background: var(--color-red-600);
       }
-      &.active{
-        background: var(--color-blue-100);
-        color: var(--color-blue-500);
-      }
-
-      figure {
-        @include center;
-        @include square(100%);
-        font-size: 2rem;
-        margin: 0;
-      }
-
     }
   }
 
-  > div {
-    margin-bottom: 0.5rem;
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background: var(--color-white);
+      cursor: pointer;
+      list-style: none;
+      width: 6rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      transition: all 0.1s ease;
+      &:hover, &.active {
+        background: var(--color-blue-500);
+        color: var(--color-white);
+      }
+
+      figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: calc(32px + 1rem);
+        aspect-ratio: 1;
+        margin: 0;
+      }
+
+      legend {
+        text-align: center;
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .button {
+    margin-top: 1rem;
+    font: inherit;
+    padding: 0.2rem 0.4rem;
+
+    &::-webkit-file-upload-button {
+      border: none;
+      background: transparent;
+      color: currentColor;
+      cursor: pointer;
+      background: var(--color-blue-600);
+      color: var(--color-white);
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.2rem;
+    }
   }
 }

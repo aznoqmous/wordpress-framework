@@ -3,6 +3,7 @@
 use Addictic\WordpressFramework\Fields\Field;
 use Addictic\WordpressFramework\Fields\InputField;
 use Addictic\WordpressFramework\Fields\PageField;
+use Addictic\WordpressFramework\Fields\SVGSpriteField;
 use Addictic\WordpressFramework\Fields\UploadField;
 use Addictic\WordpressFramework\Helpers\ViteHelper;
 use Addictic\WordpressFramework\Settings\OptionsPage;
@@ -48,6 +49,8 @@ OptionsPage::create("settings")
     ->addSection("realisations")
         ->addField(new UploadField("realisationCsv"))
         ->addField(new InputField("realisationMapUrl"))
+    ->addSection("icons")
+        ->addField(new SVGSpriteField("icons"))
 ;
 
 OptionsPage::create("simulator")

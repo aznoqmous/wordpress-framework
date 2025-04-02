@@ -53,6 +53,8 @@
 
   > a.button {
     @include button;
+    display: inline-flex;
     margin-top: 1rem;
+    text-transform: uppercase;
   }
 }

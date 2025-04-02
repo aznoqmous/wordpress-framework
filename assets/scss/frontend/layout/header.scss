@@ -195,7 +195,7 @@ body {
     }
   }
 
-  &.home, &.single-resource {
+  &.home, &.single-resource, &.white-header {
     .site-header {
       border: 2px solid rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(30px);
@@ -205,10 +205,6 @@ body {
     }
 
     .header {
-      //background: rgba(6, 52, 93, 0.6);
-      //border: 2px solid rgba(255, 255, 255, 0.1);
-      //backdrop-filter: blur(30px);
-      //box-shadow: 0 0 pxrem(40) rgba(0,0,0,0.3);
       .logo {
         .color {
           display: none;

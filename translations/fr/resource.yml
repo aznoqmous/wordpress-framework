@@ -13,6 +13,7 @@ resource:
 resource_category:
   singular: Catégorie de ressource
   plural: Catégories de ressource
+  icon: Icône
 
 resource_tag:
   singular: Tag de ressource

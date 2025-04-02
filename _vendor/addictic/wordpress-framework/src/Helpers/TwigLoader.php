@@ -6,6 +6,7 @@ use Addictic\WordpressFramework\Twig\AppRuntime;
 use Addictic\WordpressFramework\Twig\TranslationExtension;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
+use Twig\Markup;
 use Twig\TemplateWrapper;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
@@ -41,13 +42,18 @@ class TwigLoader
             return FileHelper::isImage($string);
         }));
 
+        $this->twig->addFilter(new TwigFilter('delete_post_link', function ($post) {
+            return get_delete_post_link($post);
+        }));
+
+        $this->twig->addFunction(new TwigFunction('sprite_icon', function ($icon, $name = "icons") {
+            return new Markup($this->render("misc/sprite-icon.twig", ['name' => $name, 'icon' => $icon]), "UTF-8");
+        }));
+
         $this->twig->addFunction(new TwigFunction('dump', function () {
             dump(...func_get_args());
         }));
 
-        $this->twig->addFilter(new TwigFilter('delete_post_link', function ($post) {
-            return get_delete_post_link($post);
-        }));
     }
 
     public function getTemplate($templateName): TemplateWrapper
@@ -55,7 +61,7 @@ class TwigLoader
         return $this->twig->load($templateName);
     }
 
-    public function render($template, $arrOptions)
+    public function render($template, $arrOptions = [])
     {
         return $this->getTemplate($template)->render($arrOptions);
     }

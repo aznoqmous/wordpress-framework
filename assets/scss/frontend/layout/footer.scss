@@ -56,7 +56,12 @@ footer {
           address {
             font: inherit;
           }
+
+          .sprite-icon {
+            @include square(pxrem(32));
+          }
         }
+
       }
     }
 
@@ -103,6 +108,10 @@ footer {
     .socials {
       @include row(center);
       gap: pxrem(10);
+      .sprite-icon {
+        @include square(pxrem(40));
+        color: var(--color-white);
+      }
     }
 
     .legal-navigation {
