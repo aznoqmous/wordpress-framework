@@ -1,6 +1,11 @@
-.editor-styles-wrapper .wp-block-post-content {
-  font-family: "Nexa", sans-serif;
+.editor-styles-wrapper {
   background: var(--background-color);
+  color: var(--text-color);
+
+  .wp-block-post-content {
+    font-family: "Nexa", sans-serif;
+    background: var(--background-color);
+  }
 }
 
 .editor-styles-wrapper .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)),

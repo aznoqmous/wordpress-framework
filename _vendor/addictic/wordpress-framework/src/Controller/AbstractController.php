@@ -9,7 +9,9 @@ abstract class AbstractController
     public $value;
 
     public function html($html){
-        return "$html";
+        header('Content-Type: text/html');
+        echo "$html";
+        exit;
     }
 
     public function json($data)

@@ -13,6 +13,7 @@
     left: 0.5em;
     font-weight: 800;
   }
+
   input, select, textarea {
     font-size: inherit;
     outline-color: var(--color-light-blue);
@@ -40,11 +41,58 @@
       background: transparent;
       padding: 1rem 0.5rem;
       border-radius: pxrem(17);
+
       &:first-child {
         padding-left: 1rem;
       }
 
     }
 
+  }
+}
+
+.form-input {
+  @include row();
+  align-items: center;
+  position: relative;
+  height: pxrem(50);
+
+  border-radius: pxrem(15);
+  border: 2px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
+
+  input {
+    position: absolute;
+    inset: 0;
+    font: inherit;
+    color: inherit;
+    border: unset;
+    padding: 0 2rem;
+    margin: 0;
+    background: unset;
+    height: 100%;
+    border-radius: pxrem(15);
+    &::placeholder {
+      color: rgba(white, 0.6);
+    }
+    &:focus {
+      outline-color: var(--color-light-blue-2);
+    }
+  }
+
+  .icon-left, .icon-right {
+    position: absolute;
+    top: 50%;
+    svg {
+      transform: translateY(-50%);
+    }
+  }
+
+  .icon-left {
+    left: 0;
+  }
+
+  .icon-right {
+    right: 0;
   }
 }

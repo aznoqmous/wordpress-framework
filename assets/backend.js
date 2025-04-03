@@ -14,7 +14,6 @@ import "./js/blocks/statics/content-block"
 import "./js/blocks/statics/icon"
 
 import "./js/blocks/overrides/cover"
-// import "./js/blocks/overrides/button"
 
 import LocationField from "./js/location-field"
 import TreeView from "./tree-view";
@@ -23,3 +22,23 @@ LocationField.bind(".location-field")
 TreeView.bind(".tree-view")
 
 SvgSpriteField.bind(".svg_sprite_field-field")
+
+/**
+ * Admin post page
+ */
+document.addEventListener("DOMContentLoaded", ()=>{
+    const form = document.querySelector(".metabox-location-normal")
+    document.body.style.setProperty("--background-color", Object.fromEntries(new FormData(form)).background_color || null)
+    document.querySelectorAll('.post-type-page [name="background_color"]').forEach((el) => {
+        el.addEventListener("change", (e)=>{
+            document.body.style.setProperty("--background-color", Object.fromEntries(new FormData(form)).background_color || null)
+        })
+    })
+
+    document.body.style.setProperty("--text-color", Object.fromEntries(new FormData(form)).text_color || null)
+    document.querySelectorAll('.post-type-page [name="text_color"]').forEach((el) => {
+        el.addEventListener("change", (e)=>{
+            document.body.style.setProperty("--text-color", Object.fromEntries(new FormData(form)).text_color || null)
+        })
+    })
+})

@@ -17,6 +17,7 @@ export default class ColorField extends Element {
                 setTimeout(()=>{
                     input.checked = !input.checked
                     if(!input.checked) this.hiddenInput.checked = true
+                    this.hiddenInput.dispatchEvent(new Event("change"))
                 })
             })
         })

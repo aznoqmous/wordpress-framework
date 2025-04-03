@@ -24,7 +24,7 @@
 $page = \Addictic\WordpressFramework\Models\Legacy\PageModel::findActive();
 ?>
 <body
-    <?php body_class($page->getValue("white_header") ? "white-header" : ""); ?>
+    <?php body_class($page->getValue("background_color") ? "white-header" : ""); ?>
     style="<?= $page ? "--background-color: {$page->getValue("background_color")};" : "" ?><?= $page ? "--text-color: {$page->getValue("text_color")};" : "" ?>"
 >
 <?php wp_body_open(); ?>

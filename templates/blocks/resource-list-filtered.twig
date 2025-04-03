@@ -1,4 +1,13 @@
 <div class="resource-list-filtered">
+    <div class="form-input">
+        <input type="text" placeholder="Rechercher">
+        <div class="icon-left">
+            {{ sprite_icon("search") }}
+        </div>
+        <div class="icon-right">
+            {{ sprite_icon("cross") }}
+        </div>
+    </div>
     <div class="categories">
         <h2>Thèmes :</h2>
         <ul class="items">
@@ -14,7 +23,7 @@
         <h2>Tags :</h2>
         <div class="container-tags">
             <ul class="items">
-                <li>Tout</li>
+                <li class="active">Tout</li>
                 {% for tag in tags %}
                     <li data-id="{{ tag.id }}">{{ tag.name }}</li>
                 {% endfor %}

@@ -7,6 +7,14 @@
     h2 {
       margin-bottom: 0;
     }
+    small {
+      &:before {
+        content:"(";
+      }
+      &:after {
+        content:")";
+      }
+    }
   }
   .container {
     padding: 2rem 0;

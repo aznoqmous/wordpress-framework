@@ -30,3 +30,6 @@ realisation:
   start_date: Date de mise en service
   parking_spaces: Nombre de places de parking
   sector: Secteur d'activité
+
+realisation_option:
+  plural: Options

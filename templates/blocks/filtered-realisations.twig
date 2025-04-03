@@ -3,7 +3,7 @@
     <div class="container">
         <div class="title">
             <h2>Filtrer les réalisations</h2>
-            <small>({{ count }})</small>
+            <small>{{ count }}</small>
         </div>
 
         <span>Filtrer :</span>
@@ -13,7 +13,7 @@
                 <label for="">Options</label>
                 <select name="options" id="">
                     {% for option in options %}
-                        <option value="{{ option.slug }}">
+                        <option value="{{ option.id }}">
                             {{ option.name }}
                         </option>
                     {% endfor %}
@@ -27,7 +27,7 @@
                     {% if filter.children | length %}
                         <select name="{{ filter.slug }}" id="{{ filter.slug }}">
                             {% for child in filter.children %}
-                                <option value="{{ child.slug }}">{{ child.name }}</option>
+                                <option value="{{ child.id }}">{{ child.name }}</option>
                             {% endfor %}
                         </select>
                     {% endif %}

@@ -24,14 +24,28 @@ add_action("admin_menu", function () {
 WordpressFrameworkBundle::init();
 
 \Addictic\WordpressFramework\Annotation\PostTypeManager::getInstance()
-    ->discover("\\App\\PostTypes", __DIR__ . "/../../PostTypes", \Addictic\WordpressFramework\Annotation\PostType::class);
+    ->discover(
+        "\\App\\PostTypes", __DIR__ . "/../../PostTypes",
+        \Addictic\WordpressFramework\Annotation\PostType::class
+);
 
 \Addictic\WordpressFramework\Annotation\TaxonomyManager::getInstance()
-
-    ->discover("\\App\\Taxonomies", __DIR__ . "/../../Taxonomies", \Addictic\WordpressFramework\Annotation\Taxonomy::class);
+    ->discover(
+        "\\App\\Taxonomies", __DIR__ . "/../../Taxonomies",
+        \Addictic\WordpressFramework\Annotation\Taxonomy::class
+);
 
 \Addictic\WordpressFramework\Annotation\BlockManager::getInstance()
-    ->discover("\\App\\Blocks", __DIR__ . "/../../Blocks", \Addictic\WordpressFramework\Annotation\Block::class);
+    ->discover(
+        "\\App\\Blocks", __DIR__ . "/../../Blocks",
+        \Addictic\WordpressFramework\Annotation\Block::class
+);
+
+\Addictic\WordpressFramework\Annotation\RouteManager::getInstance()
+    ->discover(
+        "\\App\\Controller", __DIR__ . "/../../Controller",
+        \Addictic\WordpressFramework\Annotation\Route::class
+    );
 
 \Addictic\WordpressFramework\Models\Legacy\PageModel::register();
 \App\Models\TestimonyModel::register();
